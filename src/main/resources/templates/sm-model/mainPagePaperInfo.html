@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>主页：博文信息展示组件</title>
+    <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+
+<div class="ui segment" th:fragment="mainPages">
+    <div class="ui grid">
+        <!--博客标题、摘要-->
+        <div class="eleven wide column">
+
+        </div>
+
+        <!--博客配图-->
+        <div class="five wide column">
+            <a href="#" target="_blank">
+                <img th:src="@{/img/blog-with-img.png}" alt="博客配图" class="ui rounded image" style="width: 800px">
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

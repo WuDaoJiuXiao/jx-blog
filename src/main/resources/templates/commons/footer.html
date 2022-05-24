@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>页脚信息栏</title>
+    <link rel="stylesheet" th:href="@{/semanticUi/semantic.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+</head>
+<body>
+<footer class="ui inverted vertical segment m-tb-massive" th:fragment="blogFooter">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided grid">
+            <!--微信二维码-->
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                <img th:src="@{/img/wechat.png}" alt="微信二维码" class="m-wechat-img ui rounded image" style="width: 110px">
+                </div>
+            </div>
+            <!--网站文章信息-->
+            <div class="four wide column">
+                <h4 class="ui inverted header m-opacity">文章信息</h4>
+                <div class="ui inverted link list">
+                    <p style="margin-bottom: 0" class="item">总文章数：100</p>
+                    <p style="margin-bottom: 0" class="item">总标签数：10</p>
+                    <p style="margin-bottom: 0" class="item">总分类数：13</p>
+                    <p style="margin-bottom: 0" class="item">总阅读量：9999</p>
+                </div>
+            </div>
+
+            <!--我的联系方式-->
+            <div class="four wide column">
+                <h4 class="ui inverted header m-opacity">联系我</h4>
+                <div class="ui inverted link list">
+                    <a href="https://www.cnblogs.com/wudaojiuxiao/"
+                       class="item">博客园 : 悟道九霄</a>
+                    <a href="https://github.com/WuDaoJiuXiao"
+                       class="item">Github : WuDaoJiuXiao</a>
+                    <a href="https://weibo.com/u/6047903073"
+                       class="item">微博 : 0x7f</a>
+                    <a href="https://space.bilibili.com/53827618?spm_id_from=333.1007.0.0"
+                       class="item">小破站 : SKG九霄</a>
+                </div>
+            </div>
+
+            <!--个人简介-->
+            <div class="five wide column">
+                <h4 class="ui inverted header m-opacity">关于我</h4>
+                <p style="margin-bottom: 0" class="item m-opacity m-text-spaced">一个热爱技术、爱写代码的男孩，本科的天坑测绘并未将我击败，工地数月的磨炼让我重新找到了人生的方向，
+                    二战辞职跨考计算机，已成功上岸</p>
+                <p style="margin-bottom: 0" class="item m-opacity m-text-spaced">人生在于折腾！</p>
+            </div>
+        </div>
+
+        <!--底部分割线-->
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-spaced m-opacity">Copyright &copy; 2022 悟道九霄 Designed by 悟道九霄</p>
+    </div>
+</footer>
+</body>
+</html>

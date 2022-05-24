@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>页首导航栏</title>
+    <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+</head>
+<body>
+
+<nav class="ui inverted segment attached m-padding-tb-mini" th:fragment="blogHeader">
+    <div class="ui container">
+        <div class="ui inverted secondary menu m-div">
+            <h3 class="ui teal header item m-head">悟道九霄</h3>
+            <a href="#" class="item">
+                <i class="home icon"></i>
+                首页
+            </a>
+            <a href="#" class="item">
+                <i class="idea icon"></i>
+                分类
+            </a>
+            <a href="#" class="item">
+                <i class="tags icon"></i>
+                标签
+            </a>
+            <a href="#" class="item">
+                <i class="bed icon"></i>
+                杂谈
+            </a>
+            <a href="#" class="item">
+                <i class="user outline icon"></i>
+                关于我
+            </a>
+            <a href="#" class="item">
+                <i class="anchor icon"></i>
+                友链
+            </a>
+
+            <!--搜索框-->
+            <div class="right item">
+                <div class="ui small category search">
+                    <div class="ui icon input inverted transparent">
+                        <input type="text" placeholder="Search...">
+                        <i class="search link icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>

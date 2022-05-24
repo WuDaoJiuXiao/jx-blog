@@ -1,4 +1,8 @@
 # 应用名称
-spring.application.name=jx-blog
-
+spring:
+  thymeleaf:
+    check-template-location: true
+    check-template: true
+    cache: false
+    mode: HTML
 
