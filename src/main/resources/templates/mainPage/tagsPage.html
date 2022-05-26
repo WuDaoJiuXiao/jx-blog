@@ -17,6 +17,19 @@
 <!--头部导航栏-->
 <div th:insert="~{/commons/header::blogHeader}"></div>
 
+<!--中间内容-->
+<div class="m-container m-padding-large">
+    <div class="container">
+        <!--标题信息-->
+        <div th:insert="~{/sm-model/tags-model/tagsTitle::tagsTitle}"></div>
+        <!--标签列表-->
+        <div th:insert="~{/sm-model/tags-model/tagsInfo::tagsInfo}"></div>
+        <!--博客列表-->
+        <div th:insert="~{/sm-model/tags-model/tagsBlogList::tagsBlogList}"></div>
+        <!--翻页按钮-->
+        <div th:insert="~{/sm-model/tags-model/tagsTurn::tagsTurn}"></div>
+    </div>
+</div>
 
 <!--footer信息栏-->
 <div th:insert="~{/commons/footer::blogFooter}"></div>

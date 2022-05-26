@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>博文下方信息组件</title>
+</head>
+<body>
+
+<div class="ui attached orange segment secondary m-div-shadow m-div-radius" th:fragment="blogBottomInfo">
+    <div class="ui middle aligned grid">
+        <div class="eleven wide column">
+            <ul class="list">
+                <li style="list-style-type: none !important;" class="m-li-margin-bottom">
+                    <i class="user secret icon"></i>作者：悟道九霄（联系作者）
+                </li>
+                <li style="list-style-type: none !important;" class="m-li-margin-bottom">
+                    <i class="calendar times icon"></i>发布时间：2022-01-23 13:48
+                </li>
+                <li style="list-style-type: none !important;">
+                    <i class="copyright icon"></i>版权申明：转载请注明出处
+                </li>
+            </ul>
+        </div>
+        <div class="four wide column right aligned">
+            <img th:src="@{/img/wechat.png}" alt="微信" class="ui right floated rounded bordered image" style="width: 100px">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

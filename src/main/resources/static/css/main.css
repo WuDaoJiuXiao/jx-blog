@@ -5,6 +5,10 @@ body {
     padding-bottom: 1em !important;
     padding-top: 0.8em !important;
 }
+.m-padding-large {
+    padding-top: 1.5em !important;
+    padding-bottom: 1.2em !important;
+}
 .m-padding-tiny {
     padding: 0.3em !important;
 }
@@ -29,4 +33,43 @@ body {
 }
 .m-turn-padding-top {
     padding-top: 0.3em !important;
+}
+.m-container {
+    margin-left: 240px !important;
+    margin-right: 240px !important;
+}
+.m-author-top {
+    margin-top: 0 !important;
+}
+.m-weight {
+    font-weight: bold !important;
+}
+.m-padding-bot-none {
+    padding-bottom: 0 !important;
+}
+.m-padding-rl {
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+}
+.m-padding-rlb {
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+    padding-bottom: 20px !important;
+}
+.m-padding-bottom-title {
+    padding-top: 0.8em !important;
+    padding-bottom: 1.3em !important;
+}
+.m-li-margin-bottom {
+    margin-bottom: 8px !important;
+}
+.m-top-none {
+    margin-top: 0 !important;
+}
+.m-class-rb-margin {
+    margin-right: 30px !important;
+    margin-bottom: 22px !important;
+}
+.m-header-shadow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7) !important;
 }

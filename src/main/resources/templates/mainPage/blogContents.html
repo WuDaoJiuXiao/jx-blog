@@ -13,23 +13,23 @@
     <link rel="stylesheet" th:href="@{/css/side.css}">
 </head>
 <body>
-
 <!--头部导航栏-->
 <div th:insert="~{/commons/header::blogHeader}"></div>
 
 <!--中间内容-->
-<div class="m-padding-middle">
-    <!--博文标题信息-->
-    <div th:insert="~{/sm-model/main-model/blogTitle::blogTitle}"></div>
-    <!--博文正文-->
-    <div th:insert="~{/sm-model/main-model/blogMain::blogMain}"></div>
-    <!--博文下方信息栏-->
-    <div th:insert="~{/sm-model/main-model/blogBottomInfo::blogBottomInfo}"></div>
-    <!--博文评论区-->
-    <div th:insert="~{/sm-model/main-model/blogComment::blogComment}"></div>
+<div class="m-container m-padding-large">
+    <div class="ui container">
+        <!--博文标题信息-->
+        <div th:insert="~{/sm-model/blog-model/blogTitle::blogTitle}"></div>
+        <!--博文配图、博文正文-->
+        <div th:insert="~{/sm-model/blog-model/blogMain::blogMain}"></div>
+        <!--博文下方信息栏-->
+        <div th:insert="~{/sm-model/blog-model/blogBottomInfo::blogBottomInfo}"></div>
+        <!--博文评论区-->
+        <div th:insert="~{/sm-model/blog-model/blogComment::blogComment}"></div>
+    </div>
 </div>
 
 <!--footer信息栏-->
 <div th:insert="~{/commons/footer::blogFooter}"></div>
-
 </body>
