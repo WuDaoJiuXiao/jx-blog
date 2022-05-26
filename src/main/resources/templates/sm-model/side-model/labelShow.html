@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>侧边栏：标签展示组件</title>
+</head>
+<body>
+
+<div class="ui segments m-side-shadow m-side-margin-large m-div-radius" th:fragment="labelShow">
+    <!--标签标题栏-->
+    <div class="ui secondary segment">
+        <div class="ui two column grid">
+            <div class="column">
+               <h5> <i class="tags icon"></i>标签</h5>
+            </div>
+            <div class="right aligned column">
+                <a href="#" target="_self">More <i class="angle double right icon"></i></a>
+            </div>
+        </div>
+    </div>
+    <!--标签信息栏-->
+    <div class="ui blue segment">
+        <a href="#" target="_self" class="ui blue basic right pointing label m-side-margin-rb">JavaWeb
+            <div class="detail">104</div>
+        </a>
+        <a href="#" target="_self" class="ui blue basic right pointing label m-side-margin-rb">C++
+            <div class="detail">4</div>
+        </a>
+        <a href="#" target="_self" class="ui blue basic right pointing label m-side-margin-rb">前端 Vue
+            <div class="detail">11</div>
+        </a>
+        <a href="#" target="_self" class="ui blue basic right pointing label m-side-margin-rb">MySql 数据库
+            <div class="detail">24</div>
+        </a>
+        <a href="#" target="_self" class="ui blue basic right pointing label m-side-margin-rb">Python
+            <div class="detail">244</div>
+        </a>
+        <a href="#" target="_self" class="ui blue basic right pointing label m-side-margin-rb">点云处理
+            <div class="detail">49</div>
+        </a>
+        <a href="#" target="_self" class="ui blue basic right pointing label m-side-margin-rb">SpringBoot
+            <div class="detail">124</div>
+        </a>
+        <a href="#" target="_self" class="ui blue basic right pointing label m-side-margin-rb">MyBatis
+            <div class="detail">35</div>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,15 +1,10 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>页脚信息栏</title>
-    <link rel="stylesheet" th:href="@{/semanticUi/semantic.css}">
-    <link rel="stylesheet" th:href="@{/css/footer.css}">
 </head>
 <body>
+
 <footer class="ui inverted vertical segment m-tb-massive" th:fragment="blogFooter">
     <div class="ui center aligned container">
         <div class="ui inverted divided grid">
@@ -56,8 +51,9 @@
 
         <!--底部分割线-->
         <div class="ui inverted section divider"></div>
-        <p class="m-text-spaced m-opacity">Copyright &copy; 2022 悟道九霄 Designed by 悟道九霄</p>
+        <p class="m-text-spaced" style="opacity: 0.4">Copyright &copy; 2022 悟道九霄 Designed by 悟道九霄</p>
     </div>
 </footer>
+
 </body>
 </html>

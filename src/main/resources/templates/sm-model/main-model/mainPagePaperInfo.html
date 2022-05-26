@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>主页：博文信息展示组件</title>
+</head>
+<body>
+
+
+<!--配图在右边-->
+<div class="ui padded segment m-margin-tiny m-div-shadow" th:fragment="mainPagesRight">
+    <div class="ui grid">
+        <!--博客标题、摘要-->
+        <div class="eleven wide column">
+            <h3 class="ui header">计算机专业就业前景怎么样？</h3>
+            <p>不可否认，计算机专业确实很好找工作，而且薪资待遇也很可观。在一线城市，有3-5年工作经验的工程师月薪15K也很普遍，
+                即使是实习生，也可以拿到6-9K的月薪。相对于一些传统行业，薪资有着明显的优势...</p>
+            <div class="ui grid">
+                <!--文章作者、发布时间、阅读、评论信息-->
+                <div class="twelve wide column">
+                    <div class="ui horizontal link list">
+                        <!--头像及姓名-->
+                        <div class="item">
+                            <img th:src="@{/img/favicon.png}" alt="头像" class="ui avatar image">
+                            <div class="content"><h5>悟道九霄</h5></div>
+                        </div>
+                        <!--发布时间-->
+                        <div class="item">
+                            <i class="calendar outline icon"></i> 2021-12-10
+                        </div>
+                        <!--阅读量-->
+                        <div class="item">
+                            <i class="eye icon"></i> 9542
+                        </div>
+                        <!--评论量-->
+                        <div class="item">
+                            <i class="comment outline icon"></i> 54
+                        </div>
+                    </div>
+                </div>
+                <!--小标签-->
+                <div class="right aligned four wide column">
+                    <div class="ui horizontal link list">
+                        <a href="#" class="bottom aligned ui label teal inverted m-padding-tiny">就业杂谈</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--博客配图-->
+        <div class="five wide column" style="padding-top: 22px">
+            <a href="#" target="_self">
+                <img th:src="@{/img/test01.png}" alt="博客配图" class="ui rounded image" style="width: 300px">
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!--配图在左边-->
+<div class="ui padded segment m-margin-tiny m-div-shadow" th:fragment="mainPagesLeft">
+    <div class="ui grid">
+        <!--博客配图-->
+        <div class="four wide column" style="padding-top: 22px">
+            <a href="#" target="_self">
+                <img th:src="@{/img/test02.png}" alt="博客配图" class="ui rounded image" style="width: 300px">
+            </a>
+        </div>
+        <!--博客标题、摘要-->
+        <div class="twelve wide column">
+            <h3 class="ui header">什么是Thymeleaf？</h3>
+            <p>Thymeleaf 是新一代 Java 模板引擎，与 Velocity、FreeMarker 等传统 Java 模板引擎不同，Thymeleaf 支持 HTML 原型，
+                其文件后缀为“.html”，因此它可以直接被浏览器打开，此时浏览器会忽略未定义的 Thymeleaf 标签属性...</p>
+            <div class="ui grid">
+                <!--文章作者、发布时间、阅读、评论信息-->
+                <div class="eleven wide column">
+                    <div class="ui horizontal link list">
+                        <!--头像及姓名-->
+                        <div class="item">
+                            <img th:src="@{/img/favicon.png}" alt="头像" class="ui avatar image">
+                            <div class="content"><h5>悟道九霄</h5></div>
+                        </div>
+                        <!--发布时间-->
+                        <div class="item">
+                            <i class="calendar icon"></i> 2021-11-01
+                        </div>
+                        <!--阅读量-->
+                        <div class="item">
+                            <i class="eye icon"></i> 4254
+                        </div>
+                        <!--评论量-->
+                        <div class="item">
+                            <i class="comment outline icon"></i> 42
+                        </div>
+                    </div>
+                </div>
+                <!--小标签-->
+                <div class="right aligned five wide column">
+                    <div class="ui horizontal link list">
+                        <a href="#" class="bottom aligned ui label teal inverted m-padding-tiny">谈天说地</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

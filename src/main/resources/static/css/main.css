@@ -1,10 +1,32 @@
+body {
+    background: white url("../img/bg.png") no-repeat fixed center top;
+}
 .m-padding-middle {
     padding-bottom: 1em !important;
     padding-top: 0.8em !important;
+}
+.m-padding-tiny {
+    padding: 0.3em !important;
 }
 .m-inline-block {
     display: inline-block !important;
 }
 .m-margin-top {
     margin-top: 0 !important;
+}
+.m-margin-tiny {
+    margin-top: 4px !important;
+    margin-bottom: 3px !important;
+}
+.m-padding-bottom {
+    margin-top: 0.3em !important;
+}
+.m-div-shadow {
+    box-shadow: 3px 3px 5px #cecece !important;
+}
+.m-div-radius {
+    border-radius: 6px !important;
+}
+.m-turn-padding-top {
+    padding-top: 0.3em !important;
 }

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>博客首页</title>
+    <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/side.css}">
+</head>
+<body>
+
+<!--头部导航栏-->
+<div th:insert="~{/commons/header::blogHeader}"></div>
+
+<!--中间内容-->
+<div class="m-padding-middle">
+    <div class="ui container">
+        <div class="ui grid">
+
+            <!--博客列表部分-->
+            <div class="eleven wide column">
+                <!--上方：标题信息-->
+                <div class="ui top attached segment m-div-radius m-padding-bottom">
+                    <div th:insert="~{/sm-model/main-model/mainPageTitle::mainTitle}"></div>
+                </div>
+                <!--中间：正文内容-->
+                <div class="ui attached segment m-div-shadow m-div-radius m-padding-bottom">
+                    <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
+                    <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
+                    <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
+                    <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
+                    <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
+                    <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
+                    <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
+                    <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
+                    <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
+                </div>
+                <!--下方：翻页按钮-->
+                <div th:insert="~{/sm-model/main-model/mainPageTurn::turnPages}"></div>
+            </div>
+
+            <!--侧边栏部分-->
+            <div class="five wide column">
+                <!--网站运行时间-->
+                <div th:insert="~{/sm-model/side-model/runtime::runTime}"></div>
+                <!--阅读排行榜-->
+                <div th:insert="~{/sm-model/side-model/readTop::readTop}"></div>
+                <!--最新博文-->
+                <div th:insert="~{/sm-model/side-model/newblog::newBlog}"></div>
+                <!--标签展示-->
+                <div th:insert="~{/sm-model/side-model/labelShow::labelShow}"></div>
+                <!--分类展示-->
+                <div th:insert="~{/sm-model/side-model/classShow::classShow}"></div>
+                <!--二维码-->
+                <div th:insert="~{/sm-model/side-model/imageCode::imageCode}"></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--footer信息栏-->
+<div th:insert="~{/commons/footer::blogFooter}"></div>
+
+</body>
+</html>
