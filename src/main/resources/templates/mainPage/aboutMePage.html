@@ -7,16 +7,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>关于我</title>
     <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
-    <link rel="stylesheet" th:href="@{/css/header.css}">
-    <link rel="stylesheet" th:href="@{/css/footer.css}">
     <link rel="stylesheet" th:href="@{/css/main.css}">
-    <link rel="stylesheet" th:href="@{/css/side.css}">
 </head>
 <body>
 
 <!--头部导航栏-->
 <div th:insert="~{/commons/header::blogHeader}"></div>
 
+<!--中间内容-->
+<div class="ui container m-padding-large">
+    <div class="ui grid">
+        <!--图片和自我介绍-->
+        <div class="twelve wide column">
+            <div th:insert="~{/sm-model/about-model/infoOfMe::infoAndImg}"></div>
+        </div>
+        <!--侧边栏相关组件-->
+        <div class="four wide column">
+            <div th:insert="~{/sm-model/about-model/side::someSide}"></div>
+        </div>
+    </div>
+</div>
 
 <!--footer信息栏-->
 <div th:insert="~{/commons/footer::blogFooter}"></div>

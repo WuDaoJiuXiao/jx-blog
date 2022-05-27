@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>关于我页面：侧边栏相关组件</title>
+</head>
+<body>
+
+<div class="ui segment secondary m-padding-large m-div-radius m-div-shadow" th:fragment="someSide">
+    <!--技术栈-->
+    <div class="ui segment m-div-radius m-div-shadow">
+        <h5 class="ui center aligned header horizontal divider m-opacity">技术栈</h5>
+        <div class="ui segment basic m-padding-rl-none">
+            <div class="ui green mini label basic m-info-rlb">Java</div>
+            <div class="ui green mini label basic m-info-rlb">Python</div>
+            <div class="ui green mini label basic m-info-rlb">SpringBoot</div>
+            <div class="ui green mini label basic m-info-rlb">SpringMVC</div>
+            <div class="ui green mini label basic m-info-rlb">MyBatis</div>
+            <div class="ui green mini label basic m-info-rlb">MySql</div>
+        </div>
+    </div>
+
+    <!--联系方式-->
+    <div class="ui segment m-div-radius m-div-shadow">
+        <h5 class="ui center aligned header horizontal divider m-opacity">联系我</h5>
+        <div class="ui segment basic m-padding-rl-none">
+            <div class="ui three column grid">
+                <div class="wide column center aligned">
+                    <a href="https://github.com/WuDaoJiuXiao" target="_blank" class="m-black"
+                       data-tooltip="WuDaoJiuXiao" data-position="top center">
+                        <i class="github icon large"></i>
+                    </a>
+                </div>
+                <div class="wide column center aligned">
+                    <a href="#" class="m-green" data-tooltip="SoxjjyS" data-position="top center">
+                        <i class="wechat icon large"></i>
+                    </a>
+                </div>
+                <div class="wide column center aligned">
+                    <a href="#" class="m-red" data-tooltip="1667191252" data-position="top center">
+                        <i class="qq icon large"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

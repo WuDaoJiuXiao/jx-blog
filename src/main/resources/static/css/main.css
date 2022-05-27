@@ -1,75 +1,238 @@
+/*-------------------
+        body
+------------------*/
 body {
     background: white url("../img/bg.png") no-repeat fixed center top;
 }
+
+
+/*-------------------
+        header
+------------------*/
+.m-padding-tb-mini {
+    padding-bottom: 0.05em !important;
+    padding-top: 0.05em !important;
+}
+
+.m-div {
+    height: 1em;
+}
+
+.m-head {
+    padding-left: 0 !important;
+    padding-right: 25px !important;
+}
+
+
+/*-------------------
+        footer
+------------------*/
+.m-tb-massive {
+    padding-top: 5em !important;
+    padding-bottom: 2em !important;
+}
+
+.m-text-thin {
+    font-weight: 300 !important;
+}
+
+.m-text-spaced {
+    letter-spacing: 1px !important;
+}
+
+.m-text-lined {
+    line-height: 1.8;
+}
+
+.m-opacity {
+    opacity: 0.7 !important;
+}
+
+
+/*-------------------
+        side
+------------------*/
+.m-side-shadow {
+    box-shadow: 3px 3px 5px #cecece !important;
+}
+
+.m-side-radius {
+    border-radius: 6px !important;
+}
+
+.m-side-padding-top {
+    padding-top: 0.3em !important;
+}
+
+.m-side-margin-rb {
+    margin-bottom: 10px !important;
+    margin-right: 22px !important;
+}
+
+.m-black {
+    color: #4c4c4c !important;
+}
+
+.m-green {
+    color: green !important;
+}
+
+.m-red {
+    color: red !important;
+}
+
+.m-bottom-color {
+    border-bottom: 2px solid #2185D0 !important;
+}
+
+.m-side-margin-large {
+    margin-bottom: 24px !important;
+}
+
+.m-top-margin-run {
+    margin-top: 4px !important;
+}
+
+.m-side-image-large {
+    margin-top: 36px !important;
+}
+
+
+/*-------------------
+        others
+------------------*/
 .m-padding-middle {
     padding-bottom: 1em !important;
     padding-top: 0.8em !important;
 }
+
 .m-padding-large {
     padding-top: 1.5em !important;
     padding-bottom: 1.2em !important;
 }
+
 .m-padding-tiny {
     padding: 0.3em !important;
 }
-.m-inline-block {
-    display: inline-block !important;
-}
-.m-margin-top {
-    margin-top: 0 !important;
-}
-.m-margin-tiny {
-    margin-top: 4px !important;
-    margin-bottom: 3px !important;
-}
+
 .m-padding-bottom {
     margin-top: 0.3em !important;
 }
-.m-div-shadow {
-    box-shadow: 3px 3px 5px #cecece !important;
-}
-.m-div-radius {
-    border-radius: 6px !important;
-}
+
 .m-turn-padding-top {
     padding-top: 0.3em !important;
 }
-.m-container {
-    margin-left: 240px !important;
-    margin-right: 240px !important;
-}
-.m-author-top {
-    margin-top: 0 !important;
-}
-.m-weight {
-    font-weight: bold !important;
-}
+
 .m-padding-bot-none {
     padding-bottom: 0 !important;
 }
+
 .m-padding-rl {
     padding-left: 50px !important;
     padding-right: 50px !important;
 }
+
 .m-padding-rlb {
     padding-left: 50px !important;
     padding-right: 50px !important;
     padding-bottom: 20px !important;
 }
+
 .m-padding-bottom-title {
     padding-top: 0.8em !important;
     padding-bottom: 1.3em !important;
 }
+
+.m-inline-block {
+    display: inline-block !important;
+}
+
+.m-margin-top {
+    margin-top: 0 !important;
+}
+
+.m-margin-tiny {
+    margin-top: 4px !important;
+    margin-bottom: 3px !important;
+}
+
+.m-margin-top-large {
+    margin-top: 20px !important;
+}
+
 .m-li-margin-bottom {
     margin-bottom: 8px !important;
 }
-.m-top-none {
-    margin-top: 0 !important;
-}
+
 .m-class-rb-margin {
     margin-right: 30px !important;
     margin-bottom: 22px !important;
 }
+
+.m-container {
+    margin-left: 240px !important;
+    margin-right: 240px !important;
+}
+
+.m-author-top {
+    margin-top: 0 !important;
+}
+
+.m-top-none {
+    margin-top: 0 !important;
+}
+
+.m-div-shadow {
+    box-shadow: 3px 3px 5px #cecece !important;
+}
+
+.m-div-radius {
+    border-radius: 6px !important;
+}
+
+.m-weight {
+    font-weight: bold !important;
+}
+
 .m-header-shadow {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7) !important;
+}
+
+.m-text-middle {
+    vertical-align: middle !important;
+}
+
+.m-file-bottom-border {
+    border-bottom: 1px dashed #dcdcdc;
+}
+
+.m-info-title-tb {
+    margin-top: 24px !important;
+    margin-bottom: 14px !important;
+}
+
+.m-opacity-large {
+    opacity: 0.4 !important;
+}
+
+.m-info-lr-margin {
+    margin-left: 2em !important;
+    margin-right: 2em !important;
+}
+.m-tb-margin {
+    margin-top: 16px !important;
+    margin-bottom: 14px !important;
+}
+.m-info-margin {
+    margin-top: 25px !important;
+    margin-bottom: 23px !important;
+}
+.m-info-rlb {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    margin-bottom: 12px !important;
+}
+.m-padding-rl-none {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }

@@ -7,16 +7,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>归档页面</title>
     <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
-    <link rel="stylesheet" th:href="@{/css/header.css}">
-    <link rel="stylesheet" th:href="@{/css/footer.css}">
     <link rel="stylesheet" th:href="@{/css/main.css}">
-    <link rel="stylesheet" th:href="@{/css/side.css}">
 </head>
 <body>
 
 <!--头部导航栏-->
 <div th:insert="~{/commons/header::blogHeader}"></div>
 
+<!--中间内容-->
+<div class="m-container m-padding-large" th:fragment="timeTitle">
+    <div class="ui container">
+        <!--归档标题-->
+        <div th:insert="~{/sm-model/file-model/timeTitle::timeTitle}"></div>
+        <!--归档时间线-->
+        <div th:insert="~{/sm-model/file-model/timeLine::timeLine}"></div>
+    </div>
+</div>
 
 <!--footer信息栏-->
 <div th:insert="~{/commons/footer::blogFooter}"></div>
