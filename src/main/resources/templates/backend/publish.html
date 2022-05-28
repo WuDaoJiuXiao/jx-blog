@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>博客发布</title>
+    <!--!!!!!! 重点注意：jquery.js 必须在 SemanticUI.js 之前引入，并且两个都要引入，否则 jquery 不会生效 !!!!!!-->
+    <script th:src="@{/js/jquery-3.5.1.js}"></script>
+    <script th:src="@{/semanticUi/semantic.js}"></script>
+    <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<!--导航栏-->
+<div th:insert="~{/backend/headers::adminHeader}"></div>
+
+
+<!--中间内容-->
+<div class="ui container">
+    <div class="ui segment secondary container-tb-margin container-radius container-shadow">
+        <form action="#" class="ui form" method="post">
+            <!--信息提示-->
+            <div class="ui error message"></div>
+
+            <!--文章标题-->
+            <div class="field required">
+                <div class="ui left labeled input">
+                    <!--文章类型选择：原创、转载、翻译-->
+                    <div class="ui teal compact basic selection dropdown label">
+                        <input type="hidden" name="types">
+                        <i class="thumbtack icon grey"></i>
+                        <i class="dropdown icon"></i>
+                        <div class="default text required">博客类型</div>
+                        <div class="menu">
+                            <div class="item" data-value="1">原创</div>
+                            <div class="item" data-value="2">转载</div>
+                            <div class="item" data-value="3">翻译</div>
+                        </div>
+                    </div>
+                    <!--文章标题-->
+                    <div class="ui left icon input">
+                        <i class="book icon"></i>
+                        <input type="text" name="title" placeholder="文章标题...">
+                    </div>
+                </div>
+            </div>
+
+            <!--文章内容-->
+            <div class="field required">
+                <textarea name="content" cols="40" rows="15" placeholder="博客内容..."></textarea>
+            </div>
+
+            <!--博客首图地址-->
+            <div class="field required">
+                <div class="ui left icon labeled input">
+                    <label class="ui teal compact basic label"><i class="picture icon"></i>首图地址</label>
+                    <div class="ui left icon input">
+                        <i class="linkify icon"></i>
+                        <input type="text" name="indexPicture" placeholder="博客首图引用地址">
+                    </div>
+                </div>
+            </div>
+
+            <!--标签选择、是否开启推荐、转载声明、评论等功能-->
+            <div class="two fields">
+                <!--标签选择-->
+                <div class="field required">
+                    <div class="ui left labeled input">
+                        <label class="ui teal basic label"><i class="tag icon teal"></i>标签</label>
+                        <div class="ui fluid multiple search selection dropdown">
+                            <input type="hidden" name="tags">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">选择标签</div>
+                            <div class="menu">
+                                <div class="item" data-value="1">Java</div>
+                                <div class="item" data-value="2">C++</div>
+                                <div class="item" data-value="3">Python</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--是否开启推荐、转载声明、评论等功能-->
+                <div class="inline fields">
+                    <!--推荐-->
+                    <div class="field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" id="recommend" name="recommend" class="hidden">
+                            <label for="recommend">推荐</label>
+                        </div>
+                    </div>
+                    <!--转载声明-->
+                    <div class="field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" id="shareInfo" name="shareInfo" class="hidden" checked>
+                            <label for="shareInfo">转载声明</label>
+                        </div>
+                    </div>
+                    <!--评论-->
+                    <div class="field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" id="comment" name="comment" class="hidden">
+                            <label for="comment">评论</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--返回、保存、发布按钮-->
+            <div class="ui right aligned container">
+                <button type="button" class="ui button red" onclick="window.history.go(-1)">
+                    <i class="reply icon"></i>返回
+                </button>
+                <button class="ui button green"><i class="save icon"></i>保存</button>
+                <button class="ui button blue"><i class="paper plane icon"></i>发布</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+<script>
+
+    $('.ui.dropdown').dropdown();
+
+    //基本的表单提交验证
+    $('.ui.form').form({
+        fields: {
+            types: {
+                identifier: 'types',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请选择博客类型'
+                }]
+            },
+            title: {
+                identifier: 'title',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入博客标题'
+                }]
+            },
+            content: {
+                identifier: 'content',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入博客内容'
+                }]
+            },
+            tags: {
+                identifier: 'tags',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请选择文章标签'
+                }]
+            },
+            indexPicture: {
+                identifier: 'indexPicture',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入博客首图地址'
+                }]
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>

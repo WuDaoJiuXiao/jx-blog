@@ -2,7 +2,8 @@
         body
 ------------------*/
 body {
-    background: white url("../img/bg.png") no-repeat fixed center top;
+    background: white url("../img/webBG.png") no-repeat fixed center top;
+
 }
 
 
@@ -46,6 +47,10 @@ body {
 
 .m-opacity {
     opacity: 0.7 !important;
+}
+
+.m-opacity-middle {
+    opacity: 0.4 !important;
 }
 
 
@@ -235,4 +240,17 @@ body {
 .m-padding-rl-none {
     padding-left: 0 !important;
     padding-right: 0 !important;
+}
+.m-lrt-margin {
+    margin: 12px 16px !important;
+}
+.m-link-tb {
+    margin-top: 50px !important;
+    margin-bottom: 25px !important;
+}
+.m-bg-color {
+    background: #397dff26 !important;
+}
+.m-filed-length {
+    width: 410px !important;
 }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理导航栏</title>
+</head>
+<body>
+
+<nav class="ui inverted segment attached nav-padding-tb-mini nav-shadow" th:fragment="adminHeader">
+    <div class="ui container">
+        <div class="ui inverted secondary menu nav-height">
+            <!--左边导航-->
+            <h3 class="ui blue header item nav-lr-padding">管理员</h3>
+            <a th:href="@{/admin/blog}" class="item">
+                <i class="book icon"></i>
+                博客管理
+            </a>
+            <a th:href="@{/admin/publish}" class="item">
+                <i class="edit icon"></i>
+                博客发布
+            </a>
+            <a th:href="@{/admin/tags}" class="item">
+                <i class="tags icon"></i>
+                标签管理
+            </a>
+            <a th:href="@{/admin/link}" class="item">
+                <i class="linkify icon"></i>
+                友链管理
+            </a>
+
+            <!--头像及注销-->
+            <div class="right menu">
+                <a href="#" class="item">
+                    <i class="sign-out icon"></i>注销
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>

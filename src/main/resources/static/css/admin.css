@@ -1,0 +1,81 @@
+/*-------------------
+        body
+------------------*/
+body {
+    background: white url("../img/adminBG.png") no-repeat fixed center top;
+}
+
+/*-------------------
+    admin-login
+------------------*/
+
+
+/*-------------------
+        header
+------------------*/
+.nav-padding-tb-mini {
+    padding-bottom: 0.05em !important;
+    padding-top: 0.05em !important;
+}
+
+.nav-height {
+    height: 1em;
+}
+
+.nav-lr-padding {
+    padding-left: 0 !important;
+    padding-right: 25px !important;
+}
+
+.nav-shadow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7) !important;
+}
+
+
+/*-------------------
+    blog-control
+------------------*/
+.container-tb-margin {
+    margin-top: 25px !important;
+    margin-bottom: 22px !important;
+}
+
+.container-radius {
+    border-radius: 6px !important;
+}
+
+.container-shadow {
+    box-shadow: 3px 3px 5px #acacac !important;
+}
+
+.info-title-margin {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.icon-opacity {
+    opacity: 0.6 !important;
+}
+
+
+/*-------------------
+      publish
+------------------*/
+.type-field-length{
+    width: 150px !important;
+}
+
+
+/*-------------------
+    tags-control
+------------------*/
+
+
+/*-------------------
+    file-control
+------------------*/
+
+
+/*-------------------
+    link-control
+------------------*/

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>友链管理</title>
+    <!--!!!!!! 重点注意：jquery.js 必须在 SemanticUI.js 之前引入，并且两个都要引入，否则 jquery 不会生效 !!!!!!-->
+    <script th:src="@{/js/jquery-3.5.1.js}"></script>
+    <script th:src="@{/semanticUi/semantic.js}"></script>
+    <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<!--导航栏-->
+<div th:insert="~{/backend/headers::adminHeader}"></div>
+
+<!--中间内容-->
+<div class="ui container">
+    <div class="ui segment container-tb-margin container-radius container-shadow">
+    </div>
+</div>
+
+
+</body>
+</html>

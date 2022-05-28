@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>博客管理</title>
+    <!--!!!!!! 重点注意：jquery.js 必须在 SemanticUI.js 之前引入，并且两个都要引入，否则 jquery 不会生效 !!!!!!-->
+    <script th:src="@{/js/jquery-3.5.1.js}"></script>
+    <script th:src="@{/semanticUi/semantic.js}"></script>
+    <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<!--导航栏-->
+<div th:insert="~{/backend/headers::adminHeader}"></div>
+
+<!--中间内容-->
+<div class="ui container">
+    <div class="ui segment container-tb-margin container-radius container-shadow">
+        <!--根据标题或者标签，搜索文章-->
+        <h3 class="ui blue header info-title-margin">搜索文章</h3>
+        <div class="ui segment secondary container-radius container-shadow">
+            <form class="ui form" action="#" method="post">
+                <div class="three fields">
+                    <!--标题输入框-->
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="align left icon"></i>
+                            <input type="text" name="blogTitle" placeholder="博客标题">
+                        </div>
+                    </div>
+                    <!--标签选择框-->
+                    <div class="field">
+                        <div class="ui fluid selection dropdown">
+                            <input type="hidden" name="tags">
+                            <i class="tag icon grey"></i>
+                            <i class="dropdown icon"></i>
+                            <div class="default text">博客标签</div>
+                            <div class="menu">
+                                <div class="item" data-value="1">开发日志</div>
+                                <div class="item" data-value="2">名人轶事</div>
+                                <div class="item" data-value="3">梦与星光</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--搜索和重置按钮-->
+                    <div class="field">
+                        <button class="ui blue button"><i class="search icon"></i>搜索</button>
+                        <button class="ui grey button"><i class="retweet icon"></i>重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!--博客列表展示-->
+        <h3 class="ui blue header info-title-margin">博客列表</h3>
+        <div class="ui segment secondary container-radius container-shadow">
+            <table class="ui striped table center aligned">
+                <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>博客名称</th>
+                    <th>博客标签</th>
+                    <th>发布时间</th>
+                    <th>评论数</th>
+                    <th>浏览量</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>论马云是怎么成功的</td>
+                    <td>名人轶事</td>
+                    <td>2022-12-10 09:14</td>
+                    <td>45</td>
+                    <td>1245</td>
+                    <td>
+                        <a href="#" class="ui mini green button">修改</a>
+                        <a href="#" class="ui mini red button">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>论马云是怎么成功的</td>
+                    <td>名人轶事</td>
+                    <td>2022-12-10 09:14</td>
+                    <td>45</td>
+                    <td>1245</td>
+                    <td>
+                        <a href="#" class="ui mini green button">修改</a>
+                        <a href="#" class="ui mini red button">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>论马云是怎么成功的</td>
+                    <td>名人轶事</td>
+                    <td>2022-12-10 09:14</td>
+                    <td>45</td>
+                    <td>1245</td>
+                    <td>
+                        <a href="#" class="ui mini green button">修改</a>
+                        <a href="#" class="ui mini red button">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>论马云是怎么成功的</td>
+                    <td>名人轶事</td>
+                    <td>2022-12-10 09:14</td>
+                    <td>45</td>
+                    <td>1245</td>
+                    <td>
+                        <a href="#" class="ui mini green button">修改</a>
+                        <a href="#" class="ui mini red button">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <th colspan="7">
+                            <div class="ui pagination menu">
+                                <a href="#" class="item"><i class="chevron left icon"></i>上一页</a>
+                                <a href="#" class="item">下一页<i class="chevron right icon"></i></a>
+                            </div>
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    //标签选择下拉框激活
+    $('.ui.dropdown').dropdown();
+</script>
+
+</body>
+</html>

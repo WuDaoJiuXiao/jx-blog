@@ -5,7 +5,6 @@
 </head>
 <body>
 
-
 <nav class="ui inverted segment attached m-padding-tb-mini m-header-shadow" th:fragment="blogHeader">
     <div class="ui container">
         <div class="ui inverted secondary menu m-div">
@@ -18,10 +17,6 @@
                 <i class="tags icon"></i>
                 标签
             </a>
-            <a th:href="@{/game}" class="item">
-                <i class="bed icon"></i>
-                杂谈
-            </a>
             <a th:href="@{/file}" class="item">
                 <i class="clone icon"></i>
                 归档
@@ -33,6 +28,10 @@
             <a th:href="@{/link}" class="item">
                 <i class="linkify icon"></i>
                 友链
+            </a>
+            <a th:href="@{/admin/login}" class="item">
+                <i class="terminal icon"></i>
+                管理员登录
             </a>
 
             <!--搜索框-->
