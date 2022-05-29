@@ -1,0 +1,8 @@
+前端技术栈:
+
++ 页面框架 : SemanticUI
++ 插件集成:
+    + 编辑器：Markdown  替换默认的文本编辑器为支持 Markdown 的编辑器（https://pandao.github.io/editor.md/）
+    + 内容排版：typo.css   美化博客文章的排版样式，以博客详情页为主（https://github.com/sofish/typo.css）
+    + 动画：animate.css   可修改网页加载的动画（https://animate.style/）
+    + 代码高亮：prism    对博文中的相关代码进行高亮显示，官网选择自己喜欢的主题和代码类型下载对应的 js 和 css 文件（https://prismjs.com/）

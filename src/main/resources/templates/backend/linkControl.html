@@ -7,6 +7,7 @@
     <script th:src="@{/js/jquery-3.5.1.js}"></script>
     <script th:src="@{/semanticUi/semantic.js}"></script>
     <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.css}">
     <link rel="stylesheet" th:href="@{/css/admin.css}">
 </head>
 <body>
@@ -14,9 +15,122 @@
 <!--导航栏-->
 <div th:insert="~{/backend/headers::adminHeader}"></div>
 
-<!--中间内容-->
-<div class="ui container">
+<div class="ui container animate__animated animate__fadeIn" style="width: 1300px">
     <div class="ui segment container-tb-margin container-radius container-shadow">
+        <h3 class="ui blue header">友链管理</h3>
+
+        <!--友链增加、搜索按钮-->
+        <div class="ui grid">
+            <!--搜索友链-->
+            <div class="five wide column">
+                <div class="ui left icon input">
+                    <i class="linkify icon"></i>
+                    <input type="text" name="link" placeholder="请输入友链名称" class="input-width">
+                </div>
+            </div>
+            <div class="eight wide column">
+                <button class="ui green button"><i class="search icon"></i>搜索友链</button>
+            </div>
+            <div class="three wide left aligned column">
+                <button class="ui blue button"><i class="edit icon"></i>增加友链</button>
+            </div>
+        </div>
+
+        <!--友链展示列表-->
+        <div class="ui segment secondary container-radius container-shadow">
+            <table class="ui striped table center aligned">
+                <thead>
+                <tr>
+                    <th>友链编号</th>
+                    <th>友链名称</th>
+                    <th>友链地址</th>
+                    <th>友链头像地址</th>
+                    <th>添加时间</th>
+                    <th>最后修改时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>哔哩哔哩</td>
+                    <td>https://www.bilibili.com</td>
+                    <td>https://www.bilibili.com</td>
+                    <td>2020-12-18 / 13:45</td>
+                    <td>2020-12-18 / 18:44</td>
+                    <td>
+                        <a href="#" class="ui mini green button">修改</a>
+                        <a href="#" class="ui mini red button">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>百度</td>
+                    <td>https://www.baidu.com</td>
+                    <td>https://www.baidu.com</td>
+                    <td>2021-11-24 / 15:05</td>
+                    <td>2021-11-30 / 19:25</td>
+                    <td>
+                        <a href="#" class="ui mini green button">修改</a>
+                        <a href="#" class="ui mini red button">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>学相伴</td>
+                    <td>https://www.kaungstudy.com</td>
+                    <td>https://www.kaungstudy.com</td>
+                    <td>2022-12-22 / 08:32</td>
+                    <td>2023-01-12 / 09:42</td>
+                    <td>
+                        <a href="#" class="ui mini green button">修改</a>
+                        <a href="#" class="ui mini red button">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <!--友链审核-->
+        <h3 class="ui blue header">友链审核</h3>
+        <div class="ui segment secondary container-radius container-shadow">
+            <table class="ui striped table center aligned">
+                <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>友链名称</th>
+                    <th>友链地址</th>
+                    <th>友链头像地址</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Github</td>
+                    <td>https://github.com</td>
+                    <td>https://github.com</td>
+                    <td>
+                        <a href="#" class="ui mini button green">同意</a>
+                        <a href="#" class="ui mini button red">拒绝</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>力扣</td>
+                    <td>https://leetcode.cn</td>
+                    <td>https://leetcode.cn</td>
+                    <td>
+                        <a href="#" class="ui mini button green">同意</a>
+                        <a href="#" class="ui mini button red">拒绝</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 

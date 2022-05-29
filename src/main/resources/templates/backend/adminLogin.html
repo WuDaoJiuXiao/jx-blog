@@ -1,10 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>管理员后台登录</title>
+    <script th:src="@{/js/jquery-3.5.1.js}"></script>
+    <script th:src="@{/semanticUi/semantic.js}"></script>
+    <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
 </head>
 <body>
+
+
+<div class="ui segment secondary container-shadow container-radius segment-size-login animate__animated animate__fadeIn">
+    <form action="#" method="post" class="ui form">
+
+        <h3 class="ui teal header center aligned">管理员登录</h3>
+
+        <!--用户名-->
+        <div class="field">
+            <div class="ui left icon input">
+                <i class="user circle icon"></i>
+                <input type="text" name="username" placeholder="用户名" required>
+            </div>
+        </div>
+
+        <!--密码-->
+        <div class="field">
+            <div class="ui left icon input">
+                <i class="keyboard icon"></i>
+                <input type="text" name="password" placeholder="密码" required>
+            </div>
+        </div>
+
+        <!--提交按钮-->
+        <div class="two fields">
+            <div class="field">
+                <div style="text-align: center !important;">
+                    <button class="ui grey button btn-width">重置</button>
+                </div>
+            </div>
+            <div class="field">
+                <div style="text-align: center !important;">
+                    <button class="ui blue button btn-width">登录</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
 
 </body>
 </html>

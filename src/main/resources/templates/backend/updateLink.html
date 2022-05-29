@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改友链</title>
+    <script th:src="@{/js/jquery-3.5.1.js}"></script>
+    <script th:src="@{/semanticUi/semantic.js}"></script>
+    <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<!--导航栏-->
+<div th:insert="~{/backend/headers::adminHeader}"></div>
+
+<!--中间内容-->
+<div class="ui container animate__animated animate__fadeIn">
+    <div class="ui segment secondary container-shadow container-radius segment-size-add-page">
+        <div class="link-form-add-rl">
+            <form action="#" method="post" class="ui form">
+                <h3 class="ui teal header center aligned">修改友链</h3>
+
+                <!--友链ID，数据库查询所得，不可修改-->
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="certificate icon"></i>
+                        <input type="text" name="linkId" value="数据库查询的友链ID" class="link-text-opacity" readonly>
+                    </div>
+                </div>
+
+                <!--友链添加时间，数据库查询所得，不可修改-->
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="history icon"></i>
+                        <input type="text" name="linkAddTime" value="数据库查询的友链添加时间" class="link-text-opacity" readonly>
+                    </div>
+                </div>
+
+                <!--友链修改时间，即本次提交表单的时间，不可修改，为隐藏域-->
+                <input type="hidden" name="linkLastUpdateTime" value="最后一次修改时间，即本次提交时间" class="link-text-opacity" readonly>
+
+                <!--友链名称，可修改-->
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="clipboard icon"></i>
+                        <input type="text" name="linkName" value="根据ID查询的友链名称">
+                    </div>
+                </div>
+
+                <!--友链地址，可修改-->
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="linkify icon"></i>
+                        <input type="text" name="linkAddress" value="据ID查询的友链地址">
+                    </div>
+                </div>
+
+                <!--友链头像地址，可修改-->
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="globe icon"></i>
+                        <input type="text" name="linkPicAddress" value="据ID查询的友链头像地址">
+                    </div>
+                </div>
+
+                <!--提交按钮-->
+                <div class="field">
+                    <div style="text-align: center !important;">
+                        <button class="ui blue button btn-width">确认修改</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

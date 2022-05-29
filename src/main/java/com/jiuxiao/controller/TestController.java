@@ -80,4 +80,28 @@ public class TestController {
     public String test11(){
         return "backend/linkControl";
     }
+
+    //增加友链页面
+    @RequestMapping("/admin/addLink")
+    public String test12(){
+        return "backend/addLink";
+    }
+
+    //修改友链页面
+    @RequestMapping("/admin/updateLink")
+    public String test13(){
+        return "backend/updateLink";
+    }
+
+    //修改标签页面
+    @RequestMapping("/admin/updateTags")
+    public String test14(){
+        return "backend/updateTags";
+    }
+
+    //增加标签页面
+    @RequestMapping("/admin/addTags")
+    public String test15(){
+        return "backend/addTags";
+    }
 }
