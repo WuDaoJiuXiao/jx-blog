@@ -13,7 +13,7 @@
 <body>
 
 <!--导航栏-->
-<div th:insert="~{/backend/headers::adminHeader}"></div>
+<div th:insert="~{/backend/headers::adminHeader('admin/link')}"></div>
 
 <div class="ui container animate__animated animate__fadeIn" style="width: 1300px">
     <div class="ui segment container-tb-margin container-radius container-shadow">
@@ -46,7 +46,7 @@
                     <th>友链地址</th>
                     <th>友链头像地址</th>
                     <th>添加时间</th>
-                    <th>最后修改时间</th>
+                    <th>上次修改时间</th>
                     <th>操作</th>
                 </tr>
                 </thead>

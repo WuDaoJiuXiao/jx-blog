@@ -2,8 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>标签管理</title>
-    <!--!!!!!! 重点注意：jquery.js 必须在 SemanticUI.js 之前引入，并且两个都要引入，否则 jquery 不会生效 !!!!!!-->
+    <title>分类管理</title>
     <script th:src="@{/js/jquery-3.5.1.js}"></script>
     <script th:src="@{/semanticUi/semantic.js}"></script>
     <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
@@ -13,38 +12,37 @@
 <body>
 
 <!--导航栏-->
-<div th:insert="~{/backend/headers::adminHeader('admin/tags')}"></div>
-
+<div th:insert="~{/backend/headers::adminHeader('admin/sort')}"></div>
 
 <!--中间内容-->
 <div class="ui container animate__animated animate__fadeIn">
     <div class="ui segment container-tb-margin container-radius container-shadow">
-        <h3 class="ui blue header">标签管理</h3>
+        <h3 class="ui blue header">分类管理</h3>
 
-        <!--标签增加、搜索按钮-->
+        <!--分类增加、搜索按钮-->
         <div class="ui grid">
-            <!--搜索标签-->
+            <!--搜索分类-->
             <div class="five wide column">
                 <div class="ui left icon input">
-                    <i class="tags icon"></i>
-                    <input type="text" name="tags" placeholder="请输入标签" class="input-width">
+                    <i class="sort icon"></i>
+                    <input type="text" name="sort" placeholder="请输入分类" class="input-width">
                 </div>
             </div>
             <div class="eight wide column">
-                <button class="ui green button"><i class="search icon"></i>搜索标签</button>
+                <button class="ui green button"><i class="search icon"></i>搜索分类</button>
             </div>
             <div class="three wide left aligned column">
-                <button class="ui blue button"><i class="edit icon"></i>增加标签</button>
+                <button class="ui blue button"><i class="edit icon"></i>增加分类</button>
             </div>
         </div>
 
-        <!--标签展示列表-->
+        <!--分类展示列表-->
         <div class="ui segment secondary container-radius container-shadow">
             <table class="ui striped table center aligned">
                 <thead>
                 <tr>
-                    <th>标签编号</th>
-                    <th>标签名称</th>
+                    <th>分类编号</th>
+                    <th>分类名称</th>
                     <th>被引用次数</th>
                     <th>创建时间</th>
                     <th>上次修改时间</th>
@@ -55,9 +53,9 @@
                 <tbody>
                 <tr>
                     <td>1</td>
-                    <td>Java</td>
-                    <td>21</td>
-                    <td>2020-04-15 / 15:34</td>
+                    <td>SpringBoot</td>
+                    <td>10</td>
+                    <td>2020-04-10 / 08:45</td>
                     <td>2020-04-15 / 15:34</td>
                     <td>
                         <a href="#" class="ui mini green button">修改</a>
@@ -66,10 +64,10 @@
                 </tr>
                 <tr>
                     <td>2</td>
-                    <td>杂谈</td>
-                    <td>9</td>
-                    <td>2020-12-26 / 08:19</td>
-                    <td>2021-01-02 / 12:22</td>
+                    <td>旅游</td>
+                    <td>2</td>
+                    <td>2020-12-26 / 10:52</td>
+                    <td>2021-01-02 / 12:12</td>
                     <td>
                         <a href="#" class="ui mini green button">修改</a>
                         <a href="#" class="ui mini red button">删除</a>
@@ -77,10 +75,10 @@
                 </tr>
                 <tr>
                     <td>3</td>
-                    <td>技术文档</td>
-                    <td>10</td>
-                    <td>2021-07-15 / 23:57</td>
-                    <td>2020-04-12 / 18:52</td>
+                    <td>名人</td>
+                    <td>9</td>
+                    <td>2022-01-25 / 13:57</td>
+                    <td>2022-04-22 / 10:52</td>
                     <td>
                         <a href="#" class="ui mini green button">修改</a>
                         <a href="#" class="ui mini red button">删除</a>

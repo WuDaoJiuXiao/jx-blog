@@ -13,7 +13,7 @@
 <body>
 
 <!--头部导航栏-->
-<div th:insert="~{/commons/header::blogHeader}"></div>
+<div th:insert="~{/commons/header::blogHeader('index')}"></div>
 
 <!--中间内容-->
 <div class="m-padding-large animate__animated animate__fadeIn">
@@ -36,7 +36,6 @@
                     <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
                     <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
                     <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
-                    <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
                 </div>
                 <!--下方：翻页按钮-->
                 <div th:insert="~{/sm-model/main-model/mainPageTurn::turnPages}"></div>
@@ -50,10 +49,10 @@
                 <div th:insert="~{/sm-model/side-model/readTop::readTop}"></div>
                 <!--最新博文-->
                 <div th:insert="~{/sm-model/side-model/newblog::newBlog}"></div>
-                <!--标签展示-->
-                <div th:insert="~{/sm-model/side-model/labelShow::labelShow}"></div>
                 <!--分类展示-->
-                <div th:insert="~{/sm-model/side-model/classShow::classShow}"></div>
+                <div th:insert="~{/sm-model/side-model/sortShow::sortShow}"></div>
+                <!--标签展示-->
+                <div th:insert="~{/sm-model/side-model/tagsShow::tagsShow}"></div>
                 <!--二维码-->
                 <div th:insert="~{/sm-model/side-model/imageCode::imageCode}"></div>
 

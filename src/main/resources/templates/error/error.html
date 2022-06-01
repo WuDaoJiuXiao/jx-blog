@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>出错了</title>
+    <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+
+<!--头部导航栏-->
+<div th:insert="~{/commons/header::blogHeader('error')}"></div>
+
+<!--输出出错信息到网页注释中-->
+<div>
+    <div th:utext="'&lt;!--'" th:remove="tag"></div>
+    <div th:utext="'Failed Request URL : ' + ${url}" th:remove="tag"></div>
+    <div th:utext="'Exception message : ' + ${exception.message}" th:remove="tag"></div>
+    <ul th:remove="tag">
+        <li th:each="st : ${exception.stackTrace}" th:remove="tag">
+            <span th:utext="${st}" th:remove="tag"></span>
+        </li>
+    </ul>
+    <div th:utext="'--&gt;'" th:remove="tag"></div>
+</div>
+
+
+<!--自定义其他错误 -->
+<div class="m-container m-padding-rlb error-tb-margin">
+    <div class="ui secondary segment">
+        <div class="ui error message m-padding-large">
+            <div class="ui container">
+                <h3 class="ui header center aligned">未知错误</h3>
+                <br>
+                <h4 class="ui header center aligned">遭遇未知错误，请联系管理员！</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--footer信息栏-->
+<div th:insert="~{/commons/footer::blogFooter}"></div>
+
+</body>
+</html>
+

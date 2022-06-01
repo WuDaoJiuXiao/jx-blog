@@ -1,7 +1,5 @@
-target/
-out/
-target/*
-.idea/
+target
+.idea
+test
+log
 *.iml
-test/
-test/*

@@ -6,24 +6,29 @@
 </head>
 <body>
 
-<nav class="ui inverted segment attached nav-padding-tb-mini nav-shadow animate__animated animate__fadeIn" th:fragment="adminHeader">
+<nav class="ui inverted segment attached nav-padding-tb-mini nav-shadow animate__animated animate__fadeIn"
+     th:fragment="adminHeader(pageName)">
     <div class="ui container">
         <div class="ui inverted secondary menu nav-height">
             <!--左边导航-->
             <h3 class="ui blue header item nav-lr-padding">管理员</h3>
-            <a th:href="@{/admin/blog}" class="item">
+            <a th:href="@{/admin/blog}" class="item" th:classappend="${#strings.equals(pageName, 'admin/blog')} ? 'active'">
                 <i class="book icon"></i>
                 博客管理
             </a>
-            <a th:href="@{/admin/publish}" class="item">
+            <a th:href="@{/admin/publish}" class="item" th:classappend="${#strings.equals(pageName, 'admin/publish')} ? 'active'">
                 <i class="edit icon"></i>
                 博客发布
             </a>
-            <a th:href="@{/admin/tags}" class="item">
+            <a th:href="@{/admin/sort}" class="item" th:classappend="${#strings.equals(pageName, 'admin/sort')} ? 'active'">
+                <i class="sort icon"></i>
+                分类管理
+            </a>
+            <a th:href="@{/admin/tags}" class="item" th:classappend="${#strings.equals(pageName, 'admin/tags')} ? 'active'">
                 <i class="tags icon"></i>
                 标签管理
             </a>
-            <a th:href="@{/admin/link}" class="item">
+            <a th:href="@{/admin/link}" class="item" th:classappend="${#strings.equals(pageName, 'admin/link')} ? 'active'">
                 <i class="linkify icon"></i>
                 友链管理
             </a>

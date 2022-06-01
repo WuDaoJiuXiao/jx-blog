@@ -263,6 +263,11 @@ body {
     width: 410px !important;
 }
 
+.error-tb-margin {
+    margin-top: 140px !important;
+    margin-bottom: 140px !important;
+}
+
 
 /*------------
   右下角小组件

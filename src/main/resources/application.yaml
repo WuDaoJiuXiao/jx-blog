@@ -1,8 +1,12 @@
-# 应用名称
 spring:
   thymeleaf:
-    check-template-location: true
-    check-template: true
     cache: false
     mode: HTML
+  profiles:
+    active: dev
 
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.jiuxiao.pojo
+  configuration:
+    map-underscore-to-camel-case: true

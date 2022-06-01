@@ -12,49 +12,49 @@
 <body>
 
 <!--导航栏-->
-<div th:insert="~{/backend/headers::adminHeader('admin/updateTags')}"></div>
+<div th:insert="~{/backend/headers::adminHeader('admin/updateSort')}"></div>
 
 <!--中间内容-->
 <div class="ui container animate__animated animate__fadeIn">
     <div class="ui segment secondary container-shadow container-radius segment-size-add-page">
         <div class="link-form-add-rl">
             <form action="#" method="post" class="ui form">
-                <h3 class="ui teal header center aligned">修改标签</h3>
+                <h3 class="ui teal header center aligned">修改分类</h3>
 
-                <!--标签ID，数据库查询所得，不可修改-->
+                <!--分类ID，数据库查询所得，不可修改-->
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="certificate icon"></i>
-                        <input type="text" name="tagsId" value="数据库查询的标签ID" class="tags-text-opacity" readonly>
+                        <input type="text" name="sortId" value="数据库查询的分类ID" class="tags-text-opacity" readonly>
                     </div>
                 </div>
 
-                <!--标签名称，可修改-->
+                <!--分类名称，可修改-->
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="clipboard icon"></i>
-                        <input type="text" name="tagsName" value="根据ID查询的标签名称">
+                        <input type="text" name="sortName" value="根据ID查询的分类名称">
                     </div>
                 </div>
 
-                <!--标签引用次数，数据库查询所得，不可修改-->
+                <!--分类引用次数，数据库查询所得，不可修改-->
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="magnet icon"></i>
-                        <input type="text" name="linkAddress" value="据ID查询的标签引用次数" class="tags-text-opacity" readonly>
+                        <input type="text" name="sortRefCount" value="据ID查询的分类引用次数" class="tags-text-opacity" readonly>
                     </div>
                 </div>
 
-                <!--标签创建时间，数据库查询所得，不可修改-->
+                <!--分类创建时间，数据库查询所得，不可修改-->
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="history icon"></i>
-                        <input type="text" name="linkPicAddress" value="据ID查询的标签创建时间" class="tags-text-opacity" readonly>
+                        <input type="text" name="sortAddTime" value="据ID查询的分类创建时间" class="tags-text-opacity" readonly>
                     </div>
                 </div>
 
-                <!--标签修改时间，本次表单提交的时间，为隐藏域-->
-                <input type="hidden" name="linkPicAddress" value="本次表单提交时间">
+                <!--分类修改时间，本次表单提交的时间，为隐藏域-->
+                <input type="hidden" name="sortLastUpdateTime" value="本次表单提交时间">
 
                 <!--提交按钮-->
                 <div class="field">

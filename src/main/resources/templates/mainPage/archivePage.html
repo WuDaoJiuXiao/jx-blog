@@ -13,15 +13,15 @@
 <body>
 
 <!--头部导航栏-->
-<div th:insert="~{/commons/header::blogHeader}"></div>
+<div th:insert="~{/commons/header::blogHeader('archive')}"></div>
 
 <!--中间内容-->
 <div class="m-container m-padding-large animate__animated animate__fadeIn" th:fragment="timeTitle">
     <div class="ui container">
         <!--归档标题-->
-        <div th:insert="~{/sm-model/file-model/timeTitle::timeTitle}"></div>
+        <div th:insert="~{/sm-model/archive-model/timeTitle::timeTitle}"></div>
         <!--归档时间线-->
-        <div th:insert="~{/sm-model/file-model/timeLine::timeLine}"></div>
+        <div th:insert="~{/sm-model/archive-model/timeLine::timeLine}"></div>
     </div>
 </div>
 

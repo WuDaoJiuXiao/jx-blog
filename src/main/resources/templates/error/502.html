@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>网关错误</title>
+    <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+
+<!--头部导航栏-->
+<div th:insert="~{/commons/header::blogHeader('404')}"></div>
+
+<!--自定义 502 -->
+<div class="m-container m-padding-rlb error-tb-margin">
+    <div class="ui secondary segment">
+        <div class="ui error message m-padding-large">
+            <div class="ui container">
+                <h3 class="ui header center aligned">502 Bad Gateway</h3>
+                <br>
+                <h4 class="ui header center aligned">对不起，您的网关错误！</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--footer信息栏-->
+<div th:insert="~{/commons/footer::blogFooter}"></div>

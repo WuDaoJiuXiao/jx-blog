@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>增加标签</title>
+    <title>增加分类</title>
     <script th:src="@{/js/jquery-3.5.1.js}"></script>
     <script th:src="@{/semanticUi/semantic.js}"></script>
     <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
@@ -12,34 +12,34 @@
 <body>
 
 <!--导航栏-->
-<div th:insert="~{/backend/headers::adminHeader('admin/addTags')}"></div>
+<div th:insert="~{/backend/headers::adminHeader('admin/addSort')}"></div>
 
 <!--中间内容-->
 <div class="ui container center aligned animate__animated animate__fadeIn">
     <div class="ui segment secondary container-shadow container-radius segment-size-add-page">
         <form action="#" method="post" class="ui form">
-            <h3 class="ui teal header center aligned">增加标签</h3>
+            <h3 class="ui teal header center aligned">增加分类</h3>
 
-            <!--标签id，根据数据库最大的标签id加一所得，不可修改-->
+            <!--分类id，根据数据库最大的分类id加一所得，不可修改-->
             <div class="field">
                 <div class="ui left icon input">
                     <i class="certificate icon"></i>
-                    <input type="text" name="tagsId" value="根据最大的标签id加一所得" class="tags-text-opacity" readonly>
+                    <input type="text" name="sortId" value="根据最大的分类id加一所得" class="tags-text-opacity" readonly>
                 </div>
             </div>
 
-            <!--标签名称，可修改-->
+            <!--分类名称，可修改-->
             <div class="field">
                 <div class="ui left icon input">
                     <i class="file icon"></i>
-                    <input type="text" name="tagsName" placeholder="标签名称">
+                    <input type="text" name="sortName" placeholder="分类名称">
                 </div>
             </div>
 
-            <!--标签引用次数、添加时间、最后修改时间，均为表单提交时间，隐藏域-->
-            <input type="hidden" name="tagsRefCount" value="引用次数">
-            <input type="hidden" name="tagsAddTime" value="表单提交时间">
-            <input type="hidden" name="tagsLastUpdateTime" value="表单提交时间">
+            <!--分类引用次数、添加时间、最后修改时间，均为表单提交时间，隐藏域-->
+            <input type="hidden" name="sortRefCount" value="引用次数">
+            <input type="hidden" name="sortAddTime" value="表单提交时间">
+            <input type="hidden" name="sortLastUpdateTime" value="表单提交时间">
 
             <!--提交按钮-->
             <div class="field">

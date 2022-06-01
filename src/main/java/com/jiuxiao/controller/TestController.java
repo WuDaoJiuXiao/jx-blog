@@ -16,7 +16,7 @@ public class TestController {
     //博客首页
     @RequestMapping("/")
     public String test01(){
-        return "mainPage/index";
+        return "index";
     }
 
     //博文内容页面
@@ -31,10 +31,16 @@ public class TestController {
         return "mainPage/tagsPage";
     }
 
+    //分类页面
+    @RequestMapping("/sort")
+    public String test16(){
+        return "mainPage/sortPage";
+    }
+
     //归档页面
-    @RequestMapping("/file")
+    @RequestMapping("/archive")
     public String test04(){
-        return "mainPage/filePage";
+        return "mainPage/archivePage";
     }
 
     //关于我页面
@@ -103,5 +109,23 @@ public class TestController {
     @RequestMapping("/admin/addTags")
     public String test15(){
         return "backend/addTags";
+    }
+
+    //后台分类管理
+    @RequestMapping("/admin/sort")
+    public String test17(){
+        return "backend/sortControl";
+    }
+
+    //增加分类页面
+    @RequestMapping("/admin/addSort")
+    public String test18(){
+        return "backend/addSort";
+    }
+
+    //修改分类页面
+    @RequestMapping("/admin/updateSort")
+    public String test19(){
+        return "backend/updateSort";
     }
 }

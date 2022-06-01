@@ -5,35 +5,27 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>博客正文</title>
-    <script type="text/javascript" th:src="@{/lib/prism/prism.js}"></script>
+    <title>分类</title>
     <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
-    <link rel="stylesheet" th:href="@{/css/typo.css}">
     <link rel="stylesheet" th:href="@{/css/animate.css}">
-    <link rel="stylesheet" th:href="@{/lib/prism/prism.css}">
     <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
+
 <!--头部导航栏-->
-<div th:insert="~{/commons/header::blogHeader('content')}"></div>
+<div th:insert="~{/commons/header::blogHeader('sort')}"></div>
 
 <!--中间内容-->
 <div class="m-container m-padding-large animate__animated animate__fadeIn">
-    <div class="ui container">
-
-        <!--博文标题信息-->
-        <div th:insert="~{/sm-model/blog-model/blogTitle::blogTitle}"></div>
-
-        <!--博文配图、博文正文-->
-        <div th:insert="~{/sm-model/blog-model/blogMain::blogMain}"></div>
-
-        <!--博文下方信息栏-->
-        <div th:insert="~{/sm-model/blog-model/blogBottomInfo::blogBottomInfo}"></div>
-
-        <!--博文评论区-->
-        <div th:insert="~{/sm-model/blog-model/blogComment::blogComment}"></div>
-
-
+    <div class="container">
+        <!--标题信息-->
+        <div th:insert="~{/sm-model/sort-model/sortTitle::sortTitle}"></div>
+        <!--分类列表-->
+        <div th:insert="~{/sm-model/sort-model/sortInfo::sortInfo}"></div>
+        <!--博客列表-->
+        <div th:insert="~{/sm-model/sort-model/sortBlogList::sortBlogList}"></div>
+        <!--翻页按钮-->
+        <div th:insert="~{/sm-model/sort-model/sortTurn::sortTurn}"></div>
     </div>
 </div>
 
@@ -42,4 +34,6 @@
 
 <!--footer信息栏-->
 <div th:insert="~{/commons/footer::blogFooter}"></div>
+
 </body>
+</html>
