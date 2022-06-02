@@ -3,28 +3,33 @@ package com.jiuxiao.pojo;
 import java.sql.Timestamp;
 
 /**
- * 标签实体类
+ * 友链实体类
  *
  * @Author: 悟道九霄
- * @Date: 2022年05月31日 18:26
+ * @Date: 2022年05月31日 18:25
  * @Version: 1.0.0
  */
-public class Tags {
+public class Link {
 
     /**
-     * 标签 ID
+     * 友链 ID
      */
     private Integer id;
 
     /**
-     * 标签名称
+     * 友链名称
      */
     private String name;
 
     /**
-     * 被引用次数
+     * 友链地址
      */
-    private Integer refCount;
+    private String address;
+
+    /**
+     * 友链头像地址
+     */
+    private String imageAddress;
 
     /**
      * 创建时间
@@ -36,13 +41,15 @@ public class Tags {
      */
     private Timestamp lastUpdateTime;
 
-    public Tags() {
+    public Link() {
     }
 
-    public Tags(Integer id, String name, Integer refCount, Timestamp createdTime, Timestamp lastUpdateTime) {
+    public Link(Integer id, String name, String address, String imageAddress,
+                Timestamp createdTime, Timestamp lastUpdateTime) {
         this.id = id;
         this.name = name;
-        this.refCount = refCount;
+        this.address = address;
+        this.imageAddress = imageAddress;
         this.createdTime = createdTime;
         this.lastUpdateTime = lastUpdateTime;
     }
@@ -63,12 +70,20 @@ public class Tags {
         this.name = name;
     }
 
-    public Integer getRefCount() {
-        return refCount;
+    public String getAddress() {
+        return address;
     }
 
-    public void setRefCount(Integer refCount) {
-        this.refCount = refCount;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getImageAddress() {
+        return imageAddress;
+    }
+
+    public void setImageAddress(String imageAddress) {
+        this.imageAddress = imageAddress;
     }
 
     public Timestamp getCreatedTime() {
@@ -89,10 +104,11 @@ public class Tags {
 
     @Override
     public String toString() {
-        return "Tags{" +
+        return "Link{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", refCount=" + refCount +
+                ", address='" + address + '\'' +
+                ", imageAddress='" + imageAddress + '\'' +
                 ", createdTime=" + createdTime +
                 ", lastUpdateTime=" + lastUpdateTime +
                 '}';

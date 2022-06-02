@@ -15,9 +15,14 @@ public class Archive {
     private Integer id;
 
     /**
-     * 归档年份
+     * 创建时间
      */
-    private String year;
+    private String createdTime;
+
+    /**
+     * 上次修改时间
+     */
+    private String lastUpdateTime;
 
     /**
      * 归档文章的 ID
@@ -27,9 +32,10 @@ public class Archive {
     public Archive() {
     }
 
-    public Archive(Integer id, String year, Integer articleId) {
+    public Archive(Integer id, String createdTime, String lastUpdateTime, Integer articleId) {
         this.id = id;
-        this.year = year;
+        this.createdTime = createdTime;
+        this.lastUpdateTime = lastUpdateTime;
         this.articleId = articleId;
     }
 
@@ -41,12 +47,20 @@ public class Archive {
         this.id = id;
     }
 
-    public String getYear() {
-        return year;
+    public String getCreatedTime() {
+        return createdTime;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public void setCreatedTime(String createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public String getLastUpdateTime() {
+        return lastUpdateTime;
+    }
+
+    public void setLastUpdateTime(String lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
     }
 
     public Integer getArticleId() {
@@ -61,7 +75,8 @@ public class Archive {
     public String toString() {
         return "Archive{" +
                 "id=" + id +
-                ", year='" + year + '\'' +
+                ", createdTime='" + createdTime + '\'' +
+                ", lastUpdateTime='" + lastUpdateTime + '\'' +
                 ", articleId=" + articleId +
                 '}';
     }

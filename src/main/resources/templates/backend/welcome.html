@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎管理员</title>
+    <script th:src="@{/js/jquery-3.5.1.js}"></script>
+    <script th:src="@{/semanticUi/semantic.js}"></script>
+    <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<!--导航栏-->
+<div th:insert="~{/backend/headers::adminHeader('admin/welcome')}"></div>
+<br>
+<!--欢迎内容-->
+<div class="m-container animate__animated animate__fadeIn">
+    <div class="ui container">
+        <div class="ui success message large">
+            <h3 class="ui center aligned header">欢迎管理员,悟道九霄！</h3><br>
+            <img th:src="@{/img/me-bg.jpg}" alt="欢迎图" style="max-width: 100%;height: auto">
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.jiuxiao.interceptor;
+package com.jiuxiao.handler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
  * @Version: 1.0.0
  */
 @ControllerAdvice
-public class GlobalExceptionInterceptor {
+public class GlobalExceptionHandler {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 

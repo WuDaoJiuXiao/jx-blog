@@ -82,9 +82,9 @@ public class Article {
     private boolean openCopyright;
 
     /**
-     * 是否打开文章类型
+     * 文章类型
      */
-    private boolean openType;
+    private String type;
 
     /**
      * 文章作者的 ID
@@ -112,7 +112,7 @@ public class Article {
     public Article(Integer id, String title, String headImageAddress, String content, Timestamp createdTime,
                    Timestamp lastUpdateTime, Integer commentCount, Integer readCount, String authorName,
                    String copyright, String tags, String sort, boolean openComment, boolean openCopyright,
-                   boolean openType, Integer authorId, Integer sortId, Integer tagsId, Integer archiveId) {
+                   String type, Integer authorId, Integer sortId, Integer tagsId, Integer archiveId) {
         this.id = id;
         this.title = title;
         this.headImageAddress = headImageAddress;
@@ -127,7 +127,7 @@ public class Article {
         this.sort = sort;
         this.openComment = openComment;
         this.openCopyright = openCopyright;
-        this.openType = openType;
+        this.type = type;
         this.authorId = authorId;
         this.sortId = sortId;
         this.tagsId = tagsId;
@@ -246,12 +246,12 @@ public class Article {
         this.openCopyright = openCopyright;
     }
 
-    public boolean isOpenType() {
-        return openType;
+    public String getType() {
+        return type;
     }
 
-    public void setOpenType(boolean openType) {
-        this.openType = openType;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Integer getAuthorId() {
@@ -303,7 +303,7 @@ public class Article {
                 ", sort='" + sort + '\'' +
                 ", openComment=" + openComment +
                 ", openCopyright=" + openCopyright +
-                ", openType=" + openType +
+                ", type='" + type + '\'' +
                 ", authorId=" + authorId +
                 ", sortId=" + sortId +
                 ", tagsId=" + tagsId +

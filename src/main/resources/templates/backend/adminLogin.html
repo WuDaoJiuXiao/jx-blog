@@ -11,45 +11,38 @@
 </head>
 <body>
 
+<br>
+<br>
+<br>
 
-<div class="ui segment secondary container-shadow container-radius segment-size-login animate__animated animate__fadeIn">
-    <form action="#" method="post" class="ui form">
-
-        <h3 class="ui teal header center aligned">管理员登录</h3>
-
-        <!--用户名-->
-        <div class="field">
-            <div class="ui left icon input">
-                <i class="user circle icon"></i>
-                <input type="text" name="username" placeholder="用户名" required>
+<div class="m-container segment-size-login animate__animated animate__fadeIn">
+    <div class="ui container">
+        <div class="ui middle aligned center aligned grid">
+            <div class="column">
+                <h2 class="ui teal header">管理员登录</h2>
+                <form th:action="@{/admin/login}" method="post" class="ui large form">
+                    <div class="ui segment">
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" name="username" placeholder="用户名" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="keyboard icon"></i>
+                                <input type="password" name="password" placeholder="密码" required>
+                            </div>
+                        </div>
+                        <button class="ui fluid large blue submit button">登 录</button>
+                    </div>
+                    <!--登录出错信息提示-->
+                    <div class="ui message" style="color: red" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></div>
+                </form>
             </div>
         </div>
-
-        <!--密码-->
-        <div class="field">
-            <div class="ui left icon input">
-                <i class="keyboard icon"></i>
-                <input type="text" name="password" placeholder="密码" required>
-            </div>
-        </div>
-
-        <!--提交按钮-->
-        <div class="two fields">
-            <div class="field">
-                <div style="text-align: center !important;">
-                    <button class="ui grey button btn-width">重置</button>
-                </div>
-            </div>
-            <div class="field">
-                <div style="text-align: center !important;">
-                    <button class="ui blue button btn-width">登录</button>
-                </div>
-            </div>
-        </div>
-
-    </form>
+    </div>
 </div>
-
 
 </body>
 </html>
