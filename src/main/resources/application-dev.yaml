@@ -1,9 +1,10 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306?blog&useCharacterEncoding=true&useSSL=true&useUnicode=true&serverTimezone=GMT%2B8
+    url: "jdbc:mysql://localhost:3306?blog&useCharacterEncoding=true&useSSL=true&useUnicode=true
+          &serverTimezone=GMT%2B8&allowMultiQueries=true"
     username: root
-    password: '0531'
+    password: "0531"
     type: com.alibaba.druid.pool.DruidDataSource
 
 server:
@@ -11,7 +12,7 @@ server:
 
 logging:
   level:
-    root: warn
-    com.jiuxiao: warn
+    root: info
+    com.jiuxiao: debug
   file:
     path: log/

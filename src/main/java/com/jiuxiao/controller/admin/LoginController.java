@@ -1,6 +1,6 @@
 package com.jiuxiao.controller.admin;
 
-import com.jiuxiao.constants.UserConstants;
+import com.jiuxiao.constants.BlogConstants;
 import com.jiuxiao.pojo.User;
 import com.jiuxiao.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +53,7 @@ public class LoginController {
             session.setAttribute("user", user);
             return "backend/welcome";
         } else {
-            attributes.addFlashAttribute("message", UserConstants.NAME_AND_PWD_ERROR);
+            attributes.addFlashAttribute("message", BlogConstants.NAME_AND_PWD_ERROR);
             return "redirect:/admin";
         }
     }

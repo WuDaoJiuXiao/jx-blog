@@ -6,6 +6,8 @@ import com.jiuxiao.tools.MD5Tools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * 用户Service层接口实现类
  *
@@ -29,5 +31,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByUsernameAndPassword(String username, String password) {
         return userMapper.getUserByUsernameAndPassword(username, MD5Tools.getMD5(password));
+    }
+
+    /**
+     * 获取所有用户的列表
+     *
+     * @return
+     */
+    @Override
+    public List<User> getAllUserList() {
+        return userMapper.getAllUserList();
     }
 }

@@ -1,22 +1,19 @@
-package com.jiuxiao.mapper;
+package com.jiuxiao.service.sort;
 
 import com.jiuxiao.pojo.Sort;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
- * 分类Mapper层接口
+ * 分类业务层接口
  *
  * @author: WuDaoJiuXiao
- * @Date: 2022/06/01 09:09
+ * @Date: 2022/06/02 14:09
  * @since: 1.0.0
  */
-@Repository
-@Mapper
-public interface SortMapper {
+@Service
+public interface SortService {
 
     /**
      * 查询所有分类列表
@@ -31,7 +28,7 @@ public interface SortMapper {
      * @param name
      * @return
      */
-    Sort querySortByName(@Param("name") String name);
+    Sort querySortByName(String name);
 
     /**
      * 通过 id 查询分类
@@ -39,10 +36,12 @@ public interface SortMapper {
      * @param id
      * @return
      */
-    Sort querySortById(@Param("id") Integer id);
+    Sort querySortById(Integer id);
 
     /**
      * 增加分类
+     *
+     * @return
      */
     int insertSort(Sort sort);
 
@@ -50,6 +49,7 @@ public interface SortMapper {
      * 通过 id 更新分类
      *
      * @param sort
+     * @return
      */
     int updateSortById(Sort sort);
 
@@ -57,8 +57,9 @@ public interface SortMapper {
      * 通过 id 删除分类
      *
      * @param id
+     * @return
      */
-    int deleteSortById(@Param("id") Integer id);
+    int deleteSortById(Integer id);
 
     /**
      * 查询分类表中的总数量

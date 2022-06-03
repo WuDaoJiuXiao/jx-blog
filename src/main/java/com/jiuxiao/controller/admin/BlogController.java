@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * 后台导航栏跳转控制器
+ * 博客页面控制器
  *
  * @Author: 悟道九霄
  * @Date: 2022年06月01日 14:40
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/admin")
-public class BackPageController {
+public class BlogController {
 
     /**
      * 跳转博客管理页面
@@ -34,15 +34,7 @@ public class BackPageController {
         return "backend/publish";
     }
 
-    /**
-     * 跳转分类管理页面
-     *
-     * @return
-     */
-    @RequestMapping("/sort")
-    public String sort() {
-        return "backend/sortControl";
-    }
+
 
     /**
      * 跳转标签管理页面

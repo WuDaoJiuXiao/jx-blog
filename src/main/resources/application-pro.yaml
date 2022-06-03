@@ -1,7 +1,8 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306?blog&useCharacterEncoding=true&useSSL=true&useUnicode=true&serverTimezone=GMT%2B8
+    # 使用 allowMultiQueries=true 配置， mysql可以一次性执行多条语句
+    url: jdbc:mysql://localhost:3306?blog&useCharacterEncoding=true&useSSL=true&useUnicode=true&serverTimezone=GMT%2B8&allowMultiQueries=true
     username: root
     password: '0531'
     type: com.alibaba.druid.pool.DruidDataSource

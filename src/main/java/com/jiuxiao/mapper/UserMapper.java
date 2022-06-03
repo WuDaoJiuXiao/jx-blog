@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * 用户Mapper层接口
  *
@@ -22,4 +24,11 @@ public interface UserMapper {
      * @return
      */
     User getUserByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
+
+    /**
+     * 获取所有用户的列表
+     *
+     * @return
+     */
+    List<User> getAllUserList();
 }

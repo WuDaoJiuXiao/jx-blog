@@ -3,6 +3,8 @@ package com.jiuxiao.service.user;
 import com.jiuxiao.pojo.User;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * 用户Service层接口
  *
@@ -21,4 +23,11 @@ public interface UserService {
      * @return
      */
     User getUserByUsernameAndPassword(String username, String password);
+
+    /**
+     * 获取所有用户的列表
+     *
+     * @return
+     */
+    List<User> getAllUserList();
 }

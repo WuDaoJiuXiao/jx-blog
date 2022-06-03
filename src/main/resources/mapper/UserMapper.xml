@@ -12,4 +12,9 @@
           and password = #{password}
     </select>
 
+    <!--获取所有用户的列表-->
+    <select id="getAllUserList" resultType="User">
+        select *
+        from blog.t_user;
+    </select>
 </mapper>
