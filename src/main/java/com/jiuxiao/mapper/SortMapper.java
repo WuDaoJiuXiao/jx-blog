@@ -31,7 +31,7 @@ public interface SortMapper {
      * @param name
      * @return
      */
-    Sort querySortByName(@Param("name") String name);
+    List<Sort> querySortByName(@Param("name") String name);
 
     /**
      * 通过 id 查询分类
@@ -65,12 +65,12 @@ public interface SortMapper {
      *
      * @return
      */
-    int queryMaxCount();
+    int querySortCount();
 
     /**
      * 重新设置数据库表主键自增
      *
      * @return
      */
-    int increaseFromThis();
+    int increaseSortFromThis();
 }

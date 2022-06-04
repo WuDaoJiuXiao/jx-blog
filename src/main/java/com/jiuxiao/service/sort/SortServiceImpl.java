@@ -38,7 +38,7 @@ public class SortServiceImpl implements SortService {
      * @return
      */
     @Override
-    public Sort querySortByName(String name) {
+    public List<Sort> querySortByName(String name) {
         return sortMapper.querySortByName(name);
     }
 
@@ -94,8 +94,8 @@ public class SortServiceImpl implements SortService {
      * @return
      */
     @Override
-    public int queryMaxCount() {
-        return sortMapper.queryMaxCount();
+    public int querySortCount() {
+        return sortMapper.querySortCount();
     }
 
     /**
@@ -104,7 +104,8 @@ public class SortServiceImpl implements SortService {
      * @return
      */
     @Override
-    public int increaseFromThis() {
-        return sortMapper.increaseFromThis();
+    @Transactional(rollbackFor = Exception.class)
+    public int increaseSortFromThis() {
+        return sortMapper.increaseSortFromThis();
     }
 }

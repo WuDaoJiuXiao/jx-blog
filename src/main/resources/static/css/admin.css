@@ -110,3 +110,23 @@ body {
     opacity: 0.4 !important
 }
 
+/*-------------------
+     sort-add
+------------------*/
+.add-sort-size {
+    width: 400px !important;
+}
+
+/*-------------------
+     sort-update
+------------------*/
+.update-sort-size {
+    width: 400px !important;
+}
+
+/*-------------------
+     log-control
+------------------*/
+.log-select-width {
+    width: 200px !important;
+}

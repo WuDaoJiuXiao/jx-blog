@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>文章查询结果</title>
+    <script th:src="@{/js/jquery-3.5.1.js}"></script>
+    <script th:src="@{/semanticUi/semantic.js}"></script>
+    <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<!--导航栏-->
+<div th:insert="~{/backend/headers::adminHeader('admin/blog')}"></div>
+
+<!--中间内容-->
+<div class="ui container animate__animated animate__fadeIn" style="width: 1500px">
+    <div class="ui segment container-tb-margin container-radius container-shadow">
+        <!--根据标题或者标签，搜索文章-->
+        <h3 class="ui blue header info-title-margin">搜索文章</h3>
+        <div class="ui segment secondary container-radius container-shadow">
+            <form class="ui form" action="#" method="post">
+                <div class="four fields">
+                    <!--标题输入框-->
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="align left icon"></i>
+                            <input type="text" name="blogTitle" placeholder="博客标题">
+                        </div>
+                    </div>
+                    <!--标签选择框-->
+                    <div class="field">
+                        <div class="ui fluid selection dropdown">
+                            <input type="hidden" name="tags">
+                            <i class="tag icon grey"></i>
+                            <i class="dropdown icon"></i>
+                            <div class="default text">博客标签</div>
+                            <div class="menu">
+                                <div class="item" data-value="1">开发日志</div>
+                                <div class="item" data-value="2">名人轶事</div>
+                                <div class="item" data-value="3">梦与星光</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--分类选择框-->
+                    <div class="field">
+                        <div class="ui fluid selection dropdown">
+                            <input type="hidden" name="sort">
+                            <i class="sort icon grey"></i>
+                            <i class="dropdown icon"></i>
+                            <div class="default text">博客分类</div>
+                            <div class="menu">
+                                <div class="item" data-value="1">旅游</div>
+                                <div class="item" data-value="2">摄影</div>
+                                <div class="item" data-value="3">日常见闻</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--搜索和重置按钮-->
+                    <div class="field">
+                        <button class="ui blue button"><i class="search icon"></i>搜索</button>
+                        <button class="ui grey button"><i class="retweet icon"></i>重置</button>
+                        <button class="ui button"><i class="columns icon"></i>全部结果</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!--博客列表展示-->
+        <h3 class="ui blue header info-title-margin">博客列表</h3>
+        <div class="ui segment secondary container-radius container-shadow">
+            <table class="ui striped table center aligned">
+                <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>文章名称</th>
+                    <th>作者</th>
+                    <th>文章标签</th>
+                    <th>文章分类</th>
+                    <th>文章类型</th>
+                    <th>发布时间</th>
+                    <th>上次修改时间</th>
+                    <th>评论数</th>
+                    <th>浏览量</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+
+
+                <tbody>
+                <tr>
+                    <td>
+                        <a href="#" class="ui mini green button">修改</a>
+                        <a href="#" class="ui mini red button">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+
+
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    //标签选择下拉框激活
+    $('.ui.dropdown').dropdown();
+</script>
+
+
+</body>
+</html>

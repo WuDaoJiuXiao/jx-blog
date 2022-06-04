@@ -2,6 +2,7 @@ package com.jiuxiao.tools;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 /**
@@ -19,7 +20,7 @@ public class TimeTools {
      * @return
      */
     public static Timestamp getCurrentTime() {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date(System.currentTimeMillis());
         return Timestamp.valueOf(formatter.format(date));
     }

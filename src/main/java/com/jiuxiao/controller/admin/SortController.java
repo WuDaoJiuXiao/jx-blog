@@ -1,9 +1,11 @@
 package com.jiuxiao.controller.admin;
 
+import com.jiuxiao.constants.BackendConstants;
 import com.jiuxiao.pojo.Sort;
 import com.jiuxiao.service.sort.SortService;
 import com.jiuxiao.tools.PageInfoTools;
 import com.jiuxiao.tools.TimeTools;
+import com.jiuxiao.tools.TurnPageTools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +16,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 /**
- * 分类页面控制器
+ * 分类页控制器
  *
  * @Author: 悟道九霄
  * @Date: 2022年06月02日 15:34
@@ -28,39 +30,32 @@ public class SortController {
     private SortService sortService;
 
     /**
-     * 分类管理页面
+     * 分类管理
      *
+     * @param currentPage
+     * @param model
      * @return
      */
     @RequestMapping("/sort")
     public String sort(@RequestParam(defaultValue = "1") Integer currentPage, Model model) {
         List<Sort> sortList = sortService.queryAllSortList();
-        PageInfoTools<Sort> pageInfo = new PageInfoTools<Sort>(sortList.size(), currentPage);
-        Integer pageSize = pageInfo.getPageSize();
 
-        //已经是最后一页，点击下一页依然是最后一页
-        if (currentPage >= pageInfo.getTotalPage()) {
-            pageInfo.setCurrentPage(pageInfo.getTotalPage());
-            pageInfo.setDataList(sortList.subList((pageInfo.getCurrentPage() - 1) * pageSize, sortList.size()));
-        } else if (currentPage == 0) {//已经是第一页，点击上一页依然是最后一页
-            pageInfo.setCurrentPage(1);
-            pageInfo.setDataList(sortList.subList(0, pageSize));
-        } else {//正常情况
-            pageInfo.setDataList(sortList.subList((currentPage - 1) * pageSize, currentPage * pageSize));
-        }
+        Integer pageSize = BackendConstants.SORT_PAGE_SIZE;
+        TurnPageTools<Sort> sortTurnPageTools = new TurnPageTools<>();
+        PageInfoTools<Sort> pageInfo = sortTurnPageTools.getPageInfo(sortList, currentPage, pageSize);
 
         model.addAttribute("pageInfo", pageInfo);
-        return "backend/sortControl";
+        return "backend/control/sortControl";
     }
 
     /**
-     * 跳转到增加分类页
+     * 跳转到增加分类
      *
      * @return
      */
     @GetMapping("/addSort")
     public String toAddPage() {
-        return "backend/addSort";
+        return "backend/add/addSort";
     }
 
     /**
@@ -69,32 +64,40 @@ public class SortController {
      * @return
      */
     @PostMapping("/addSort")
-    public String addSort(Sort sort) {
-        sort.setId(sortService.queryMaxCount() + 1);
-        sort.setRefCount(0);
-        Timestamp currentTime = TimeTools.getCurrentTime();
-        sort.setCreatedTime(currentTime);
-        sort.setLastUpdateTime(currentTime);
+    public String addSort(@RequestParam("name") String name, Sort sort, Model model) {
+        //如果要添加的分类已经在数据库中，则不能添加
+        List<Sort> querySorts = sortService.querySortByName(name);
+        if (querySorts.isEmpty()) {
+            sort.setId(sortService.querySortCount() + 1);
+            sort.setRefCount(0);
+            Timestamp currentTime = TimeTools.getCurrentTime();
+            sort.setCreatedTime(currentTime);
+            sort.setLastUpdateTime(currentTime);
 
-        sortService.insertSort(sort);
-        return "redirect:/admin/sort";  //要多加一个 "/"
+            model.addAttribute("msg", null);
+            sortService.insertSort(sort);
+        }
+        return "redirect:/admin/sort";
     }
 
     /**
-     * 跳转到修改分类页
+     * 跳转到修改分类
      *
+     * @param id
+     * @param model
      * @return
      */
     @GetMapping("/updateSort/{id}")
     public String toUpdate(@PathVariable("id") Integer id, Model model) {
         Sort sort = sortService.querySortById(id);
         model.addAttribute("sort", sort);
-        return "backend/updateSort";
+        return "backend/update/updateSort";
     }
 
     /**
      * 修改分类页
      *
+     * @param sort
      * @return
      */
     @PostMapping("/updateSort")
@@ -104,28 +107,35 @@ public class SortController {
         return "redirect:/admin/sort";
     }
 
+    /**
+     * 删除分类
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping("/deleteSort/{id}")
     public String deleteSort(@PathVariable("id") Integer id) {
         //删除该条记录后，设置后续的主键 id 从这里开始递增
         sortService.deleteSortById(id);
-        sortService.increaseFromThis();
+        sortService.increaseSortFromThis();
         return "redirect:/admin/sort";
     }
 
     /**
-     * 查询结果页
+     * 查询结果
      *
      * @param name
+     * @param model
      * @return
      */
     @PostMapping("/querySort")
     public String querySort(@RequestParam("name") String name, Model model) {
         //没有输入名字，就显示全部结果
-        if (name.equals("") || StringUtils.isEmpty(name)){
+        if (name.equals("") || StringUtils.isEmpty(name)) {
             return "redirect:/admin/sort";
         }
-        Sort querySort = sortService.querySortByName(name);
+        List<Sort> querySort = sortService.querySortByName(name);
         model.addAttribute("querySort", querySort);
-        return "backend/showSortSearch";
+        return "backend/show/showSortSearch";
     }
 }

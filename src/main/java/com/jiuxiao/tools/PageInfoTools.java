@@ -1,7 +1,5 @@
 package com.jiuxiao.tools;
 
-import com.jiuxiao.constants.BlogConstants;
-
 import java.util.List;
 
 /**
@@ -36,20 +34,17 @@ public class PageInfoTools<T> {
     /**
      * 单页面数据数量
      */
-    private Integer pageSize = BlogConstants.PAGE_SIZE;
+    private Integer pageSize;
 
     public PageInfoTools() {
     }
 
-    public PageInfoTools(Integer totalNum, Integer currentPage) {
+    public PageInfoTools(List<T> dataList, Integer totalNum, Integer totalPage, Integer currentPage, Integer pageSize) {
+        this.dataList = dataList;
         this.totalNum = totalNum;
+        this.totalPage = totalPage;
         this.currentPage = currentPage;
-
-        if (totalNum % pageSize == 0) {
-            this.totalPage = totalNum / pageSize;
-        } else {
-            this.totalPage = totalNum / pageSize + 1;
-        }
+        this.pageSize = pageSize;
     }
 
     public List<T> getDataList() {

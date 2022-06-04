@@ -28,7 +28,7 @@ public interface SortService {
      * @param name
      * @return
      */
-    Sort querySortByName(String name);
+    List<Sort> querySortByName(String name);
 
     /**
      * 通过 id 查询分类
@@ -66,12 +66,12 @@ public interface SortService {
      *
      * @return
      */
-    int queryMaxCount();
+    int querySortCount();
 
     /**
      * 重新设置数据库表主键自增
      *
      * @return
      */
-    int increaseFromThis();
+    int increaseSortFromThis();
 }

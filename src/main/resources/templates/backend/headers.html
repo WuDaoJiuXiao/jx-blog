@@ -32,6 +32,10 @@
                 <i class="linkify icon"></i>
                 友链管理
             </a>
+            <a th:href="@{/admin/log}" class="item" th:classappend="${#strings.equals(pageName, 'admin/link')} ? 'active'">
+                <i class="file icon"></i>
+                日志管理
+            </a>
 
             <!--头像及注销-->
             <div class="right menu">

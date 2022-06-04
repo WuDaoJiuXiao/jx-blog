@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>增加分类</title>
+    <script th:src="@{/js/jquery-3.5.1.js}"></script>
+    <script th:src="@{/semanticUi/semantic.js}"></script>
+    <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<!--导航栏-->
+<div th:insert="~{/backend/headers::adminHeader('admin/addSort')}"></div>
+
+<!--中间内容-->
+<div class="ui container center aligned animate__animated animate__fadeIn">
+    <div class="ui segment secondary container-shadow container-radius segment-size-add-page">
+        <form th:action="@{/admin/addSort}" method="post" class="ui form">
+            <h3 class="ui teal header center aligned">增加分类</h3>
+
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="file icon"></i>
+                    <input type="text" name="name" placeholder="分类名称">
+                </div>
+            </div>
+
+            <!--提交按钮-->
+            <div class="field">
+                <div style="text-align: center">
+                    <button class="ui blue submit button btn-width">提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

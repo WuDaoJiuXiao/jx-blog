@@ -2,18 +2,18 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jiuxiao.mapper.SortMapper">
+<mapper namespace="com.jiuxiao.mapper.TagsMapper">
 
-    <!--查询所有分类列表-->
-    <select id="queryAllSortList" resultType="Sort">
+    <!--查询所有标签列表-->
+    <select id="queryAllTagsList" resultType="Tags">
         select *
-        from blog.t_sort
+        from blog.t_tags
     </select>
 
-    <!--通过名称查询分类-->
-    <select id="querySortByName" resultType="Sort" parameterType="string">
+    <!--通过名称查询标签-->
+    <select id="queryTagsByName" resultType="Tags" parameterType="string">
         select *
-        from blog.t_sort
+        from blog.t_tags
         <where>
             <if test="name != null">
                 name like concat('%', #{name}, '%')
@@ -21,10 +21,10 @@
         </where>
     </select>
 
-    <!--通过 id 查询分类-->
-    <select id="querySortById" resultType="Sort" parameterType="int">
+    <!--通过 id 查询标签-->
+    <select id="queryTagsById" resultType="Tags" parameterType="int">
         select *
-        from blog.t_sort
+        from blog.t_tags
         <where>
             <if test="id != null and id > 0">
                 id = #{id}
@@ -32,9 +32,9 @@
         </where>
     </select>
 
-    <!--增加分类-->
-    <insert id="insertSort" parameterType="Sort">
-        insert into blog.t_sort(id, name, ref_count, created_time, last_update_time)
+    <!--增加标签-->
+    <insert id="insertTags" parameterType="Tags">
+        insert into blog.t_tags(id, name, ref_count, created_time, last_update_time)
         value (
         <if test="id != null and id > 0">
             #{id}, #{name}, #{refCount}, #{createdTime}, #{lastUpdateTime}
@@ -42,9 +42,9 @@
         );
     </insert>
 
-    <!--根据 id 更新分类-->
-    <update id="updateSortById" parameterType="Sort">
-        update blog.t_sort
+    <!--根据 id 更新标签-->
+    <update id="updateTagsById" parameterType="Tags">
+        update blog.t_tags
         <set>
             <if test="name != null and name != ''">
                 name = #{name},
@@ -66,10 +66,10 @@
         </where>
     </update>
 
-    <!--通过 id 删除分类-->
-    <delete id="deleteSortById" parameterType="int">
+    <!--通过 id 删除标签-->
+    <delete id="deleteTagsById" parameterType="int">
         delete
-        from blog.t_sort
+        from blog.t_tags
         <where>
             <if test="id != null and id > 0">
                 id = #{id};
@@ -77,17 +77,17 @@
         </where>
     </delete>
 
-    <!--查询分类表中的总数量-->
-    <select id="querySortCount" resultType="int">
+    <!--查询标签表中的总数量-->
+    <select id="queryTagsCount" resultType="int">
         select count(*)
-        from blog.t_sort
+        from blog.t_tags
     </select>
 
     <!--重新设置主键自增-->
-    <update id="increaseSortFromThis">
-        alter table blog.t_sort
+    <update id="increaseTagsFromThis">
+        alter table blog.t_tags
             drop id;
-        alter table blog.t_sort
+        alter table blog.t_tags
             add id int(32) not null primary key auto_increment first
     </update>
 </mapper>

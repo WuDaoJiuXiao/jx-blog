@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>标签查询结果</title>
+    <script th:src="@{/js/jquery-3.5.1.js}"></script>
+    <script th:src="@{/semanticUi/semantic.js}"></script>
+    <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<!--导航栏-->
+<div th:insert="~{/backend/headers::adminHeader('admin/tags')}"></div>
+<!--中间内容-->
+<div class="ui container animate__animated animate__fadeIn">
+    <div class="ui segment container-tb-margin container-radius container-shadow">
+        <h3 class="ui blue header">标签管理</h3>
+
+        <!--标签增加、搜索按钮-->
+        <div class="ui grid">
+            <!--搜索标签-->
+            <div class="twelve wide column">
+                <form th:action="@{/admin/queryTags}" method="post" class="ui form">
+                    <div class="ui inline fields">
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="sort icon"></i>
+                                <input type="text" name="name" placeholder="请输入要搜索的标签名称" class="input-width">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <button class="ui green submit button"><i class="search icon"></i>搜索标签</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="four wide column">
+                <div class="field">
+                    <a class="ui blue button" th:href="@{/admin/addTags}"><i class="edit icon"></i>增加标签</a>
+                    <a class="ui grey button" th:href="@{/admin/tags}"><i class="columns icon"></i>显示全部</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!--标签展示列表-->
+        <div class="ui segment secondary container-radius container-shadow">
+            <table class="ui striped table center aligned">
+                <thead>
+                <tr>
+                    <th>标签编号</th>
+                    <th>标签名称</th>
+                    <th>被引用次数</th>
+                    <th>创建时间</th>
+                    <th>上次修改时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="tags:${queryTags}">
+                    <td th:text="${tags.getId()}"></td>
+                    <td th:text="${tags.getName()}"></td>
+                    <td th:text="${tags.getRefCount()}"></td>
+                    <td th:text="${tags.getCreatedTime()}"></td>
+                    <td th:text="${tags.getLastUpdateTime()}"></td>
+                    <td>
+                        <a th:href="@{/admin/updateTags/{id}(id=${tags.getId()})}" class="ui mini green button">修改</a>
+                        <a th:href="@{/admin/deleteTags/{id}(id=${tags.getId()})}" class="ui mini red button">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

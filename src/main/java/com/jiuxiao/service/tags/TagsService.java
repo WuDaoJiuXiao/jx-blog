@@ -1,22 +1,19 @@
-package com.jiuxiao.mapper;
+package com.jiuxiao.service.tags;
 
 import com.jiuxiao.pojo.Tags;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
- * 标签Mapper层接口
+ * 标签业务层
  *
  * @author: WuDaoJiuXiao
- * @Date: 2022/06/01 09:09
+ * @Date: 2022/06/04 15:12
  * @since: 1.0.0
  */
-@Repository
-@Mapper
-public interface TagsMapper {
+@Service
+public interface TagsService {
 
     /**
      * 查询所有的标签列表
@@ -30,14 +27,14 @@ public interface TagsMapper {
      * @param id
      * @return
      */
-    Tags queryTagsById(@Param("id") Integer id);
+    Tags queryTagsById(Integer id);
 
     /**
      * 通过名称查询标签
      * @param name
      * @return
      */
-    List<Tags> queryTagsByName(@Param("name") String name);
+    List<Tags> queryTagsByName(String name);
 
     /**
      * 增加标签
@@ -58,7 +55,7 @@ public interface TagsMapper {
      * @param id
      * @return
      */
-    int deleteTagsById(@Param("id") Integer id);
+    int deleteTagsById(Integer id);
 
     /**
      * 查询标签表中的总数量

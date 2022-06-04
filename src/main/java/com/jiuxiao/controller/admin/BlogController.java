@@ -21,7 +21,7 @@ public class BlogController {
      */
     @RequestMapping("/blog")
     public String blog() {
-        return "backend/blogControl";
+        return "backend/control/blogControl";
     }
 
     /**
@@ -31,28 +31,6 @@ public class BlogController {
      */
     @RequestMapping("/publish")
     public String publish() {
-        return "backend/publish";
-    }
-
-
-
-    /**
-     * 跳转标签管理页面
-     *
-     * @return
-     */
-    @RequestMapping("/tags")
-    public String tags() {
-        return "backend/tagsControl";
-    }
-
-    /**
-     * 跳转友链管理页面
-     *
-     * @return
-     */
-    @RequestMapping("/link")
-    public String link() {
-        return "backend/linkControl";
+        return "backend/control/publish";
     }
 }

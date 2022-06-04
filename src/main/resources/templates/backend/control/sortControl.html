@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>分类管理</title>
+    <script th:src="@{/js/jquery-3.5.1.js}"></script>
+    <script th:src="@{/semanticUi/semantic.js}"></script>
+    <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<!--导航栏-->
+<div th:insert="~{/backend/headers::adminHeader('admin/sort')}"></div>
+
+<!--中间内容-->
+<div class="ui container animate__animated animate__fadeIn">
+    <div class="ui segment container-tb-margin container-radius container-shadow">
+        <h3 class="ui blue header">分类管理</h3>
+        <!--分类增加、搜索按钮-->
+        <div class="ui grid">
+            <!--搜索分类-->
+            <div class="twelve wide column">
+                <form th:action="@{/admin/querySort}" method="post" class="ui form">
+                    <div class="ui inline fields">
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="sort icon"></i>
+                                <input type="text" name="name" placeholder="请输入要搜索的分类名称" class="input-width">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <button class="ui green submit button"><i class="search icon"></i>搜索分类</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="four wide column">
+                <div class="field">
+                    <a class="ui blue button" th:href="@{/admin/addSort}"><i class="edit icon"></i>增加分类</a>
+                </div>
+            </div>
+        </div>
+
+        <!--分类展示列表-->
+        <div class="ui segment secondary container-radius container-shadow">
+            <table class="ui striped table center aligned">
+                <thead>
+                <tr>
+                    <th>分类编号</th>
+                    <th>分类名称</th>
+                    <th>被引用次数</th>
+                    <th>创建时间</th>
+                    <th>上次修改时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="sort:${pageInfo.getDataList()}">
+                    <td th:text="${sort.getId()}"></td>
+                    <td th:text="${sort.getName()}"></td>
+                    <td th:text="${sort.getRefCount()}"></td>
+                    <td th:text="${sort.getCreatedTime()}"></td>
+                    <td th:text="${sort.getLastUpdateTime()}"></td>
+                    <td>
+                        <a th:href="@{/admin/updateSort/{id}(id=${sort.getId()})}" class="ui mini green button">修改</a>
+                        <a th:href="@{/admin/deleteSort/{id}(id=${sort.getId()})}" class="ui mini red button">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+
+                <tfoot>
+                <tr>
+
+                    <th colspan="3" class="ui left aligned">
+                        <div class="ui pagination menu">
+                            <a th:href="@{/admin/sort(currentPage=${pageInfo.getCurrentPage() - 1})}"
+                               class="item"><i class="chevron left icon"></i>上一页</a>
+                        </div>
+                    </th>
+                    <th colspan="3" class="ui right aligned">
+                        <div class="ui pagination menu">
+                            <a th:href="@{/admin/sort(currentPage=${pageInfo.getCurrentPage() + 1})}"
+                               class="item">下一页<i class="chevron right icon"></i></a>
+                        </div>
+                    </th>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
