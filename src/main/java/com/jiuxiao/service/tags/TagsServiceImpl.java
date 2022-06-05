@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  * 标签业务层实现类
- *
  * @Author: 悟道九霄
  * @Date: 2022年06月04日 15:12
  * @Version: 1.0.0
@@ -22,9 +21,9 @@ public class TagsServiceImpl implements TagsService {
     private TagsMapper tagsMapper;
 
     /**
-     * 查询所有的标签列表
-     *
-     * @return
+     * @return: java.util.List<com.jiuxiao.pojo.Tags>
+     * @decription 查询所有的标签列表
+     * @date 2022/6/5 10:36
      */
     @Override
     public List<Tags> queryAllTagsList() {
@@ -32,10 +31,10 @@ public class TagsServiceImpl implements TagsService {
     }
 
     /**
-     * 通过 ID 查询标签
-     *
      * @param id
-     * @return
+     * @return: com.jiuxiao.pojo.Tags
+     * @decription 通过 ID 查询标签
+     * @date 2022/6/5 10:36
      */
     @Override
     public Tags queryTagsById(Integer id) {
@@ -43,10 +42,10 @@ public class TagsServiceImpl implements TagsService {
     }
 
     /**
-     * 通过名称查询标签
-     *
      * @param name
-     * @return
+     * @return: java.util.List<com.jiuxiao.pojo.Tags>
+     * @decription 通过名称查询标签
+     * @date 2022/6/5 10:36
      */
     @Override
     public List<Tags> queryTagsByName(String name) {
@@ -54,45 +53,45 @@ public class TagsServiceImpl implements TagsService {
     }
 
     /**
-     * 增加标签
-     *
      * @param tags
-     * @return
+     * @return: void
+     * @decription 增加标签
+     * @date 2022/6/5 10:36
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public int insertTags(Tags tags) {
-        return tagsMapper.insertTags(tags);
+    public void insertTags(Tags tags) {
+        tagsMapper.insertTags(tags);
     }
 
     /**
-     * 通过 ID 更新标签
-     *
      * @param tags
-     * @return
+     * @return: void
+     * @decription 通过 ID 更新标签
+     * @date 2022/6/5 10:36
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public int updateTagsById(Tags tags) {
-        return tagsMapper.updateTagsById(tags);
+    public void updateTagsById(Tags tags) {
+        tagsMapper.updateTagsById(tags);
     }
 
     /**
-     * 通过 ID 删除标签
-     *
      * @param id
-     * @return
+     * @return: void
+     * @decription 通过 ID 删除标签
+     * @date 2022/6/5 10:36
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public int deleteTagsById(Integer id) {
-        return tagsMapper.deleteTagsById(id);
+    public void deleteTagsById(Integer id) {
+        tagsMapper.deleteTagsById(id);
     }
 
     /**
-     * 查询标签表中的总数量
-     *
-     * @return
+     * @return: int
+     * @decription 查询标签表中的总数量
+     * @date 2022/6/5 10:36
      */
     @Override
     public int queryTagsCount() {
@@ -100,13 +99,13 @@ public class TagsServiceImpl implements TagsService {
     }
 
     /**
-     * 重新设置数据库表主键自增
-     *
-     * @return
+     * @return: void
+     * @decription 重新设置数据库表主键自增
+     * @date 2022/6/5 10:36
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public int increaseTagsFromThis() {
-        return tagsMapper.increaseTagsFromThis();
+    public void increaseTagsFromThis() {
+        tagsMapper.increaseTagsFromThis();
     }
 }

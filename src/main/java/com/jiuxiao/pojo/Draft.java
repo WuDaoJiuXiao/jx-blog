@@ -4,31 +4,22 @@ import java.sql.Timestamp;
 
 /**
  * 草稿实体类
- *
  * @Author: 悟道九霄
  * @Date: 2022年05月31日 18:25
  * @Version: 1.0.0
  */
 public class Draft {
 
-    /**
-     * 草稿 ID
-     */
+    /** 草稿 ID */
     private Integer id;
 
-    /**
-     * 是否删除
-     */
+    /** 是否删除 */
     private boolean deleted;
 
-    /**
-     * 上次修改时间
-     */
+    /** 上次修改时间 */
     private Timestamp lastUpdateTime;
 
-    /**
-     * 文章 ID
-     */
+    /** 文章 ID */
     private Integer articleId;
 
     public Draft() {

@@ -7,7 +7,6 @@ import java.util.List;
 
 /**
  * 标签业务层
- *
  * @author: WuDaoJiuXiao
  * @Date: 2022/06/04 15:12
  * @since: 1.0.0
@@ -16,58 +15,59 @@ import java.util.List;
 public interface TagsService {
 
     /**
-     * 查询所有的标签列表
-     *
-     * @return
+     * @return: java.util.List<com.jiuxiao.pojo.Tags>
+     * @decription 查询所有的标签列表
+     * @date 2022/6/5 10:34
      */
     List<Tags> queryAllTagsList();
 
     /**
-     * 通过 ID 查询标签
      * @param id
-     * @return
+     * @return: com.jiuxiao.pojo.Tags
+     * @decription 通过 ID 查询标签
+     * @date 2022/6/5 10:34
      */
     Tags queryTagsById(Integer id);
 
     /**
-     * 通过名称查询标签
      * @param name
-     * @return
+     * @return: java.util.List<com.jiuxiao.pojo.Tags>
+     * @decription 通过名称查询标签
+     * @date 2022/6/5 10:34
      */
     List<Tags> queryTagsByName(String name);
 
     /**
-     * 增加标签
      * @param tags
-     * @return
+     * @decription 增加标签
+     * @date 2022/6/5 10:34
      */
-    int insertTags(Tags tags);
+    void insertTags(Tags tags);
 
     /**
-     * 通过 ID 更新标签
      * @param tags
-     * @return
+     * @decription 通过 ID 更新标签
+     * @date 2022/6/5 10:34
      */
-    int updateTagsById(Tags tags);
+    void updateTagsById(Tags tags);
 
     /**
-     * 通过 ID 删除标签
      * @param id
-     * @return
+     * @decription 通过 ID 删除标签
+     * @date 2022/6/5 10:34
      */
-    int deleteTagsById(Integer id);
+    void deleteTagsById(Integer id);
 
     /**
-     * 查询标签表中的总数量
-     *
-     * @return
+     * @return: int
+     * @decription 查询标签表中的总数量
+     * @date 2022/6/5 10:34
      */
     int queryTagsCount();
 
     /**
-     * 重新设置数据库表主键自增
-     *
-     * @return
+     * @decription 重新设置数据库表主键自增
+     * @date 2022/6/5 10:34
      */
-    int increaseTagsFromThis();
+    void increaseTagsFromThis();
 }

@@ -4,36 +4,25 @@ import java.sql.Timestamp;
 
 /**
  * 评论实体类
- *
  * @Author: 悟道九霄
  * @Date: 2022年05月31日 18:24
  * @Version: 1.0.0
  */
 public class Comment {
 
-    /**
-     * 评论 ID
-     */
+    /** 评论 ID */
     private Integer id;
 
-    /**
-     * 评论内容
-     */
+    /** 评论内容 */
     private String content;
 
-    /**
-     * 评论发布时间
-     */
+    /** 评论发布时间 */
     private Timestamp createdTime;
 
-    /**
-     * 评论者 ID
-     */
+    /** 评论者 ID */
     private Integer authorId;
 
-    /**
-     * 文章 ID
-     */
+    /** 文章 ID */
     private String articleId;
 
     public Comment() {

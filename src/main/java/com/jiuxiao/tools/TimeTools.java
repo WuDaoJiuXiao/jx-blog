@@ -7,7 +7,6 @@ import java.text.SimpleDateFormat;
 
 /**
  * 时间工具类
- *
  * @Author: 悟道九霄
  * @Date: 2022年06月03日 10:52
  * @Version: 1.0.0
@@ -15,9 +14,9 @@ import java.text.SimpleDateFormat;
 public class TimeTools {
 
     /**
-     * 获得当前的系统时间
-     *
-     * @return
+     * @return: java.sql.Timestamp
+     * @decription 获得当前的系统时间
+     * @date 2022/6/5 10:38
      */
     public static Timestamp getCurrentTime() {
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

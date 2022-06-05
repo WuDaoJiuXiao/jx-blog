@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * 500 服务器内部错误
- *
  * @Author: 悟道九霄
  * @Date: 2022年05月30日 11:51
  * @Version: 1.0.0

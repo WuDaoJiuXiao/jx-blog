@@ -13,7 +13,6 @@ import java.util.Arrays;
 
 /**
  * 日志切面
- *
  * @Author: 悟道九霄
  * @Date: 2022年05月30日 10:21
  * @Version: 1.0.0
@@ -25,14 +24,16 @@ public class LoggingAspect {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Pointcut("execution(* com.jiuxiao.controller.*.*(..))")
+
     public void log() {
 
     }
 
     /**
-     * 获取请求地址、请求 ip、请求的方法、参数、返回类型等信息，输出到日志
-     *
      * @param joinPoint
+     * @return: void
+     * @decription 获取请求地址、请求 ip、请求的方法、参数、返回类型等信息，输出到日志
+     * @date 2022/6/5 9:51
      */
     @Before("log()")
     public void doBefore(JoinPoint joinPoint) {
@@ -55,9 +56,10 @@ public class LoggingAspect {
     }
 
     /**
-     * 获得返回的信息
-     *
      * @param result
+     * @return: void
+     * @decription 获得返回的信息
+     * @date 2022/6/5 9:51
      */
     @AfterReturning(returning = "result", pointcut = "log()")
     public void doAfterReturning(Object result) {
@@ -66,29 +68,18 @@ public class LoggingAspect {
 }
 
 
-/**
- * 日志获取信息内容类
- */
 class RequestLog {
 
-    /**
-     * 请求的URL
-     */
+    /** 请求的URL */
     private String RequestURL;
 
-    /**
-     * 请求者IP
-     */
+    /** 请求者IP */
     private String RequestIP;
 
-    /**
-     * 请求的类名、方法名
-     */
+    /** 请求的类名、方法名 */
     private String classMethod;
 
-    /**
-     * 返回的参数
-     */
+    /** 返回的参数 */
     private Object[] RequestArgs;
 
     public RequestLog() {

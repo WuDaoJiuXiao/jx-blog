@@ -4,36 +4,25 @@ import java.util.List;
 
 /**
  * 分页工具类
- *
  * @Author: 悟道九霄
  * @Date: 2022年06月02日 18:18
  * @Version: 1.0.0
  */
 public class PageInfoTools<T> {
 
-    /**
-     * 要进行分页的数据列表
-     */
+    /** 要进行分页的数据列表 */
     private List<T> dataList;
 
-    /**
-     * 数据总数
-     */
+    /** 数据总数 */
     private Integer totalNum;
 
-    /**
-     * 总页数
-     */
+    /** 总页数 */
     private Integer totalPage;
 
-    /**
-     * 当前页数
-     */
+    /** 当前页数 */
     private Integer currentPage;
 
-    /**
-     * 单页面数据数量
-     */
+    /** 单页面数据数量 */
     private Integer pageSize;
 
     public PageInfoTools() {

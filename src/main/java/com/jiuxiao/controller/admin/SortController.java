@@ -17,7 +17,6 @@ import java.util.List;
 
 /**
  * 分类页控制器
- *
  * @Author: 悟道九霄
  * @Date: 2022年06月02日 15:34
  * @Version: 1.0.0
@@ -30,11 +29,11 @@ public class SortController {
     private SortService sortService;
 
     /**
-     * 分类管理
-     *
      * @param currentPage
      * @param model
-     * @return
+     * @return: java.lang.String
+     * @decription 分类管理
+     * @date 2022/6/5 9:59
      */
     @RequestMapping("/sort")
     public String sort(@RequestParam(defaultValue = "1") Integer currentPage, Model model) {
@@ -49,9 +48,9 @@ public class SortController {
     }
 
     /**
-     * 跳转到增加分类
-     *
-     * @return
+     * @return: java.lang.String
+     * @decription 跳转到增加分类
+     * @date 2022/6/5 9:59
      */
     @GetMapping("/addSort")
     public String toAddPage() {
@@ -59,9 +58,12 @@ public class SortController {
     }
 
     /**
-     * 增加分类
-     *
-     * @return
+     * @param name
+     * @param sort
+     * @param model
+     * @return: java.lang.String
+     * @decription 增加分类
+     * @date 2022/6/5 9:59
      */
     @PostMapping("/addSort")
     public String addSort(@RequestParam("name") String name, Sort sort, Model model) {
@@ -81,11 +83,11 @@ public class SortController {
     }
 
     /**
-     * 跳转到修改分类
-     *
      * @param id
      * @param model
-     * @return
+     * @return: java.lang.String
+     * @decription 跳转到修改分类
+     * @date 2022/6/5 9:59
      */
     @GetMapping("/updateSort/{id}")
     public String toUpdate(@PathVariable("id") Integer id, Model model) {
@@ -95,10 +97,10 @@ public class SortController {
     }
 
     /**
-     * 修改分类页
-     *
      * @param sort
-     * @return
+     * @return: java.lang.String
+     * @decription 修改分类页
+     * @date 2022/6/5 9:59
      */
     @PostMapping("/updateSort")
     public String updateSort(Sort sort) {
@@ -108,10 +110,10 @@ public class SortController {
     }
 
     /**
-     * 删除分类
-     *
      * @param id
-     * @return
+     * @return: java.lang.String
+     * @decription 删除分类
+     * @date 2022/6/5 9:59
      */
     @RequestMapping("/deleteSort/{id}")
     public String deleteSort(@PathVariable("id") Integer id) {
@@ -122,11 +124,11 @@ public class SortController {
     }
 
     /**
-     * 查询结果
-     *
      * @param name
      * @param model
-     * @return
+     * @return: java.lang.String
+     * @decription 查询结果
+     * @date 2022/6/5 10:00
      */
     @PostMapping("/querySort")
     public String querySort(@RequestParam("name") String name, Model model) {

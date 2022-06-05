@@ -2,36 +2,25 @@ package com.jiuxiao.pojo;
 
 /**
  * 用户实体类
- *
  * @Author: 悟道九霄
  * @Date: 2022年05月31日 18:26
  * @Version: 1.0.0
  */
 public class User {
 
-    /**
-     * 用户 ID
-     */
+    /** 用户 ID */
     private Integer id;
 
-    /**
-     * 用户名
-     */
+    /** 用户名 */
     private String username;
 
-    /**
-     * 用户密码
-     */
+    /** 用户密码 */
     private String password;
 
-    /**
-     * 用户邮箱
-     */
+    /** 用户邮箱 */
     private String email;
 
-    /**
-     * 用户权限，1 为管理员
-     */
+    /** 用户权限，1 为管理员 */
     private boolean admin;
 
     public User() {

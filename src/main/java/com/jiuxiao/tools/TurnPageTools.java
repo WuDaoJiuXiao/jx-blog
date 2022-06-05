@@ -4,7 +4,6 @@ import java.util.List;
 
 /**
  * 控制页面跳转的工具类
- *
  * @Author: 悟道九霄
  * @Date: 2022年06月04日 12:29
  * @Version: 1.0.0
@@ -12,9 +11,12 @@ import java.util.List;
 public class TurnPageTools<T> {
 
     /**
-     * @param dataList    数据列表
-     * @param currentPage 当前页页码
-     * @return
+     * @param dataList
+     * @param currentPage
+     * @param pageSize
+     * @return: com.jiuxiao.tools.PageInfoTools<T>
+     * @decription 为当前页设置 pageInfo
+     * @date 2022/6/5 10:39
      */
     public PageInfoTools<T> getPageInfo(List<T> dataList, Integer currentPage, Integer pageSize) {
 

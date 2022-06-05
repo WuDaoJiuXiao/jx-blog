@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 全局异常拦截器
- *
  * @Author: 悟道九霄
  * @Date: 2022年05月30日 9:25
  * @Version: 1.0.0
@@ -23,11 +22,11 @@ public class GlobalExceptionHandler {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
-     * 异常处理
-     *
      * @param request
      * @param exception
-     * @return
+     * @return: org.springframework.web.servlet.ModelAndView
+     * @decription 异常处理
+     * @date 2022/6/5 10:02
      */
     @ExceptionHandler(Exception.class)
     public ModelAndView exceptionHandler(HttpServletRequest request, Exception exception) throws Exception {
@@ -35,7 +34,7 @@ public class GlobalExceptionHandler {
         logger.error("RequestURL : {}, Exception : {}", requestURL, exception.getMessage());
 
         //自定义异常单独处理，返回到自定义的页面
-        if (AnnotationUtils.findAnnotation(exception.getClass(), ResponseStatus.class) != null){
+        if (AnnotationUtils.findAnnotation(exception.getClass(), ResponseStatus.class) != null) {
             throw exception;
         }
 

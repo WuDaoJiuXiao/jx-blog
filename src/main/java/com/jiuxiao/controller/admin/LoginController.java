@@ -5,14 +5,16 @@ import com.jiuxiao.pojo.User;
 import com.jiuxiao.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 
 /**
  * 管理员登录控制器
- *
  * @Author: 悟道九霄
  * @Date: 2022年06月01日 10:43
  * @Version: 1.0.0
@@ -25,9 +27,9 @@ public class LoginController {
     private UserService userService;
 
     /**
-     * 从 index 跳转到用户登录页
-     *
-     * @return
+     * @return: java.lang.String
+     * @decription 从 index 跳转到用户登录页
+     * @date 2022/6/5 9:58
      */
     @RequestMapping
     public String toLogin() {
@@ -35,12 +37,13 @@ public class LoginController {
     }
 
     /**
-     * 用户登录页
-     *
      * @param username
      * @param password
      * @param session
-     * @return
+     * @param attributes
+     * @return: java.lang.String
+     * @decription 用户登录页
+     * @date 2022/6/5 9:57
      */
     @PostMapping("/login")
     public String login(@RequestParam("username") String username,
@@ -59,9 +62,10 @@ public class LoginController {
     }
 
     /**
-     * 用户注销
-     *
-     * @return
+     * @param session
+     * @return: java.lang.String
+     * @decription 用户注销
+     * @date 2022/6/5 9:57
      */
     @GetMapping("/logout")
     public String logout(HttpSession session) {

@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  * 用户Service层接口实现类
- *
  * @Author: 悟道九霄
  * @Date: 2022年06月01日 9:29
  * @Version: 1.0.0
@@ -22,11 +21,11 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     /**
-     * 根据用户名和密码获得用户
-     *
      * @param username
      * @param password
-     * @return
+     * @return: com.jiuxiao.pojo.User
+     * @decription 根据用户名和密码获得用户
+     * @date 2022/6/5 10:37
      */
     @Override
     public User getUserByUsernameAndPassword(String username, String password) {
@@ -34,9 +33,9 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 获取所有用户的列表
-     *
-     * @return
+     * @return: java.util.List<com.jiuxiao.pojo.User>
+     * @decription 获取所有用户的列表
+     * @date 2022/6/5 10:37
      */
     @Override
     public List<User> getAllUserList() {

@@ -9,7 +9,6 @@ import java.util.List;
 
 /**
  * 分类Mapper层接口
- *
  * @author: WuDaoJiuXiao
  * @Date: 2022/06/01 09:09
  * @since: 1.0.0
@@ -19,58 +18,63 @@ import java.util.List;
 public interface SortMapper {
 
     /**
-     * 查询所有分类列表
-     *
-     * @return
+     * @return: java.util.List<com.jiuxiao.pojo.Sort>
+     * @decription 查询所有分类列表
+     * @date 2022/6/5 10:03
      */
     List<Sort> queryAllSortList();
 
     /**
-     * 通过名称查询分类
-     *
      * @param name
-     * @return
+     * @return: java.util.List<com.jiuxiao.pojo.Sort>
+     * @decription 通过名称查询分类
+     * @date 2022/6/5 10:03
      */
     List<Sort> querySortByName(@Param("name") String name);
 
     /**
-     * 通过 id 查询分类
-     *
      * @param id
-     * @return
+     * @return: com.jiuxiao.pojo.Sort
+     * @decription 通过 id 查询分类
+     * @date 2022/6/5 10:03
      */
     Sort querySortById(@Param("id") Integer id);
 
     /**
-     * 增加分类
+     * @param sort
+     * @return: int
+     * @decription 增加分类
+     * @date 2022/6/5 10:03
      */
     int insertSort(Sort sort);
 
     /**
-     * 通过 id 更新分类
-     *
      * @param sort
+     * @return: int
+     * @decription 通过 id 更新分类
+     * @date 2022/6/5 10:04
      */
     int updateSortById(Sort sort);
 
     /**
-     * 通过 id 删除分类
-     *
      * @param id
+     * @return: int
+     * @decription 通过 id 删除分类
+     * @date 2022/6/5 10:04
      */
     int deleteSortById(@Param("id") Integer id);
 
     /**
-     * 查询分类表中的总数量
-     *
-     * @return
+     * @return: int
+     * @decription 查询分类表中的总数量
+     * @date 2022/6/5 10:04
      */
     int querySortCount();
 
     /**
-     * 重新设置数据库表主键自增
-     *
-     * @return
+     * @return: int
+     * @decription 重新设置数据库表主键自增
+     * @date 2022/6/5 10:04
      */
     int increaseSortFromThis();
 }

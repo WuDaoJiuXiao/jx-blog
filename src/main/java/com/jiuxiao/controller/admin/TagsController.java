@@ -17,7 +17,6 @@ import java.util.List;
 
 /**
  * 标签页控制器
- *
  * @Author: 悟道九霄
  * @Date: 2022年06月04日 15:12
  * @Version: 1.0.0
@@ -30,11 +29,11 @@ public class TagsController {
     private TagsService tagsService;
 
     /**
-     * 标签管理
-     *
      * @param currentPage
      * @param model
-     * @return
+     * @return: java.lang.String
+     * @decription 标签管理
+     * @date 2022/6/5 10:00
      */
     @RequestMapping("/tags")
     public String tags(@RequestParam(defaultValue = "1") Integer currentPage, Model model) {
@@ -49,9 +48,9 @@ public class TagsController {
     }
 
     /**
-     * 跳转到增加标签
-     *
-     * @return
+     * @return: java.lang.String
+     * @decription 跳转到增加标签
+     * @date 2022/6/5 10:00
      */
     @GetMapping("/addTags")
     public String toAddPage() {
@@ -59,12 +58,12 @@ public class TagsController {
     }
 
     /**
-     * 增加标签
-     *
      * @param name
      * @param tags
      * @param model
-     * @return
+     * @return: java.lang.String
+     * @decription 增加标签
+     * @date 2022/6/5 10:00
      */
     @PostMapping("/addTags")
     public String addTags(@RequestParam("name") String name, Tags tags, Model model) {
@@ -84,11 +83,11 @@ public class TagsController {
     }
 
     /**
-     * 跳转到修改标签
-     *
      * @param id
      * @param model
-     * @return
+     * @return: java.lang.String
+     * @decription 跳转到修改标签
+     * @date 2022/6/5 10:00
      */
     @GetMapping("/updateTags/{id}")
     public String toUpdate(@PathVariable("id") Integer id, Model model) {
@@ -98,10 +97,10 @@ public class TagsController {
     }
 
     /**
-     * 修改标签页
-     *
      * @param tags
-     * @return
+     * @return: java.lang.String
+     * @decription 修改标签页
+     * @date 2022/6/5 10:00
      */
     @PostMapping("/updateTags")
     public String updateTags(Tags tags) {
@@ -111,10 +110,10 @@ public class TagsController {
     }
 
     /**
-     * 删除标签
-     *
      * @param id
-     * @return
+     * @return: java.lang.String
+     * @decription 删除标签
+     * @date 2022/6/5 10:01
      */
     @RequestMapping("/deleteTags/{id}")
     public String deleteTags(@PathVariable("id") Integer id) {
@@ -125,11 +124,11 @@ public class TagsController {
     }
 
     /**
-     * 查询结果
-     *
      * @param name
      * @param model
-     * @return
+     * @return: java.lang.String
+     * @decription 查询结果
+     * @date 2022/6/5 10:01
      */
     @PostMapping("/queryTags")
     public String queryTags(@RequestParam("name") String name, Model model) {

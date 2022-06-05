@@ -7,7 +7,6 @@ import java.util.List;
 
 /**
  * 用户Service层接口
- *
  * @author: WuDaoJiuXiao
  * @Date: 2022/06/01 09:29
  * @since: 1.0.0
@@ -16,18 +15,18 @@ import java.util.List;
 public interface UserService {
 
     /**
-     * 根据用户名和密码获得用户
-     *
      * @param username
      * @param password
-     * @return
+     * @return: com.jiuxiao.pojo.User
+     * @decription 根据用户名和密码获得用户
+     * @date 2022/6/5 10:37
      */
     User getUserByUsernameAndPassword(String username, String password);
 
     /**
-     * 获取所有用户的列表
-     *
-     * @return
+     * @return: java.util.List<com.jiuxiao.pojo.User>
+     * @decription 获取所有用户的列表
+     * @date 2022/6/5 10:37
      */
     List<User> getAllUserList();
 }

@@ -2,31 +2,22 @@ package com.jiuxiao.pojo;
 
 /**
  * 归档实体类
- *
  * @Author: 悟道九霄
  * @Date: 2022年05月31日 18:23
  * @Version: 1.0.0
  */
 public class Archive {
 
-    /**
-     * 归档 ID
-     */
+    /** 归档 ID */
     private Integer id;
 
-    /**
-     * 创建时间
-     */
+    /** 创建时间 */
     private String createdTime;
 
-    /**
-     * 上次修改时间
-     */
+    /** 上次修改时间 */
     private String lastUpdateTime;
 
-    /**
-     * 归档文章的 ID
-     */
+    /** 归档文章的 ID */
     private Integer articleId;
 
     public Archive() {

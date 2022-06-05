@@ -4,41 +4,28 @@ import java.sql.Timestamp;
 
 /**
  * 友链实体类
- *
  * @Author: 悟道九霄
  * @Date: 2022年05月31日 18:25
  * @Version: 1.0.0
  */
 public class Link {
 
-    /**
-     * 友链 ID
-     */
+    /** 友链 ID */
     private Integer id;
 
-    /**
-     * 友链名称
-     */
+    /** 友链名称 */
     private String name;
 
-    /**
-     * 友链地址
-     */
+    /** 友链地址 */
     private String address;
 
-    /**
-     * 友链头像地址
-     */
+    /** 友链头像地址 */
     private String imageAddress;
 
-    /**
-     * 创建时间
-     */
+    /** 创建时间 */
     private Timestamp createdTime;
 
-    /**
-     * 上次修改时间
-     */
+    /** 上次修改时间 */
     private Timestamp lastUpdateTime;
 
     public Link() {

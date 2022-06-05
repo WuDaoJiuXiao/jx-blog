@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  * 分类业务层接口实现类
- *
  * @Author: 悟道九霄
  * @Date: 2022年06月02日 14:09
  * @Version: 1.0.0
@@ -22,9 +21,9 @@ public class SortServiceImpl implements SortService {
     private SortMapper sortMapper;
 
     /**
-     * 查询所有分类列表
-     *
-     * @return
+     * @return: java.util.List<com.jiuxiao.pojo.Sort>
+     * @decription 查询所有分类列表
+     * @date 2022/6/5 10:32
      */
     @Override
     public List<Sort> queryAllSortList() {
@@ -32,10 +31,10 @@ public class SortServiceImpl implements SortService {
     }
 
     /**
-     * 通过名称查询分类
-     *
      * @param name
-     * @return
+     * @return: java.util.List<com.jiuxiao.pojo.Sort>
+     * @decription 通过名称查询分类
+     * @date 2022/6/5 10:32
      */
     @Override
     public List<Sort> querySortByName(String name) {
@@ -43,10 +42,10 @@ public class SortServiceImpl implements SortService {
     }
 
     /**
-     * 通过 id 查询分类
-     *
      * @param id
-     * @return
+     * @return: com.jiuxiao.pojo.Sort
+     * @decription 通过 id 查询分类
+     * @date 2022/6/5 10:33
      */
     @Override
     public Sort querySortById(Integer id) {
@@ -54,44 +53,42 @@ public class SortServiceImpl implements SortService {
     }
 
     /**
-     * 增加分类
-     *
-     * @return
-     */
-    @Override
-    @Transactional(rollbackFor = Exception.class)
-    public int insertSort(Sort sort) {
-        return sortMapper.insertSort(sort);
-    }
-
-    /**
-     * 通过 id 更新分类
-     *
      * @param sort
-     * @return
+     * @decription 增加分类
+     * @date 2022/6/5 10:33
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public int updateSortById(Sort sort) {
-        return sortMapper.updateSortById(sort);
+    public void insertSort(Sort sort) {
+        sortMapper.insertSort(sort);
     }
 
     /**
-     * 通过 id 删除分类
-     *
+     * @param sort
+     * @decription 通过 id 更新分类
+     * @date 2022/6/5 10:33
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void updateSortById(Sort sort) {
+        sortMapper.updateSortById(sort);
+    }
+
+    /**
      * @param id
-     * @return
+     * @decription 通过 id 删除分类
+     * @date 2022/6/5 10:33
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public int deleteSortById(Integer id) {
-        return sortMapper.deleteSortById(id);
+    public void deleteSortById(Integer id) {
+        sortMapper.deleteSortById(id);
     }
 
     /**
-     * 查询分类表中的总数量
-     *
-     * @return
+     * @return: int
+     * @decription 查询分类表中的总数量
+     * @date 2022/6/5 10:33
      */
     @Override
     public int querySortCount() {
@@ -99,13 +96,12 @@ public class SortServiceImpl implements SortService {
     }
 
     /**
-     * 重新设置数据库表主键自增
-     *
-     * @return
+     * @decription 重新设置数据库表主键自增
+     * @date 2022/6/5 10:33
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public int increaseSortFromThis() {
-        return sortMapper.increaseSortFromThis();
+    public void increaseSortFromThis() {
+        sortMapper.increaseSortFromThis();
     }
 }

@@ -4,106 +4,67 @@ import java.sql.Timestamp;
 
 /**
  * 文章实体类
- *
  * @Author: 悟道九霄
  * @Date: 2022年05月31日 18:24
  * @Version: 1.0.0
  */
 public class Article {
 
-    /**
-     * 文章 ID
-     */
+    /** 文章 ID */
     private Integer id;
 
-    /**
-     * 文章标题
-     */
+    /** 文章标题 */
     private String title;
 
-    /**
-     * 文章首图地址
-     */
+    /** 文章首图地址 */
     private String headImageAddress;
 
-    /**
-     * 文章内容
-     */
+    /** 文章内容 */
     private String content;
 
-    /**
-     * 文章发布时间
-     */
+    /** 文章发布时间 */
     private Timestamp createdTime;
 
-    /**
-     * 文章上次修改时间
-     */
+    /** 文章上次修改时间 */
     private Timestamp lastUpdateTime;
 
-    /**
-     * 文章评论数量
-     */
+    /** 文章评论数量 */
     private Integer commentCount;
 
-    /**
-     * 文章浏览量
-     */
+    /** 文章浏览量 */
     private Integer readCount;
 
-    /**
-     * 文章作者名
-     */
+    /** 文章作者名 */
     private String authorName;
 
-    /**
-     * 文章下方版权信息
-     */
+    /** 文章下方版权信息 */
     private String copyright;
 
-    /**
-     * 文章标签名
-     */
+    /** 文章标签名 */
     private String tags;
 
-    /**
-     * 文章分类名
-     */
+    /** 文章分类名 */
     private String sort;
 
-    /**
-     * 是否打开文章下方的评论
-     */
+    /** 是否打开文章下方的评论 */
     private boolean openComment;
 
-    /**
-     * 是否打开文章下方的版权信息
-     */
+    /** 是否打开文章下方的版权信息 */
     private boolean openCopyright;
 
-    /**
-     * 文章类型
-     */
+    /** 文章类型 */
     private String type;
 
-    /**
-     * 文章作者的 ID
-     */
+    /** 文章作者的 ID */
     private Integer authorId;
 
-    /**
-     * 文章分类的 ID
-     */
+    /** 文章分类的 ID */
     private Integer sortId;
 
-    /**
-     * 文章标签的 ID
-     */
+    /** 文章标签的 ID */
     private Integer tagsId;
 
-    /**
-     * 文章对应的归档 ID
-     */
+    /** 文章对应的归档 ID */
     private Integer archiveId;
 
     public Article() {

@@ -2,46 +2,31 @@ package com.jiuxiao.pojo;
 
 /**
  * 日志实体类
- *
  * @Author: 悟道九霄
  * @Date: 2022年05月31日 18:25
  * @Version: 1.0.0
  */
 public class Journal {
 
-    /**
-     * 日志 ID
-     */
+    /** 日志 ID */
     private Integer id;
 
-    /**
-     * 操作名称
-     */
+    /** 操作名称 */
     private String operateName;
 
-    /**
-     * 是否成功
-     */
+    /** 是否成功 */
     private boolean success;
 
-    /**
-     * 请求者 IP
-     */
+    /** 请求者 IP */
     private String requestIp;
 
-    /**
-     * 请求的类名
-     */
+    /** 请求的类名 */
     private String requestClassName;
 
-    /**
-     * 请求的方法名
-     */
+    /** 请求的方法名 */
     private String requestMethodName;
 
-    /**
-     * 请求的URL
-     */
+    /** 请求的URL */
     private String requestUrl;
 
     public Journal() {

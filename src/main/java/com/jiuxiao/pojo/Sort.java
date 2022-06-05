@@ -4,36 +4,25 @@ import java.sql.Timestamp;
 
 /**
  * 分类实体类
- *
  * @Author: 悟道九霄
  * @Date: 2022年05月31日 18:26
  * @Version: 1.0.0
  */
 public class Sort {
 
-    /**
-     * 分类 ID
-     */
+    /** 分类 ID */
     private Integer id;
 
-    /**
-     * 分类名称
-     */
+    /** 分类名称 */
     private String name;
 
-    /**
-     * 被引用次数
-     */
+    /** 被引用次数 */
     private Integer refCount;
 
-    /**
-     * 创建时间
-     */
+    /** 创建时间 */
     private Timestamp createdTime;
 
-    /**
-     * 上次修改时间
-     */
+    /** 上次修改时间 */
     private Timestamp lastUpdateTime;
 
     public Sort() {
