@@ -42,27 +42,24 @@ public interface SortMapper {
 
     /**
      * @param sort
-     * @return: int
      * @decription 增加分类
      * @date 2022/6/5 10:03
      */
-    int insertSort(Sort sort);
+    void insertSort(Sort sort);
 
     /**
      * @param sort
-     * @return: int
      * @decription 通过 id 更新分类
      * @date 2022/6/5 10:04
      */
-    int updateSortById(Sort sort);
+    void updateSortById(Sort sort);
 
     /**
      * @param id
-     * @return: int
      * @decription 通过 id 删除分类
      * @date 2022/6/5 10:04
      */
-    int deleteSortById(@Param("id") Integer id);
+    void deleteSortById(@Param("id") Integer id);
 
     /**
      * @return: int
@@ -72,9 +69,8 @@ public interface SortMapper {
     int querySortCount();
 
     /**
-     * @return: int
      * @decription 重新设置数据库表主键自增
      * @date 2022/6/5 10:04
      */
-    int increaseSortFromThis();
+    void increaseSortFromThis();
 }

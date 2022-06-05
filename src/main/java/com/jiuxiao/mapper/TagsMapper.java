@@ -42,27 +42,24 @@ public interface TagsMapper {
 
     /**
      * @param tags
-     * @return: int
      * @decription 增加标签
      * @date 2022/6/5 10:05
      */
-    int insertTags(Tags tags);
+    void insertTags(Tags tags);
 
     /**
      * @param tags
-     * @return: int
      * @decription 通过 ID 更新标签
      * @date 2022/6/5 10:05
      */
-    int updateTagsById(Tags tags);
+    void updateTagsById(Tags tags);
 
     /**
      * @param id
-     * @return: int
      * @decription 通过 ID 删除标签
      * @date 2022/6/5 10:05
      */
-    int deleteTagsById(@Param("id") Integer id);
+    void deleteTagsById(@Param("id") Integer id);
 
     /**
      * @return: int
@@ -72,9 +69,8 @@ public interface TagsMapper {
     int queryTagsCount();
 
     /**
-     * @return: int
      * @decription 重新设置数据库表主键自增
      * @date 2022/6/5 10:05
      */
-    int increaseTagsFromThis();
+    void increaseTagsFromThis();
 }

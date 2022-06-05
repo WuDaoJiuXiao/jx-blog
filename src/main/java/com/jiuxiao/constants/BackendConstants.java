@@ -20,6 +20,9 @@ public class BackendConstants {
     /** 后台管理：博客单页容量 */
     public static Integer BLOG_PAGE_SIZE = 7;
 
+    /** 后台管理：友链单页容量 */
+    public static Integer LINK_PAGE_SIZE = 7;
+
     /** 后台管理：日志单页容量 */
     public static Integer JOURNAL_PAGE_SIZE = 7;
 }

@@ -39,11 +39,13 @@ public class SortController {
     public String sort(@RequestParam(defaultValue = "1") Integer currentPage, Model model) {
         List<Sort> sortList = sortService.queryAllSortList();
 
+        Integer sortCount = sortList.size();
         Integer pageSize = BackendConstants.SORT_PAGE_SIZE;
         TurnPageTools<Sort> sortTurnPageTools = new TurnPageTools<>();
         PageInfoTools<Sort> pageInfo = sortTurnPageTools.getPageInfo(sortList, currentPage, pageSize);
 
         model.addAttribute("pageInfo", pageInfo);
+        model.addAttribute("sortCount", sortCount);
         return "backend/control/sortControl";
     }
 
@@ -60,13 +62,12 @@ public class SortController {
     /**
      * @param name
      * @param sort
-     * @param model
      * @return: java.lang.String
      * @decription 增加分类
      * @date 2022/6/5 9:59
      */
     @PostMapping("/addSort")
-    public String addSort(@RequestParam("name") String name, Sort sort, Model model) {
+    public String addSort(@RequestParam("name") String name, Sort sort) {
         //如果要添加的分类已经在数据库中，则不能添加
         List<Sort> querySorts = sortService.querySortByName(name);
         if (querySorts.isEmpty()) {
@@ -76,7 +77,6 @@ public class SortController {
             sort.setCreatedTime(currentTime);
             sort.setLastUpdateTime(currentTime);
 
-            model.addAttribute("msg", null);
             sortService.insertSort(sort);
         }
         return "redirect:/admin/sort";

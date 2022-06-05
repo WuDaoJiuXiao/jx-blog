@@ -18,33 +18,14 @@
 <div class="ui container animate__animated animate__fadeIn">
     <div class="ui segment secondary container-shadow container-radius segment-size-add-page">
         <div class="link-form-add-rl">
-            <form action="#" method="post" class="ui form">
+            <form th:action="@{/admin/updateLink}" method="post" class="ui form">
                 <h3 class="ui teal header center aligned">修改友链</h3>
-
-                <!--友链ID，数据库查询所得，不可修改-->
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="certificate icon"></i>
-                        <input type="text" name="linkId" value="数据库查询的友链ID" class="link-text-opacity" readonly>
-                    </div>
-                </div>
-
-                <!--友链添加时间，数据库查询所得，不可修改-->
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="history icon"></i>
-                        <input type="text" name="linkAddTime" value="数据库查询的友链添加时间" class="link-text-opacity" readonly>
-                    </div>
-                </div>
-
-                <!--友链修改时间，即本次提交表单的时间，不可修改，为隐藏域-->
-                <input type="hidden" name="linkLastUpdateTime" value="最后一次修改时间，即本次提交时间" class="link-text-opacity" readonly>
 
                 <!--友链名称，可修改-->
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="clipboard icon"></i>
-                        <input type="text" name="linkName" value="根据ID查询的友链名称">
+                        <input type="text" name="name" th:value="${link.getName()}">
                     </div>
                 </div>
 
@@ -52,7 +33,7 @@
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="linkify icon"></i>
-                        <input type="text" name="linkAddress" value="据ID查询的友链地址">
+                        <input type="text" name="address" th:value="${link.getAddress()}">
                     </div>
                 </div>
 
@@ -60,9 +41,13 @@
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="globe icon"></i>
-                        <input type="text" name="linkPicAddress" value="据ID查询的友链头像地址">
+                        <input type="text" name="imageAddress" th:value="${link.getImageAddress()}">
                     </div>
                 </div>
+
+                <!--友链id、创建时间不可修改，为隐藏域-->
+                <input type="hidden" name="id" th:value="${link.getId()}">
+                <input type="hidden" name="createdTime" th:value="${link.getCreatedTime()}">
 
                 <!--提交按钮-->
                 <div class="field">

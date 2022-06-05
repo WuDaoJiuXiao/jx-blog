@@ -17,7 +17,17 @@
 <!--中间内容-->
 <div class="ui container animate__animated animate__fadeIn">
     <div class="ui segment container-tb-margin container-radius container-shadow">
-        <h3 class="ui blue header">分类管理</h3>
+        <div class="ui three column grid">
+            <div class="column">
+                <h3 class="ui blue header">分类管理</h3>
+            </div>
+            <div class="center aligned column">
+                <h4 class="ui header red head-inline-block" th:text="'第' + ${pageInfo.getCurrentPage() + '页 / 共' + pageInfo.getTotalPage() + '页'}"></h4>
+            </div>
+            <div class="right aligned column">
+                共 <h4 class="ui teal header head-inline-block" th:text="${sortCount}"></h4> 种分类
+            </div>
+        </div>
         <!--分类增加、搜索按钮-->
         <div class="ui grid">
             <!--搜索分类-->
@@ -36,61 +46,62 @@
                     </div>
                 </form>
             </div>
-            <div class="four wide column">
+            <div class="four wide column right aligned">
                 <div class="field">
                     <a class="ui blue button" th:href="@{/admin/addSort}"><i class="edit icon"></i>增加分类</a>
                 </div>
             </div>
         </div>
-
-        <!--分类展示列表-->
-        <div class="ui segment secondary container-radius container-shadow">
-            <table class="ui striped table center aligned">
-                <thead>
-                <tr>
-                    <th>分类编号</th>
-                    <th>分类名称</th>
-                    <th>被引用次数</th>
-                    <th>创建时间</th>
-                    <th>上次修改时间</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-
-                <tbody>
-                <tr th:each="sort:${pageInfo.getDataList()}">
-                    <td th:text="${sort.getId()}"></td>
-                    <td th:text="${sort.getName()}"></td>
-                    <td th:text="${sort.getRefCount()}"></td>
-                    <td th:text="${sort.getCreatedTime()}"></td>
-                    <td th:text="${sort.getLastUpdateTime()}"></td>
-                    <td>
-                        <a th:href="@{/admin/updateSort/{id}(id=${sort.getId()})}" class="ui mini green button">修改</a>
-                        <a th:href="@{/admin/deleteSort/{id}(id=${sort.getId()})}" class="ui mini red button">删除</a>
-                    </td>
-                </tr>
-                </tbody>
-
-                <tfoot>
-                <tr>
-
-                    <th colspan="3" class="ui left aligned">
-                        <div class="ui pagination menu">
-                            <a th:href="@{/admin/sort(currentPage=${pageInfo.getCurrentPage() - 1})}"
-                               class="item"><i class="chevron left icon"></i>上一页</a>
-                        </div>
-                    </th>
-                    <th colspan="3" class="ui right aligned">
-                        <div class="ui pagination menu">
-                            <a th:href="@{/admin/sort(currentPage=${pageInfo.getCurrentPage() + 1})}"
-                               class="item">下一页<i class="chevron right icon"></i></a>
-                        </div>
-                    </th>
-                </tr>
-                </tfoot>
-            </table>
-        </div>
     </div>
+
+    <!--分类展示列表-->
+    <div class="ui segment secondary container-radius container-shadow">
+        <table class="ui striped table center aligned">
+            <thead>
+            <tr>
+                <th>分类编号</th>
+                <th>分类名称</th>
+                <th>被引用次数</th>
+                <th>创建时间</th>
+                <th>上次修改时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="sort:${pageInfo.getDataList()}">
+                <td th:text="${sort.getId()}"></td>
+                <td th:text="${sort.getName()}"></td>
+                <td th:text="${sort.getRefCount()}"></td>
+                <td th:text="${sort.getCreatedTime()}"></td>
+                <td th:text="${sort.getLastUpdateTime()}"></td>
+                <td>
+                    <a th:href="@{/admin/updateSort/{id}(id=${sort.getId()})}" class="ui mini green button">修改</a>
+                    <a th:href="@{/admin/deleteSort/{id}(id=${sort.getId()})}" class="ui mini red button">删除</a>
+                </td>
+            </tr>
+            </tbody>
+
+            <tfoot>
+            <tr>
+
+                <th colspan="3" class="ui left aligned">
+                    <div class="ui pagination menu">
+                        <a th:href="@{/admin/sort(currentPage=${pageInfo.getCurrentPage() - 1})}"
+                           class="item"><i class="chevron left icon"></i>上一页</a>
+                    </div>
+                </th>
+                <th colspan="3" class="ui right aligned">
+                    <div class="ui pagination menu">
+                        <a th:href="@{/admin/sort(currentPage=${pageInfo.getCurrentPage() + 1})}"
+                           class="item">下一页<i class="chevron right icon"></i></a>
+                    </div>
+                </th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
 </div>
 
 </body>

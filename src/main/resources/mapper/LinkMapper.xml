@@ -4,4 +4,90 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jiuxiao.mapper.LinkMapper">
 
+    <!--查询所有友链列表-->
+    <select id="queryAllLinkList" resultType="Link">
+        select *
+        from blog.t_link
+    </select>
+
+    <!--根据 ID 查询友链-->
+    <select id="queryLinkById" parameterType="int" resultType="Link">
+        select * from blog.t_link
+        <where>
+            <if test="id != null and id > 0">
+                id = #{id}
+            </if>
+        </where>
+    </select>
+
+    <!--根据名称查询友链-->
+    <select id="queryLinkByName" parameterType="string" resultType="Link">
+        select * from blog.t_link
+        <where>
+            <if test="name != null">
+                name like concat('%', #{name}, '%')
+            </if>
+        </where>
+    </select>
+
+    <!--增加友链-->
+    <insert id="insertLink" parameterType="Link">
+        insert into blog.t_link(id, name, address, image_address, created_time, last_update_time)
+        value (
+        <if test="id != null and id > 0">
+            #{id}, #{name}, #{address}, #{imageAddress}, #{createdTime}, #{lastUpdateTime}
+        </if>
+        )
+    </insert>
+
+    <!--通过 ID 更新友链-->
+    <update id="updateLink" parameterType="Link">
+        update blog.t_link
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="address != null and address != ''">
+                address = #{address},
+            </if>
+            <if test="imageAddress != null and imageAddress != ''">
+                image_address = #{imageAddress},
+            </if>
+            <if test="createdTime != null">
+                created_time = #{createdTime},
+            </if>
+            <if test="lastUpdateTime != null">
+                last_update_time = #{lastUpdateTime}
+            </if>
+        </set>
+        <where>
+            <if test="id != null and id > 0">
+                id = #{id}
+            </if>
+        </where>
+    </update>
+
+    <!--通过 ID 删除友链-->
+    <delete id="deleteLinkById" parameterType="int">
+        delete from blog.t_link
+        <where>
+            <if test="id != null and id > 0">
+                id = #{id}
+            </if>
+        </where>
+    </delete>
+
+    <!--查询友链总数量-->
+    <select id="queryLinkCount" resultType="_int">
+        select count(*)
+        from blog.t_link
+    </select>
+
+    <!--设置主键由此自增-->
+    <update id="increaseLinkFromThis">
+        alter table blog.t_link
+            drop id;
+        alter table blog.t_link
+            add id int(32) not null primary key auto_increment first
+    </update>
 </mapper>

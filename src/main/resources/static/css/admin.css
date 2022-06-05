@@ -130,3 +130,10 @@ body {
 .log-select-width {
     width: 200px !important;
 }
+
+/*-------------------
+     sort-control
+------------------*/
+.head-inline-block {
+    display: inline-block !important;
+}

@@ -39,11 +39,13 @@ public class TagsController {
     public String tags(@RequestParam(defaultValue = "1") Integer currentPage, Model model) {
         List<Tags> tagsList = tagsService.queryAllTagsList();
 
+        Integer tagsCount = tagsList.size();
         Integer pageSize = BackendConstants.TAGS_PAGE_SIZE;
         TurnPageTools<Tags> sortTurnPageTools = new TurnPageTools<>();
         PageInfoTools<Tags> pageInfo = sortTurnPageTools.getPageInfo(tagsList, currentPage, pageSize);
 
         model.addAttribute("pageInfo", pageInfo);
+        model.addAttribute("tagsCount", tagsCount);
         return "backend/control/tagsControl";
     }
 

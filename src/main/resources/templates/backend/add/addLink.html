@@ -18,21 +18,14 @@
 <div class="ui container center aligned animate__animated animate__fadeIn">
     <div class="ui segment secondary container-shadow container-radius segment-size-add-page">
         <div class="link-form-add-rl">
-            <form action="#" method="post" class="ui form">
+            <form th:action="@{/admin/addLink}" method="post" class="ui form">
                 <h3 class="ui teal header center aligned">增加友链</h3>
 
-                <!--友链id，根据最大友链id加一所得，不可修改-->
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="certificate icon"></i>
-                        <input type="text" name="linkId" value="根据最大友链id加一所得" class="link-text-opacity" readonly>
-                    </div>
-                </div>
                 <!--友链名称，可修改-->
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="clipboard icon"></i>
-                        <input type="text" name="linkName" placeholder="友链名称">
+                        <input type="text" name="name" placeholder="友链名称">
                     </div>
                 </div>
 
@@ -40,7 +33,7 @@
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="linkify icon"></i>
-                        <input type="text" name="linkAddress" placeholder="友链地址">
+                        <input type="text" name="address" placeholder="友链地址">
                     </div>
                 </div>
 
@@ -48,18 +41,14 @@
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="globe icon"></i>
-                        <input type="text" name="linkPicAddress" placeholder="友链头像地址">
+                        <input type="text" name="imageAddress" placeholder="友链头像地址">
                     </div>
                 </div>
-
-                <!--友链添加时间、最后修改时间，均为表单提交时间，隐藏域-->
-                <input type="hidden" name="linkAddTime" value="表单提交时间">
-                <input type="hidden" name="linkLastUpdateTime" value="表单提交时间">
 
                 <!--提交按钮-->
                 <div class="field">
                     <div style="text-align: center !important;">
-                        <button class="ui blue button btn-width">提交</button>
+                        <button class="ui blue submit button btn-width">提交</button>
                     </div>
                 </div>
 

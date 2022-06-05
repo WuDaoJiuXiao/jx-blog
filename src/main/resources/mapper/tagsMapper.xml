@@ -39,7 +39,7 @@
         <if test="id != null and id > 0">
             #{id}, #{name}, #{refCount}, #{createdTime}, #{lastUpdateTime}
         </if>
-        );
+        )
     </insert>
 
     <!--根据 id 更新标签-->
