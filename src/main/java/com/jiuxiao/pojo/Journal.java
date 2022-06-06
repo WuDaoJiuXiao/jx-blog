@@ -15,7 +15,7 @@ public class Journal {
     private String operateName;
 
     /** 是否成功 */
-    private boolean success;
+    private String success;
 
     /** 请求者 IP */
     private String requestIp;
@@ -32,7 +32,7 @@ public class Journal {
     public Journal() {
     }
 
-    public Journal(Integer id, String operateName, boolean success, String requestIp,
+    public Journal(Integer id, String operateName, String success, String requestIp,
                    String requestClassName, String requestMethodName, String requestUrl) {
         this.id = id;
         this.operateName = operateName;
@@ -59,11 +59,11 @@ public class Journal {
         this.operateName = operateName;
     }
 
-    public boolean isSuccess() {
+    public String isSuccess() {
         return success;
     }
 
-    public void setSuccess(boolean success) {
+    public void setSuccess(String success) {
         this.success = success;
     }
 

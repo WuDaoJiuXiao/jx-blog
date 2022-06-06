@@ -15,81 +15,171 @@
 <div th:insert="~{/backend/headers::adminHeader('admin/log')}"></div>
 
 <!--中间内容-->
-<div class="ui container animate__animated animate__fadeIn">
-    <div class="ui segment container-tb-margin container-radius container-shadow">
-        <h3 class="ui blue header">日志管理</h3>
-        <form action="#" method="post" class="ui form">
-            <div class="ui grid">
-                <!--操作类型选择-->
-                <div class="four wide column">
-                    <div class="ui selection dropdown" style="width: 245px !important;">
-                        <input type="hidden" name="operatorName">
-                        <i class="dropdown icon"></i>
-                        <div class="default text">操作类型</div>
-                        <div class="menu">
-                            <div class="item" data-value="1">增加</div>
-                            <div class="item" data-value="2">删除</div>
-                            <div class="item" data-value="3">修改</div>
-                            <div class="item" data-value="4">查询</div>
+<div class="ui segment segment-tb-margin centered animate__animated animate__fadeIn" style="width: 100%">
+    <div class="ui three column grid">
+        <div class="column">
+            <h3 class="ui blue header">日志管理</h3>
+        </div>
+        <div class="center aligned column">
+            <h4 class="ui header red head-inline-block"
+                th:text="'第' + ${pageInfo.getCurrentPage() + '页 / 共' + pageInfo.getTotalPage() + '页'}"></h4>
+        </div>
+        <div class="right aligned column">
+            共 <h4 class="ui teal header head-inline-block" th:text="${journalCount}"></h4> 条日志
+        </div>
+    </div>
+
+    <div class="ui grid">
+        <div class="thirteen wide column">
+            <form th:action="@{/admin/queryLog}" method="post" class="ui form">
+                <div class="ui grid">
+                    <!--操作类型选择-->
+                    <div class="four wide column center aligned">
+                        <div class="ui selection dropdown log-select-width">
+                            <input type="hidden" name="operateName">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">操作名称</div>
+                            <div class="menu">
+                                <div class="item"
+                                     th:each="opN, opStat:${operateName}"
+                                     th:value="${opStat.index}"
+                                     th:text="${opN}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--是否成功选择-->
+                    <div class="four wide column center aligned">
+                        <div class="ui selection dropdown log-select-width">
+                            <input type="hidden" name="success">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">操作是否成功</div>
+                            <div class="menu">
+                                <div class="item"
+                                     th:each="succ, succStat :${querySuccess}"
+                                     th:value="${succStat.index}"
+                                     th:text="${succStat.index == 0 ? '失败' : '成功'}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--请求者ip-->
+                    <div class="four wide column center aligned">
+                        <div class="ui selection dropdown log-select-width">
+                            <input type="hidden" name="requestIp">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">请求者ip</div>
+                            <div class="menu">
+                                <div class="item"
+                                     th:each="ip, ipStat : ${requestIp}"
+                                     th:value="${ipStat.index}"
+                                     th:text="${ip}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--请求的类名-->
+                    <div class="four wide column center aligned">
+                        <div class="five wide column">
+                            <div class="three wide column">
+                                <div class="ui selection dropdown log-select-width">
+                                    <input type="hidden" name="requestClassName">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">请求的类名</div>
+                                    <div class="menu">
+                                        <div class="item"
+                                             th:each="claName, claNameStat : ${requestClassName}"
+                                             th:value="${claNameStat.index}"
+                                             th:text="${claName}"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!--是否成功选择-->
-                <div class="four wide column">
-                    <div class="ui selection dropdown" style="width: 245px !important;">
-                        <input type="hidden" name="success">
-                        <i class="dropdown icon"></i>
-                        <div class="default text">操作是否成功</div>
-                        <div class="menu">
-                            <div class="item" data-value="1">成功</div>
-                            <div class="item" data-value="2">失败</div>
+                <div class="ui grid">
+                    <!--请求的方法名-->
+                    <div class="four wide column center aligned">
+                        <div class="ui selection dropdown log-select-width">
+                            <input type="hidden" name="requestMethodName">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">请求的方法名</div>
+                            <div class="menu">
+                                <div class="item"
+                                     th:each="metName, metNameStat : ${requestMethodName}"
+                                     th:value="${metNameStat.index}"
+                                     th:text="${metName}"></div>
+                            </div>
                         </div>
                     </div>
+                    <!--请求的地址-->
+                    <div class="eight wide column center aligned">
+                        <div class="ui selection dropdown log-url-width">
+                            <input type="hidden" name="requestURL">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">请求的URL</div>
+                            <div class="menu">
+                                <div class="item"
+                                     th:each="url, urlStat : ${requestUrl}"
+                                     th:value="${urlStat.index}"
+                                     th:text="${url}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--查询按钮-->
+                    <div class="four wide column query-padding-left">
+                        <button class="ui blue submit button left"><i class="search icon"></i>搜索日志</button>
+                    </div>
                 </div>
-                <!--查询按钮、显示全部按钮-->
-                <div class="eight wide column right aligned">
-                    <a href="#" class="ui blue button"><i class="search icon"></i>搜索日志</a>
-                    <a href="#" class="ui grey button"><i class="columns icon"></i>重置搜索</a>
-                </div>
-            </div>
-
-        </form>
+            </form>
+        </div>
+        <!--重置按钮-->
+        <div class="three wide column left aligned bottom aligned">
+            <a th:href="@{/admin/log}" class="ui grey button"><i class="columns icon"></i>重置搜索</a>
+        </div>
     </div>
 
-    <!--分类展示列表-->
-    <div class="ui segment secondary container-radius container-shadow">
-        <table class="ui striped table center aligned">
-            <thead>
-            <tr>
-                <th>日志编号</th>
-                <th>操作名称</th>
-                <th>是否成功</th>
-                <th>请求者IP</th>
-                <th>请求的类名</th>
-                <th>请求的方法名</th>
-                <th>请求地址</th>
-            </tr>
-            </thead>
+    <h3 class="ui blue header">日志列表</h3>
+    <table class="ui striped table center aligned">
+        <thead>
+        <tr>
+            <th>日志编号</th>
+            <th>操作名称</th>
+            <th>是否成功</th>
+            <th>请求者IP</th>
+            <th>请求的类名</th>
+            <th>请求的方法名</th>
+            <th>请求地址</th>
+        </tr>
+        </thead>
 
-            <tbody>
-            </tbody>
+        <tbody>
+        <tr th:each="journal:${pageInfo.getDataList()}">
+            <td th:text="${journal.getId()}"></td>
+            <td th:text="${journal.getOperateName()}"></td>
+            <td th:text="${journal.isSuccess()}"></td>
+            <td th:text="${journal.getRequestIp()}"></td>
+            <td th:text="${journal.getRequestClassName()}"></td>
+            <td th:text="${journal.getRequestMethodName()}"></td>
+            <td th:text="${journal.getRequestUrl()}"></td>
+        </tr>
+        </tbody>
 
-            <tfoot>
-            <tr>
-                <th colspan="3" class="ui left aligned">
-                    <div class="ui pagination menu">
-                        <a href="#" class="item"><i class="chevron left icon"></i>上一页</a>
-                    </div>
-                </th>
-                <th colspan="3" class="ui right aligned">
-                    <div class="ui pagination menu">
-                        <a href="#" class="item">下一页<i class="chevron right icon"></i></a>
-                    </div>
-                </th>
-            </tr>
-            </tfoot>
-        </table>
-    </div>
+        <tfoot>
+        <tr>
+            <th colspan="3" class="ui left aligned">
+                <div class="ui pagination menu">
+                    <a th:href="@{/admin/log(currentPage=${pageInfo.getCurrentPage() - 1})}" class="item"><i
+                            class="chevron left icon"></i>上一页</a>
+                </div>
+            </th>
+            <th colspan="1"></th>
+            <th colspan="3" class="ui right aligned">
+                <div class="ui pagination menu">
+                    <a th:href="@{/admin/log(currentPage=${pageInfo.getCurrentPage() + 1})}" class="item">下一页<i
+                            class="chevron right icon"></i></a>
+                </div>
+            </th>
+        </tr>
+        </tfoot>
+    </table>
 </div>
 
 <!--初始化下拉框-->

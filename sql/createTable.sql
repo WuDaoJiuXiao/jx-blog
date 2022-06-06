@@ -147,7 +147,7 @@ CREATE TABLE `t_journal`
 (
     `id`                  int(32)      NOT NULL COMMENT '日志id',
     `operate_name`        varchar(200) NOT NULL COMMENT '操作名称',
-    `success`             int(1)       NOT NULL COMMENT '操作是否成功',
+    `success`             varchar(50)  NOT NULL COMMENT '操作是否成功',
     `request_ip`          varchar(200) NOT NULL COMMENT '请求者的ip地址',
     `request_class_name`  varchar(200) NOT NULL COMMENT '请求的类名',
     `request_method_name` varchar(200) NOT NULL COMMENT '请求的方法名',

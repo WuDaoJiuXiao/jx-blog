@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>日志搜索</title>
+    <script th:src="@{/js/jquery-3.5.1.js}"></script>
+    <script th:src="@{/semanticUi/semantic.js}"></script>
+    <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<!--导航栏-->
+<div th:insert="~{/backend/headers::adminHeader('admin/log')}"></div>
+
+<!--中间内容-->
+<div class="ui segment segment-tb-margin centered animate__animated animate__fadeIn" style="width: 100%">
+    <br>
+    <div class="ui grid">
+        <div class="eight wide column left aligned">
+            <h3 class="ui blue header">日志搜索结果</h3>
+        </div>
+        <div class="eight wide column right aligned" style="vertical-align: center">
+            <a th:href="@{/admin/log}" class="ui grey button"><i class="columns icon"></i>重置搜索</a>
+        </div>
+    </div>
+    <!--日志搜索结果展示列表-->
+    <table class="ui striped table center aligned">
+        <thead>
+        <tr>
+            <th>日志编号</th>
+            <th>操作名称</th>
+            <th>是否成功</th>
+            <th>请求者IP</th>
+            <th>请求的类名</th>
+            <th>请求的方法名</th>
+            <th>请求地址</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="log:${logList}">
+            <td th:text="${log.getId()}"></td>
+            <td th:text="${log.getOperateName()}"></td>
+            <td th:text="${log.isSuccess()}"></td>
+            <td th:text="${log.getRequestIp()}"></td>
+            <td th:text="${log.getRequestClassName()}"></td>
+            <td th:text="${log.getRequestMethodName()}"></td>
+            <td th:text="${log.getRequestUrl()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--初始化下拉框-->
+<script>
+    $('.ui.selection.dropdown')
+        .dropdown();
+</script>
+
+</body>
+</html>

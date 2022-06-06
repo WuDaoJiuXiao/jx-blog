@@ -26,7 +26,7 @@
         select *
         from blog.t_sort
         <where>
-            <if test="id != null and id > 0">
+            <if test="id != null and id &gt; 0">
                 id = #{id}
             </if>
         </where>
@@ -36,7 +36,7 @@
     <insert id="insertSort" parameterType="Sort">
         insert into blog.t_sort(id, name, ref_count, created_time, last_update_time)
         value (
-        <if test="id != null and id > 0">
+        <if test="id != null and id &gt; 0">
             #{id}, #{name}, #{refCount}, #{createdTime}, #{lastUpdateTime}
         </if>
         );
@@ -49,7 +49,7 @@
             <if test="name != null and name != ''">
                 name = #{name},
             </if>
-            <if test="refCount != null and refCount >= 0">
+            <if test="refCount != null and refCount &gt;= 0">
                 ref_count = #{refCount},
             </if>
             <if test="createdTime != null">
@@ -60,7 +60,7 @@
             </if>
         </set>
         <where>
-            <if test="id != null and id > 0">
+            <if test="id != null and id &gt; 0">
                 id = #{id}
             </if>
         </where>
@@ -71,7 +71,7 @@
         delete
         from blog.t_sort
         <where>
-            <if test="id != null and id > 0">
+            <if test="id != null and id &gt; 0">
                 id = #{id};
             </if>
         </where>

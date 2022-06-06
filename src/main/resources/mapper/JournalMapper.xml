@@ -4,4 +4,95 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jiuxiao.mapper.JournalMapper">
 
+    <!--查询所有日志列表-->
+    <select id="queryAllJournalList" resultType="Journal">
+        select *
+        from blog.t_journal
+    </select>
+
+    <!--多条件查询日志列表-->
+    <select id="queryJournalByUncertainCondition" resultType="Journal" parameterType="Journal">
+        select * from blog.t_journal
+        <where>
+            <if test="id != null and id &gt; 0">
+                id = #{id}
+            </if>
+            <if test="operateName != null and operateName != ''">
+                and operate_name = #{operateName}
+            </if>
+            <if test="success != null and success != ''">
+                and success = #{success}
+            </if>
+            <if test="requestIp != null and requestIp != ''">
+                and request_ip = #{requestIp}
+            </if>
+            <if test="requestClassName != null and requestClassName != ''">
+                and request_class_name = #{requestClassName}
+            </if>
+            <if test="requestMethodName != null and requestMethodName != ''">
+                and request_method_name = #{requestMethodName}
+            </if>
+            <if test="requestUrl != null and requestUrl != ''">
+                and request_url = #{requestUrl}
+            </if>
+        </where>
+    </select>
+
+    <!--插入日志-->
+    <insert id="insertJournal" parameterType="Journal">
+        insert into blog.t_journal(id, operate_name, success, request_ip, request_class_name, request_method_name,
+        request_url) value (
+        <if test="id != null and id &gt;= 0">
+            id = #{id},
+            operate_name = #{operateName},
+            success = #{success},
+            request_ip = ${requestIp},
+            request_class_name = #{requestClassName},
+            request_method_name = #{requestMethodName},
+            request_url = #{requestUrl}
+        </if>
+        )
+    </insert>
+
+    <!--查询操作名称的种类-->
+    <select id="queryOperateName" resultType="string">
+        select operate_name
+        from blog.t_journal
+        group by operate_name
+    </select>
+
+    <!--查询操作是否成功-->
+    <select id="querySuccess" resultType="string">
+        select success
+        from blog.t_journal
+        group by success
+    </select>
+
+    <!--查询请求者ip的种类-->
+    <select id="queryRequestIp" resultType="string">
+        select request_ip
+        from blog.t_journal
+        group by request_ip
+    </select>
+
+    <!--查询请求的类名的种类-->
+    <select id="queryRequestClassName" resultType="string">
+        select request_class_name
+        from blog.t_journal
+        group by request_class_name
+    </select>
+
+    <!--查询请求的方法名的种类-->
+    <select id="queryRequestMethodName" resultType="string">
+        select request_method_name
+        from blog.t_journal
+        group by request_method_name
+    </select>
+
+    <!--查询请求地址的种类-->
+    <select id="queryRequestUrl" resultType="string">
+        select request_url
+        from blog.t_journal
+        group by request_url
+    </select>
 </mapper>

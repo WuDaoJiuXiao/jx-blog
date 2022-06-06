@@ -24,5 +24,5 @@ public class BackendConstants {
     public static Integer LINK_PAGE_SIZE = 7;
 
     /** 后台管理：日志单页容量 */
-    public static Integer JOURNAL_PAGE_SIZE = 7;
+    public static Integer JOURNAL_PAGE_SIZE = 9;
 }

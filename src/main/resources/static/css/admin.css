@@ -128,7 +128,24 @@ body {
      log-control
 ------------------*/
 .log-select-width {
-    width: 200px !important;
+    width: 240px !important;
+}
+
+.log-url-width {
+    width: 550px !important;
+}
+
+.segment-tb-margin {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+.query-padding-left {
+    padding-left: 34px !important;
+}
+
+.back-padding-left {
+    padding-left: 28px !important;
 }
 
 /*-------------------

@@ -131,10 +131,6 @@ public class LinkController {
             return "redirect:/admin/link";
         }
         List<Link> linkList = linkService.queryLinkByName(name);
-        for (Link link : linkList) {
-            System.out.println(link);
-        }
-
         model.addAttribute("linkList", linkList);
         return "backend/show/showLinkSearch";
     }

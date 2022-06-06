@@ -14,7 +14,7 @@
     <select id="queryLinkById" parameterType="int" resultType="Link">
         select * from blog.t_link
         <where>
-            <if test="id != null and id > 0">
+            <if test="id != null and id &gt; 0">
                 id = #{id}
             </if>
         </where>
@@ -34,7 +34,7 @@
     <insert id="insertLink" parameterType="Link">
         insert into blog.t_link(id, name, address, image_address, created_time, last_update_time)
         value (
-        <if test="id != null and id > 0">
+        <if test="id != null and id &gt; 0">
             #{id}, #{name}, #{address}, #{imageAddress}, #{createdTime}, #{lastUpdateTime}
         </if>
         )
@@ -61,7 +61,7 @@
             </if>
         </set>
         <where>
-            <if test="id != null and id > 0">
+            <if test="id != null and id &gt; 0">
                 id = #{id}
             </if>
         </where>
@@ -71,7 +71,7 @@
     <delete id="deleteLinkById" parameterType="int">
         delete from blog.t_link
         <where>
-            <if test="id != null and id > 0">
+            <if test="id != null and id &gt; 0">
                 id = #{id}
             </if>
         </where>
