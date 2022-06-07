@@ -35,23 +35,19 @@
             <if test="requestUrl != null and requestUrl != ''">
                 and request_url = #{requestUrl}
             </if>
+            <if test="createdTime != null and createdTime != ''">
+                and created_time = #{createdTime}
+            </if>
         </where>
     </select>
 
     <!--插入日志-->
     <insert id="insertJournal" parameterType="Journal">
-        insert into blog.t_journal(id, operate_name, success, request_ip, request_class_name, request_method_name,
-        request_url) value (
-        <if test="id != null and id &gt;= 0">
-            id = #{id},
-            operate_name = #{operateName},
-            success = #{success},
-            request_ip = ${requestIp},
-            request_class_name = #{requestClassName},
-            request_method_name = #{requestMethodName},
-            request_url = #{requestUrl}
-        </if>
-        )
+        insert into blog.t_journal(id, operate_name, success, request_ip,
+                                   request_class_name, request_method_name, request_url, created_time)
+            value (#{id}, #{operateName}, #{success}, #{requestIp},
+                   #{requestClassName}, #{requestMethodName}, #{requestUrl}, #{createdTime}
+            )
     </insert>
 
     <!--查询操作名称的种类-->
@@ -94,5 +90,23 @@
         select request_url
         from blog.t_journal
         group by request_url
+    </select>
+
+    <!--查询日志总条数-->
+    <select id="queryJournalCount" resultType="int">
+        select count(*)
+        from blog.t_journal
+    </select>
+
+    <!--查询数据库中是否已经存在该记录-->
+    <select id="queryIfExist" parameterType="Journal" resultType="Journal">
+        select *
+        from blog.t_journal
+        where operate_name = #{operateName}
+          and success = #{success}
+          and request_ip = #{requestIp}
+          and request_class_name = #{requestClassName}
+          and request_method_name = #{requestMethodName}
+          and request_url = #{requestUrl}
     </select>
 </mapper>

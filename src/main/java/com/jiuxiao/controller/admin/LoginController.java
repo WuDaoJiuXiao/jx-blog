@@ -1,5 +1,6 @@
 package com.jiuxiao.controller.admin;
 
+import com.jiuxiao.annotation.MyLogAnnotation;
 import com.jiuxiao.constants.BackendConstants;
 import com.jiuxiao.pojo.User;
 import com.jiuxiao.service.user.UserService;
@@ -31,6 +32,7 @@ public class LoginController {
      * @decription 从 index 跳转到用户登录页
      * @date 2022/6/5 9:58
      */
+    @MyLogAnnotation("跳转页面")
     @RequestMapping
     public String toLogin() {
         return "backend/adminLogin";
@@ -45,6 +47,7 @@ public class LoginController {
      * @decription 用户登录页
      * @date 2022/6/5 9:57
      */
+    @MyLogAnnotation("跳转页面")
     @PostMapping("/login")
     public String login(@RequestParam("username") String username,
                         @RequestParam("password") String password,
@@ -67,6 +70,7 @@ public class LoginController {
      * @decription 用户注销
      * @date 2022/6/5 9:57
      */
+    @MyLogAnnotation("跳转页面")
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.removeAttribute("user");

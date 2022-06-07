@@ -1,9 +1,11 @@
 package com.jiuxiao.controller.admin;
 
+import com.jiuxiao.annotation.MyLogAnnotation;
 import com.jiuxiao.constants.BackendConstants;
 import com.jiuxiao.pojo.Journal;
 import com.jiuxiao.service.journal.JournalService;
 import com.jiuxiao.tools.PageInfoTools;
+import com.jiuxiao.tools.TimeTools;
 import com.jiuxiao.tools.TurnPageTools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,9 +32,10 @@ public class JournalController {
 
     /**
      * @return: java.lang.String
-     * @decription 跳转友链管理页面
+     * @decription 日志管理页
      * @date 2022/6/5 9:57
      */
+    @MyLogAnnotation("查询")
     @RequestMapping("/log")
     public String log(@RequestParam(defaultValue = "1") Integer currentPage, Model model) {
         List<Journal> journalList = journalService.queryAllJournalList();
@@ -62,6 +65,7 @@ public class JournalController {
      * @decription 日志查询结果
      * @date 2022/6/6 17:59
      */
+    @MyLogAnnotation("查询")
     @PostMapping("/queryLog")
     public String queryJournal(@RequestParam("operateName") String operateName,
                                @RequestParam("success") String success,
@@ -82,13 +86,6 @@ public class JournalController {
             return "redirect:/admin/log";
         }
 
-        System.out.println("operateName --> " + operateName);
-        System.out.println("success --> " + success);
-        System.out.println("requestIp --> " + requestIp);
-        System.out.println("requestClassName --> " + requestClassName);
-        System.out.println("requestMethodName --> " + requestMethodName);
-        System.out.println("requestURL --> " + requestURL);
-
         //不是全部为空，有哪个有查询哪个
         journal.setOperateName(operateName);
         journal.setSuccess(success);
@@ -96,6 +93,7 @@ public class JournalController {
         journal.setRequestClassName(requestClassName);
         journal.setRequestMethodName(requestMethodName);
         journal.setRequestUrl(requestURL);
+        journal.setCreatedTime(TimeTools.getCurrentTime());
 
         setAllModelInfo(model);
 
@@ -110,6 +108,7 @@ public class JournalController {
      * @decription 设置下拉框信息
      * @date 2022/6/6 17:59
      */
+    @MyLogAnnotation("设置信息")
     private void setAllModelInfo(Model model) {
         List<String> operateName = journalService.queryOperateName();
         List<String> querySuccess = journalService.querySuccess();

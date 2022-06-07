@@ -80,4 +80,19 @@ public interface JournalMapper {
      * @date 2022/6/6 11:28
      */
     List<String> queryRequestUrl();
+
+    /**
+     * @return: java.lang.Integer
+     * @decription 查询总的日志数量
+     * @date 2022/6/7 11:19
+     */
+    Integer queryJournalCount();
+
+    /**
+     * @param journal
+     * @return: java.util.List<com.jiuxiao.pojo.Journal>
+     * @decription 查询数据库中是否已经存在该记录
+     * @date 2022/6/7 14:47
+     */
+    List<Journal> queryIfExist(Journal journal);
 }

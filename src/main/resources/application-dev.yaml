@@ -6,6 +6,12 @@ spring:
     username: root
     password: "0531"
     type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      max-active: 20
+      max-wait: 60000
+  aop:
+    proxy-target-class: true
 
 server:
   port: 8080

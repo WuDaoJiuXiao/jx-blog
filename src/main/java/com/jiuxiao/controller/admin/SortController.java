@@ -1,5 +1,6 @@
 package com.jiuxiao.controller.admin;
 
+import com.jiuxiao.annotation.MyLogAnnotation;
 import com.jiuxiao.constants.BackendConstants;
 import com.jiuxiao.pojo.Sort;
 import com.jiuxiao.service.sort.SortService;
@@ -35,6 +36,7 @@ public class SortController {
      * @decription 分类管理
      * @date 2022/6/5 9:59
      */
+    @MyLogAnnotation("查询")
     @RequestMapping("/sort")
     public String sort(@RequestParam(defaultValue = "1") Integer currentPage, Model model) {
         List<Sort> sortList = sortService.queryAllSortList();
@@ -54,6 +56,7 @@ public class SortController {
      * @decription 跳转到增加分类
      * @date 2022/6/5 9:59
      */
+    @MyLogAnnotation("跳转页面")
     @GetMapping("/addSort")
     public String toAddPage() {
         return "backend/add/addSort";
@@ -66,6 +69,7 @@ public class SortController {
      * @decription 增加分类
      * @date 2022/6/5 9:59
      */
+    @MyLogAnnotation("新增")
     @PostMapping("/addSort")
     public String addSort(@RequestParam("name") String name, Sort sort) {
         //如果要添加的分类已经在数据库中，则不能添加
@@ -89,6 +93,7 @@ public class SortController {
      * @decription 跳转到修改分类
      * @date 2022/6/5 9:59
      */
+    @MyLogAnnotation("跳转页面")
     @GetMapping("/updateSort/{id}")
     public String toUpdate(@PathVariable("id") Integer id, Model model) {
         Sort sort = sortService.querySortById(id);
@@ -102,6 +107,7 @@ public class SortController {
      * @decription 修改分类页
      * @date 2022/6/5 9:59
      */
+    @MyLogAnnotation("更新")
     @PostMapping("/updateSort")
     public String updateSort(Sort sort) {
         sort.setLastUpdateTime(TimeTools.getCurrentTime());
@@ -115,6 +121,7 @@ public class SortController {
      * @decription 删除分类
      * @date 2022/6/5 9:59
      */
+    @MyLogAnnotation("删除")
     @RequestMapping("/deleteSort/{id}")
     public String deleteSort(@PathVariable("id") Integer id) {
         //删除该条记录后，设置后续的主键 id 从这里开始递增
@@ -130,6 +137,7 @@ public class SortController {
      * @decription 查询结果
      * @date 2022/6/5 10:00
      */
+    @MyLogAnnotation("查询")
     @PostMapping("/querySort")
     public String querySort(@RequestParam("name") String name, Model model) {
         //没有输入名字，就显示全部结果

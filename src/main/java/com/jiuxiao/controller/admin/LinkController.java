@@ -1,5 +1,6 @@
 package com.jiuxiao.controller.admin;
 
+import com.jiuxiao.annotation.MyLogAnnotation;
 import com.jiuxiao.constants.BackendConstants;
 import com.jiuxiao.pojo.Link;
 import com.jiuxiao.service.link.LinkService;
@@ -35,6 +36,7 @@ public class LinkController {
      * @decription 友链管理
      * @date 2022/6/5 15:21
      */
+    @MyLogAnnotation("查询")
     @RequestMapping("/link")
     public String link(@RequestParam(defaultValue = "1") Integer currentPage, Model model) {
         List<Link> linkList = linkService.queryAllLinkList();
@@ -54,6 +56,7 @@ public class LinkController {
      * @decription 跳转到增加友链页
      * @date 2022/6/5 15:24
      */
+    @MyLogAnnotation("跳转页面")
     @GetMapping("/addLink")
     public String toAdd() {
         return "backend/add/addLink";
@@ -65,6 +68,7 @@ public class LinkController {
      * @decription 添加友链
      * @date 2022/6/5 15:46
      */
+    @MyLogAnnotation("新增")
     @PostMapping("/addLink")
     public String addLink(Link link) {
         List<Link> linkList = linkService.queryLinkByName(link.getName());
@@ -85,6 +89,7 @@ public class LinkController {
      * @decription 跳转到修改友链页面
      * @date 2022/6/5 16:44
      */
+    @MyLogAnnotation("跳转页面")
     @GetMapping("/updateLink/{id}")
     public String toUpdate(@PathVariable("id") Integer id, Model model) {
         Link link = linkService.queryLinkById(id);
@@ -98,6 +103,7 @@ public class LinkController {
      * @decription 更新友链
      * @date 2022/6/5 16:47
      */
+    @MyLogAnnotation("更新")
     @PostMapping("/updateLink")
     public String updateLink(Link link) {
         link.setLastUpdateTime(TimeTools.getCurrentTime());
@@ -111,6 +117,7 @@ public class LinkController {
      * @decription 删除友链
      * @date 2022/6/5 17:22
      */
+    @MyLogAnnotation("删除")
     @RequestMapping("/deleteLink/{id}")
     public String deleteLink(@PathVariable("id") Integer id) {
         linkService.deleteLinkById(id);
@@ -125,6 +132,7 @@ public class LinkController {
      * @decription 查询结果
      * @date 2022/6/5 17:22
      */
+    @MyLogAnnotation("查询")
     @PostMapping("/queryLink")
     public String queryTags(@RequestParam("name") String name, Model model) {
         if (name.equals("") || StringUtils.isEmpty(name)) {

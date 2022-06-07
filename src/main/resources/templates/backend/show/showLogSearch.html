@@ -36,6 +36,7 @@
             <th>请求的类名</th>
             <th>请求的方法名</th>
             <th>请求地址</th>
+            <th>时间</th>
         </tr>
         </thead>
 
@@ -48,6 +49,7 @@
             <td th:text="${log.getRequestClassName()}"></td>
             <td th:text="${log.getRequestMethodName()}"></td>
             <td th:text="${log.getRequestUrl()}"></td>
+            <td th:text="${log.getCreatedTime()}"></td>
         </tr>
         </tbody>
     </table>

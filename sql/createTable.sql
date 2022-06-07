@@ -152,6 +152,7 @@ CREATE TABLE `t_journal`
     `request_class_name`  varchar(200) NOT NULL COMMENT '请求的类名',
     `request_method_name` varchar(200) NOT NULL COMMENT '请求的方法名',
     `request_url`         varchar(300) NOT NULL COMMENT '请求的URL',
+    `created_time`        timestamp    NOT NULL COMMENT '日志创建时间',
     PRIMARY KEY (`id`)
 ) COMMENT = '日志表' ENGINE = InnoDB
                   AUTO_INCREMENT = 1

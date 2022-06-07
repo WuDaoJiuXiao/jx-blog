@@ -4,6 +4,7 @@ import com.jiuxiao.mapper.JournalMapper;
 import com.jiuxiao.pojo.Journal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -47,6 +48,7 @@ public class JournalServiceImpl implements JournalService {
      * @date 2022/6/6 11:29
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void insertJournal(Journal journal) {
         journalMapper.insertJournal(journal);
     }
@@ -109,5 +111,26 @@ public class JournalServiceImpl implements JournalService {
     @Override
     public List<String> queryRequestUrl() {
         return journalMapper.queryRequestUrl();
+    }
+
+    /**
+     * @return: java.lang.Integer
+     * @decription 查询总的日志数量
+     * @date 2022/6/7 11:21
+     */
+    @Override
+    public Integer queryJournalCount() {
+        return journalMapper.queryJournalCount();
+    }
+
+    /**
+     * @param journal
+     * @return: java.util.List<com.jiuxiao.pojo.Journal>
+     * @decription 查询数据库中是否已经存在该记录
+     * @date 2022/6/7 14:51
+     */
+    @Override
+    public List<Journal> queryIfExist(Journal journal) {
+        return journalMapper.queryIfExist(journal);
     }
 }

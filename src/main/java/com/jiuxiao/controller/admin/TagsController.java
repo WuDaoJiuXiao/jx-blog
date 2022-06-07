@@ -1,5 +1,6 @@
 package com.jiuxiao.controller.admin;
 
+import com.jiuxiao.annotation.MyLogAnnotation;
 import com.jiuxiao.constants.BackendConstants;
 import com.jiuxiao.pojo.Tags;
 import com.jiuxiao.service.tags.TagsService;
@@ -35,6 +36,7 @@ public class TagsController {
      * @decription 标签管理
      * @date 2022/6/5 10:00
      */
+    @MyLogAnnotation("查询")
     @RequestMapping("/tags")
     public String tags(@RequestParam(defaultValue = "1") Integer currentPage, Model model) {
         List<Tags> tagsList = tagsService.queryAllTagsList();
@@ -54,6 +56,7 @@ public class TagsController {
      * @decription 跳转到增加标签
      * @date 2022/6/5 10:00
      */
+    @MyLogAnnotation("跳转页面")
     @GetMapping("/addTags")
     public String toAddPage() {
         return "backend/add/addTags";
@@ -67,6 +70,7 @@ public class TagsController {
      * @decription 增加标签
      * @date 2022/6/5 10:00
      */
+    @MyLogAnnotation("新增")
     @PostMapping("/addTags")
     public String addTags(@RequestParam("name") String name, Tags tags, Model model) {
         //如果要添加的分类已经在数据库中，则不能添加
@@ -91,6 +95,7 @@ public class TagsController {
      * @decription 跳转到修改标签
      * @date 2022/6/5 10:00
      */
+    @MyLogAnnotation("跳转页面")
     @GetMapping("/updateTags/{id}")
     public String toUpdate(@PathVariable("id") Integer id, Model model) {
         Tags tags = tagsService.queryTagsById(id);
@@ -104,6 +109,7 @@ public class TagsController {
      * @decription 修改标签页
      * @date 2022/6/5 10:00
      */
+    @MyLogAnnotation("更新")
     @PostMapping("/updateTags")
     public String updateTags(Tags tags) {
         tags.setLastUpdateTime(TimeTools.getCurrentTime());
@@ -117,6 +123,7 @@ public class TagsController {
      * @decription 删除标签
      * @date 2022/6/5 10:01
      */
+    @MyLogAnnotation("删除")
     @RequestMapping("/deleteTags/{id}")
     public String deleteTags(@PathVariable("id") Integer id) {
         //删除该条记录后，设置后续的主键 id 从这里开始递增
@@ -132,6 +139,7 @@ public class TagsController {
      * @decription 查询结果
      * @date 2022/6/5 10:01
      */
+    @MyLogAnnotation("查询")
     @PostMapping("/queryTags")
     public String queryTags(@RequestParam("name") String name, Model model) {
         //没有输入名字，就显示全部结果

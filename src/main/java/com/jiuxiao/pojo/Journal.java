@@ -1,5 +1,7 @@
 package com.jiuxiao.pojo;
 
+import java.sql.Timestamp;
+
 /**
  * 日志实体类
  * @Author: 悟道九霄
@@ -29,11 +31,14 @@ public class Journal {
     /** 请求的URL */
     private String requestUrl;
 
+    /** 日志产生时间 */
+    private Timestamp createdTime;
+
     public Journal() {
     }
 
-    public Journal(Integer id, String operateName, String success, String requestIp,
-                   String requestClassName, String requestMethodName, String requestUrl) {
+    public Journal(Integer id, String operateName, String success, String requestIp, String requestClassName,
+                   String requestMethodName, String requestUrl, Timestamp createdTime) {
         this.id = id;
         this.operateName = operateName;
         this.success = success;
@@ -41,6 +46,7 @@ public class Journal {
         this.requestClassName = requestClassName;
         this.requestMethodName = requestMethodName;
         this.requestUrl = requestUrl;
+        this.createdTime = createdTime;
     }
 
     public Integer getId() {
@@ -59,7 +65,7 @@ public class Journal {
         this.operateName = operateName;
     }
 
-    public String isSuccess() {
+    public String getSuccess() {
         return success;
     }
 
@@ -99,16 +105,25 @@ public class Journal {
         this.requestUrl = requestUrl;
     }
 
+    public Timestamp getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(Timestamp createdTime) {
+        this.createdTime = createdTime;
+    }
+
     @Override
     public String toString() {
         return "Journal{" +
                 "id=" + id +
                 ", operateName='" + operateName + '\'' +
-                ", success=" + success +
+                ", success='" + success + '\'' +
                 ", requestIp='" + requestIp + '\'' +
                 ", requestClassName='" + requestClassName + '\'' +
                 ", requestMethodName='" + requestMethodName + '\'' +
                 ", requestUrl='" + requestUrl + '\'' +
+                ", createdTime=" + createdTime +
                 '}';
     }
 }
