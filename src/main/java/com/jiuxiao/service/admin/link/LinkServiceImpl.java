@@ -1,4 +1,4 @@
-package com.jiuxiao.service.link;
+package com.jiuxiao.service.admin.link;
 
 import com.jiuxiao.mapper.LinkMapper;
 import com.jiuxiao.pojo.Link;

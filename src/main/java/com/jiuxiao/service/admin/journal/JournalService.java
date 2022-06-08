@@ -1,4 +1,4 @@
-package com.jiuxiao.service.journal;
+package com.jiuxiao.service.admin.journal;
 
 import com.jiuxiao.pojo.Journal;
 import org.springframework.stereotype.Service;

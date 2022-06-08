@@ -27,10 +27,6 @@ CREATE TABLE `t_article`
     `open_comment`       int(1)       NOT NULL DEFAULT '1' COMMENT '是否开启评论',
     `open_copyright`     int(1)       NOT NULL DEFAULT '1' COMMENT '是否开启版权信息',
     `type`               varchar(200) NOT NULL COMMENT '文章类型',
-    `author_id`          int(32)      NOT NULL COMMENT '文章作者id',
-    `sort_id`            int(32)      NOT NULL COMMENT '文章分类id',
-    `tags_id`            int(32)      NOT NULL COMMENT '文章标签id',
-    `archive_id`         int(32)      NOT NULL COMMENT '文章归档id',
     PRIMARY KEY (`id`)
 ) COMMENT = '文章表' ENGINE = InnoDB
                   AUTO_INCREMENT = 1
@@ -157,47 +153,6 @@ CREATE TABLE `t_journal`
 ) COMMENT = '日志表' ENGINE = InnoDB
                   AUTO_INCREMENT = 1
                   DEFAULT CHARSET = utf8;
-
-
--- ------------------------------------
--- Table structure for `t_draft`
--- ------------------------------------
-DROP TABLE IF EXISTS `t_draft`;
-CREATE TABLE `t_draft`
-(
-    `id`               int(32)   NOT NULL COMMENT '草稿id',
-    `deleted`          int(1)    NOT NULL COMMENT '是否删除',
-    `last_update_time` timestamp NOT NULL COMMENT '上次修改时间',
-    `article_id`       int(32)   NOT NULL COMMENT '文章id',
-    PRIMARY KEY (`id`)
-) COMMENT = '草稿表' ENGINE = InnoDB
-                  AUTO_INCREMENT = 1
-                  DEFAULT CHARSET = utf8;
-
-
--- ------------------------------------
--- Set foreign keys for partial tables
--- ------------------------------------
-ALTER TABLE `t_article`
-    ADD FOREIGN KEY (`author_id`) REFERENCES `t_user` (`id`);
-ALTER TABLE `t_article`
-    ADD FOREIGN KEY (`sort_id`) REFERENCES `t_sort` (`id`);
-ALTER TABLE `t_article`
-    ADD FOREIGN KEY (`tags_id`) REFERENCES `t_tags` (`id`);
-ALTER TABLE `t_article`
-    ADD FOREIGN KEY (`archive_id`) REFERENCES `t_archive` (`id`);
-
-ALTER TABLE `t_comment`
-    ADD FOREIGN KEY (`author_id`) REFERENCES `t_user` (`id`);
-ALTER TABLE `t_comment`
-    ADD FOREIGN KEY (`article_id`) REFERENCES `t_article` (`id`);
-
-ALTER TABLE `t_archive`
-    ADD FOREIGN KEY (`article_id`) REFERENCES `t_article` (`id`);
-
-ALTER TABLE `t_draft`
-    ADD FOREIGN KEY (`article_id`) REFERENCES `t_article` (`id`);
-
 
 -- ----------------------------------------
 -- Restore foreign key constraints

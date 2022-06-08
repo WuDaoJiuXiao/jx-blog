@@ -55,25 +55,12 @@ public class Article {
     /** 文章类型 */
     private String type;
 
-    /** 文章作者的 ID */
-    private Integer authorId;
-
-    /** 文章分类的 ID */
-    private Integer sortId;
-
-    /** 文章标签的 ID */
-    private Integer tagsId;
-
-    /** 文章对应的归档 ID */
-    private Integer archiveId;
-
     public Article() {
     }
 
     public Article(Integer id, String title, String headImageAddress, String content, Timestamp createdTime,
                    Timestamp lastUpdateTime, Integer commentCount, Integer readCount, String authorName,
-                   String copyright, String tags, String sort, boolean openComment, boolean openCopyright,
-                   String type, Integer authorId, Integer sortId, Integer tagsId, Integer archiveId) {
+                   String copyright, String tags, String sort, boolean openComment, boolean openCopyright, String type) {
         this.id = id;
         this.title = title;
         this.headImageAddress = headImageAddress;
@@ -89,10 +76,6 @@ public class Article {
         this.openComment = openComment;
         this.openCopyright = openCopyright;
         this.type = type;
-        this.authorId = authorId;
-        this.sortId = sortId;
-        this.tagsId = tagsId;
-        this.archiveId = archiveId;
     }
 
     public Integer getId() {
@@ -215,38 +198,6 @@ public class Article {
         this.type = type;
     }
 
-    public Integer getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(Integer authorId) {
-        this.authorId = authorId;
-    }
-
-    public Integer getSortId() {
-        return sortId;
-    }
-
-    public void setSortId(Integer sortId) {
-        this.sortId = sortId;
-    }
-
-    public Integer getTagsId() {
-        return tagsId;
-    }
-
-    public void setTagsId(Integer tagsId) {
-        this.tagsId = tagsId;
-    }
-
-    public Integer getArchiveId() {
-        return archiveId;
-    }
-
-    public void setArchiveId(Integer archiveId) {
-        this.archiveId = archiveId;
-    }
-
     @Override
     public String toString() {
         return "Article{" +
@@ -265,10 +216,6 @@ public class Article {
                 ", openComment=" + openComment +
                 ", openCopyright=" + openCopyright +
                 ", type='" + type + '\'' +
-                ", authorId=" + authorId +
-                ", sortId=" + sortId +
-                ", tagsId=" + tagsId +
-                ", archiveId=" + archiveId +
                 '}';
     }
 }

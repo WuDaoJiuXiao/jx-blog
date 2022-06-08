@@ -1,4 +1,4 @@
-package com.jiuxiao.service.link;
+package com.jiuxiao.service.admin.link;
 
 import com.jiuxiao.pojo.Link;
 import org.springframework.stereotype.Service;

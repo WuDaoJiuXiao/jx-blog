@@ -15,92 +15,121 @@
 <div th:insert="~{/backend/headers::adminHeader('admin/blog')}"></div>
 
 <!--中间内容-->
-<div class="ui container animate__animated animate__fadeIn" style="width: 1500px">
-    <div class="ui segment container-tb-margin container-radius container-shadow">
-        <!--根据标题或者标签，搜索文章-->
-        <h3 class="ui blue header info-title-margin">搜索文章</h3>
-        <div class="ui segment secondary container-radius container-shadow">
-            <form class="ui form" action="#" method="post">
-                <div class="four fields">
-                    <!--标题输入框-->
-                    <div class="field">
-                        <div class="ui left icon input">
-                            <i class="align left icon"></i>
-                            <input type="text" name="blogTitle" placeholder="博客标题">
-                        </div>
-                    </div>
-                    <!--标签选择框-->
-                    <div class="field">
-                        <div class="ui fluid selection dropdown">
-                            <input type="hidden" name="tags">
-                            <i class="tag icon grey"></i>
-                            <i class="dropdown icon"></i>
-                            <div class="default text">博客标签</div>
-                            <div class="menu">
-                                <div class="item" data-value="1">开发日志</div>
-                                <div class="item" data-value="2">名人轶事</div>
-                                <div class="item" data-value="3">梦与星光</div>
+<div class="ui segment centered animate__animated animate__fadeIn" style="width: 100%">
+    <h3 class="ui blue header">文章搜索结果</h3>
+    <!--根据标题或者标签，搜索文章-->
+    <div class="ui segment secondary container-radius container-shadow">
+        <div class="ui grid">
+            <div class="fourteen wide column">
+                <form class="ui form" th:action="@{/admin/queryArticle}" method="post">
+                    <div class="four fields">
+                        <!--标题输入框-->
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="align left icon"></i>
+                                <input type="text" name="title" placeholder="博客标题">
                             </div>
                         </div>
-                    </div>
-                    <!--分类选择框-->
-                    <div class="field">
-                        <div class="ui fluid selection dropdown">
-                            <input type="hidden" name="sort">
-                            <i class="sort icon grey"></i>
-                            <i class="dropdown icon"></i>
-                            <div class="default text">博客分类</div>
-                            <div class="menu">
-                                <div class="item" data-value="1">旅游</div>
-                                <div class="item" data-value="2">摄影</div>
-                                <div class="item" data-value="3">日常见闻</div>
+                        <!--标签选择框-->
+                        <div class="field">
+                            <div class="ui fluid selection dropdown">
+                                <input type="hidden" name="tags">
+                                <i class="tags icon"></i>
+                                <i class="dropdown icon"></i>
+                                <div class="default text">博客标签</div>
+                                <div class="menu">
+                                    <div class="item"
+                                         th:each="tag, tagStat : ${tagsList}"
+                                         th:value="${tagStat.index}"
+                                         th:text="${tag.getName()}">>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <!--分类选择框-->
+                        <div class="field">
+                            <div class="ui fluid selection dropdown">
+                                <input type="hidden" name="sort">
+                                <i class="sort icon grey"></i>
+                                <i class="dropdown icon"></i>
+                                <div class="default text">博客分类</div>
+                                <div class="menu">
+                                    <div class="item"
+                                         th:each="sort, sortStat : ${sortList}"
+                                         th:value="${sortStat.index}"
+                                         th:text="${sort.getName()}">>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--类型选择框-->
+                        <div class="field">
+                            <div class="ui fluid selection dropdown">
+                                <input type="hidden" name="type">
+                                <i class="copyright icon grey"></i>
+                                <i class="dropdown icon"></i>
+                                <div class="default text">博客类型</div>
+                                <div class="menu">
+                                    <div class="item"
+                                         th:each="type, typeStat : ${typeList}"
+                                         th:value="${typeStat.index}"
+                                         th:text="${type}">>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--搜索和重置按钮-->
+                        <div class="field">
+                            <button class="ui blue submit button"><i class="search icon"></i>搜索</button>
+                        </div>
                     </div>
-                    <!--搜索和重置按钮-->
-                    <div class="field">
-                        <button class="ui blue button"><i class="search icon"></i>搜索</button>
-                        <button class="ui grey button"><i class="retweet icon"></i>重置</button>
-                        <button class="ui button"><i class="columns icon"></i>全部结果</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
+            <div class="two wide column right aligned">
+                <a class="ui grey button" th:href="@{/admin/blog}"><i class="retweet icon"></i>重置</a>
+            </div>
         </div>
+    </div>
 
-        <!--博客列表展示-->
-        <h3 class="ui blue header info-title-margin">博客列表</h3>
-        <div class="ui segment secondary container-radius container-shadow">
-            <table class="ui striped table center aligned">
-                <thead>
-                <tr>
-                    <th>编号</th>
-                    <th>文章名称</th>
-                    <th>作者</th>
-                    <th>文章标签</th>
-                    <th>文章分类</th>
-                    <th>文章类型</th>
-                    <th>发布时间</th>
-                    <th>上次修改时间</th>
-                    <th>评论数</th>
-                    <th>浏览量</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
+    <!--博客列表展示-->
+    <h3 class="ui blue header info-title-margin">文章列表</h3>
+    <div class="ui segment secondary container-radius container-shadow">
+        <table class="ui striped table center aligned">
+            <thead>
+            <tr>
+                <th>编号</th>
+                <th>文章名称</th>
+                <th>作者</th>
+                <th>文章标签</th>
+                <th>文章分类</th>
+                <th>文章类型</th>
+                <th>发布时间</th>
+                <th>上次修改时间</th>
+                <th>评论数</th>
+                <th>浏览量</th>
+                <th>操作</th>
+            </tr>
+            </thead>
 
-
-                <tbody>
-                <tr>
-                    <td>
-                        <a href="#" class="ui mini green button">修改</a>
-                        <a href="#" class="ui mini red button">删除</a>
-                    </td>
-                </tr>
-                </tbody>
-
-
-            </table>
-        </div>
-
+            <tbody>
+            <tr th:each="art : ${articleList}">
+                <td th:text="${art.getId()}"></td>
+                <td th:text="${art.getTitle()}"></td>
+                <td th:text="${art.getAuthorName()}"></td>
+                <td th:text="${art.getTags()}"></td>
+                <td th:text="${art.getSort()}"></td>
+                <td th:text="${art.getType()}"></td>
+                <td th:text="${art.getCreatedTime()}"></td>
+                <td th:text="${art.getLastUpdateTime()}"></td>
+                <td th:text="${art.getCommentCount()}"></td>
+                <td th:text="${art.getReadCount()}"></td>
+                <td>
+                    <a th:href="@{/admin/updateArticle/{id}(id=${article.getId()})}" class="ui mini green button">修改</a>
+                    <a th:href="@{/admin/deleteArticle/{id}(id=${article.getId()})}" class="ui mini red button">删除</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
@@ -108,7 +137,6 @@
     //标签选择下拉框激活
     $('.ui.dropdown').dropdown();
 </script>
-
 
 </body>
 </html>

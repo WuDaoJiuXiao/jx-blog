@@ -61,7 +61,6 @@
             <tr>
                 <th>分类编号</th>
                 <th>分类名称</th>
-                <th>被引用次数</th>
                 <th>创建时间</th>
                 <th>上次修改时间</th>
                 <th>操作</th>
@@ -72,7 +71,6 @@
             <tr th:each="sort:${pageInfo.getDataList()}">
                 <td th:text="${sort.getId()}"></td>
                 <td th:text="${sort.getName()}"></td>
-                <td th:text="${sort.getRefCount()}"></td>
                 <td th:text="${sort.getCreatedTime()}"></td>
                 <td th:text="${sort.getLastUpdateTime()}"></td>
                 <td>

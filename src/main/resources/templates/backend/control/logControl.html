@@ -15,7 +15,7 @@
 <div th:insert="~{/backend/headers::adminHeader('admin/log')}"></div>
 
 <!--中间内容-->
-<div class="ui segment segment-tb-margin centered animate__animated animate__fadeIn" style="width: 100%">
+<div class="ui segment centered animate__animated animate__fadeIn" style="width: 100%">
     <div class="ui three column grid">
         <div class="column">
             <h3 class="ui blue header">日志管理</h3>
@@ -57,7 +57,7 @@
                                 <div class="item"
                                      th:each="succ, succStat :${querySuccess}"
                                      th:value="${succStat.index}"
-                                     th:text="${succStat.index == 0 ? '失败' : '成功'}"></div>
+                                     th:text="${succ}"></div>
                             </div>
                         </div>
                     </div>

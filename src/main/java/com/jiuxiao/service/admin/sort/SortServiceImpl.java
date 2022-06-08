@@ -1,4 +1,4 @@
-package com.jiuxiao.service.sort;
+package com.jiuxiao.service.admin.sort;
 
 import com.jiuxiao.mapper.SortMapper;
 import com.jiuxiao.pojo.Sort;

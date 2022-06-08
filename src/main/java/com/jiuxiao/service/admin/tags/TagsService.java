@@ -1,4 +1,4 @@
-package com.jiuxiao.service.tags;
+package com.jiuxiao.service.admin.tags;
 
 import com.jiuxiao.pojo.Tags;
 import org.springframework.stereotype.Service;

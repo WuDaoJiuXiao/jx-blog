@@ -1,21 +1,18 @@
-package com.jiuxiao.mapper;
+package com.jiuxiao.service.admin.article;
 
 import com.jiuxiao.pojo.Article;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
- * 文章Mapper层接口
- * @author: WuDaoJiuXiao
- * @Date: 2022/06/01 09:07
- * @since: 1.0.0
+ * 博文管理业务层接口
+ * @Author: 悟道九霄
+ * @Date: 2022年06月07日 22:01
+ * @Version: 1.0.0
  */
-@Repository
-@Mapper
-public interface ArticleMapper {
+@Service
+public interface ArticleService {
 
     /**
      * @return: java.util.List<com.jiuxiao.pojo.Article>
@@ -33,10 +30,7 @@ public interface ArticleMapper {
      * @decription 根据标题、分类、标签、类型，未定条件查询文章
      * @date 2022/6/7 21:39
      */
-    List<Article> queryArticleByUncertainCondition(@Param("title") String title,
-                                                   @Param("tags") String tags,
-                                                   @Param("sort") String sort,
-                                                   @Param("type") String type);
+    List<Article> queryArticleByUncertainCondition(String title, String tags, String sort, String type);
 
     /**
      * @param id
@@ -44,7 +38,7 @@ public interface ArticleMapper {
      * @decription 通过 ID 查询文章
      * @date 2022/6/7 21:22
      */
-    Article queryArticleById(@Param("id") Integer id);
+    Article queryArticleById(Integer id);
 
     /**
      * @param id
@@ -52,7 +46,7 @@ public interface ArticleMapper {
      * @decription 通过 ID 删除文章
      * @date 2022/6/7 21:24
      */
-    void deleteArticleById(@Param("id") Integer id);
+    void deleteArticleById(Integer id);
 
     /**
      * @return: java.lang.Integer

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>博客发布</title>
+    <title>文章修改</title>
     <script th:src="@{/js/jquery-3.5.1.js}"></script>
     <script th:src="@{/semanticUi/semantic.js}"></script>
     <script th:src="@{/lib/editorMd/editormd.min.js}"></script>
@@ -14,12 +14,12 @@
 <body>
 
 <!--导航栏-->
-<div th:insert="~{/backend/headers::adminHeader('admin/publish')}"></div>
+<div th:insert="~{/backend/headers::adminHeader('admin/updateArticle')}"></div>
 
 <!--中间内容-->
 <div class="ui container animate__animated animate__fadeIn" style="width: 1300px">
     <div class="ui segment secondary container-tb-margin container-radius container-shadow">
-        <form th:action="@{/admin/publish}" class="ui form" method="post">
+        <form th:action="@{/admin/updateArticle}" class="ui form" method="post">
             <div class="ui grid">
                 <div class="fourteen wide column">
                     <h3 class="ui blue header">编辑博客</h3>
@@ -34,6 +34,7 @@
             <!--信息提示-->
             <div class="ui error message"></div>
 
+            <input type="hidden" name="id" th:value="${article.getId()}">
             <!--文章标题-->
             <div class="field required">
                 <div class="ui left labeled input">
@@ -42,7 +43,7 @@
                         <input type="hidden" name="type">
                         <i class="thumbtack icon grey"></i>
                         <i class="dropdown icon"></i>
-                        <div class="default text required">博客类型</div>
+                        <div class="default text required" th:text="${article.getType()}"></div>
                         <div class="menu">
                             <div class="item"
                                  th:each="type,typeStat:${typeList}"
@@ -53,7 +54,7 @@
                     <!--文章标题-->
                     <div class="ui left icon input">
                         <i class="book icon"></i>
-                        <input type="text" name="title" placeholder="文章标题...">
+                        <input type="text" name="title" th:value="${article.getTitle()}">
                     </div>
                 </div>
             </div>
@@ -61,7 +62,7 @@
             <!--文章内容:替换为 editor.md-->
             <div class="field required">
                 <div id="md-content" style="z-index: 5">
-                    <textarea name="content" placeholder="博客内容..."></textarea>
+                    <textarea name="content" th:text="${article.getContent()}"></textarea>
                 </div>
             </div>
 
@@ -71,7 +72,7 @@
                     <label class="ui teal compact basic label"><i class="picture icon"></i>首图地址</label>
                     <div class="ui left icon input">
                         <i class="linkify icon"></i>
-                        <input type="text" name="headImageAddress" placeholder="博客首图引用地址">
+                        <input type="text" name="headImageAddress" th:value="${article.getHeadImageAddress()}">
                     </div>
                 </div>
             </div>
@@ -85,7 +86,7 @@
                         <div class="ui fluid multiple search selection dropdown">
                             <input type="hidden" name="tags">
                             <i class="dropdown icon"></i>
-                            <div class="default text">选择标签</div>
+                            <div class="default text" th:text="${article.getTags()}"></div>
                             <div class="menu">
                                 <div class="item"
                                      th:each="tags,tagsStat:${tagsList}"
@@ -102,7 +103,7 @@
                         <div class="ui fluid multiple search selection dropdown">
                             <input type="hidden" name="sort">
                             <i class="dropdown icon"></i>
-                            <div class="default text">选择分类</div>
+                            <div class="default text" th:text="${article.getSort()}"></div>
                             <div class="menu">
                                 <div class="item"
                                      th:each="sort,sortStat:${sortList}"
@@ -113,34 +114,31 @@
                     </div>
                 </div>
 
-                <!--是否开启推荐、转载声明、评论等功能-->
+                <!--是否开启版权、评论等功能-->
                 <div class="inline fields" style="margin-bottom: 0">
                     <!--版权信息-->
                     <div class="field">
                         <div class="ui checkbox">
-                            <input type="checkbox" id="openCopyright" name="openCopyright" class="hidden"
-                                   checked>
+                            <input type="checkbox" id="openCopyright" name="openCopyright" class="hidden">
                             <label for="openCopyright">开启版权信息</label>
                         </div>
                     </div>
                     <!--评论-->
                     <div class="field">
                         <div class="ui checkbox">
-                            <input type="checkbox" id="openComment" name="openComment" class="hidden" checked>
+                            <input type="checkbox" id="openComment" name="openComment" class="hidden">
                             <label for="openComment">开启评论</label>
                         </div>
                     </div>
                     <!--返回、保存、发布按钮-->
                     <div class="field">
-                        <button class="ui button submit blue right aligned"><i class="paper plane icon"></i>发布</button>
+                        <button class="ui button submit blue right aligned"><i class="save icon"></i>保存修改</button>
                     </div>
                 </div>
             </div>
         </form>
     </div>
 </div>
-
-<br>
 
 <script>
     //初始化 editor.md
@@ -149,7 +147,7 @@
     $(function () {
         contentEditor = editormd("md-content", {
             width: "100%",
-            height: 640,
+            height: 650,
             syncScrolling: "single",
             path: "/lib/editorMd/lib/"
         });

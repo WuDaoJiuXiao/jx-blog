@@ -1,4 +1,4 @@
-package com.jiuxiao.service.tags;
+package com.jiuxiao.service.admin.tags;
 
 import com.jiuxiao.mapper.TagsMapper;
 import com.jiuxiao.pojo.Tags;

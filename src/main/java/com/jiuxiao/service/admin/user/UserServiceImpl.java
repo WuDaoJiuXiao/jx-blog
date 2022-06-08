@@ -1,4 +1,4 @@
-package com.jiuxiao.service.user;
+package com.jiuxiao.service.admin.user;
 
 import com.jiuxiao.mapper.UserMapper;
 import com.jiuxiao.pojo.User;

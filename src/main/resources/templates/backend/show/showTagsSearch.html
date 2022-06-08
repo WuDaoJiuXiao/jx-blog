@@ -52,7 +52,6 @@
                 <tr>
                     <th>标签编号</th>
                     <th>标签名称</th>
-                    <th>被引用次数</th>
                     <th>创建时间</th>
                     <th>上次修改时间</th>
                     <th>操作</th>
@@ -63,7 +62,6 @@
                 <tr th:each="tags:${queryTags}">
                     <td th:text="${tags.getId()}"></td>
                     <td th:text="${tags.getName()}"></td>
-                    <td th:text="${tags.getRefCount()}"></td>
                     <td th:text="${tags.getCreatedTime()}"></td>
                     <td th:text="${tags.getLastUpdateTime()}"></td>
                     <td>

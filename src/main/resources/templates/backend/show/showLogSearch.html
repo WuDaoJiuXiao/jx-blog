@@ -44,7 +44,7 @@
         <tr th:each="log:${logList}">
             <td th:text="${log.getId()}"></td>
             <td th:text="${log.getOperateName()}"></td>
-            <td th:text="${log.isSuccess()}"></td>
+            <td th:text="${log.getSuccess()}"></td>
             <td th:text="${log.getRequestIp()}"></td>
             <td th:text="${log.getRequestClassName()}"></td>
             <td th:text="${log.getRequestMethodName()}"></td>

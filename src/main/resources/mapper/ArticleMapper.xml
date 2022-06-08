@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiuxiao.mapper.ArticleMapper">
+    <!--查询所有的文章列表-->
+    <select id="queryAllArticleList" resultType="Article">
+        select *
+        from blog.t_article
+    </select>
+
+    <!--根据标题、分类、标签，未定条件查询文章-->
+    <select id="queryArticleByUncertainCondition" resultType="Article">
+        select * from blog.t_article
+        <where>
+            <if test="title != null and title != ''">
+                title like concat('%', #{title}, '%')
+            </if>
+            <if test="tags != null and tags != ''">
+                and tags = #{tags}
+            </if>
+            <if test="sort != null and sort != ''">
+                and sort = #{sort}
+            </if>
+            <if test="type != null and type != ''">
+                and type = #{type}
+            </if>
+        </where>
+    </select>
+
+    <!--通过 ID 查询文章-->
+    <select id="queryArticleById" resultType="Article" parameterType="int">
+        select *
+        from blog.t_article
+        <where>
+            <if test="id != null and id &gt; 0">
+                id = #{id}
+            </if>
+        </where>
+    </select>
+
+    <!--通过 ID 删除文章-->
+    <delete id="deleteArticleById" parameterType="int">
+        delete from blog.t_article
+        <where>
+            <if test="id != null and id &gt; 0">
+                id = #{id}
+            </if>
+        </where>
+    </delete>
+
+    <!--查询文章总数量-->
+    <select id="queryArticleCount" resultType="int">
+        select count(*)
+        from blog.t_article
+    </select>
+
+    <!--设置主键由此递增-->
+    <update id="increaseArticleFromThis">
+        alter table blog.t_article
+            drop id;
+        alter table blog.t_article
+            add id int(32) not null primary key auto_increment first;
+    </update>
+
+    <!--查询所有的文章标签-->
+    <select id="queryTags" resultType="string">
+        select tags
+        from blog.t_article
+        group by tags
+    </select>
+
+    <!--查询所有的文章分类-->
+    <select id="querySort" resultType="string">
+        select sort
+        from blog.t_article
+        group by sort
+    </select>
+
+    <!--查询所有的文章类型-->
+    <select id="queryType" resultType="string">
+        select type
+        from blog.t_article
+        group by type
+    </select>
+
+    <!--新增博客-->
+    <insert id="insertArticle" parameterType="Article">
+        insert into blog.t_article(id, title, head_image_address, content, created_time, last_update_time,
+        comment_count, read_count, author_name, copyright, tags, sort, open_comment,
+        open_copyright, type)
+        value (
+        <if test="id != null and id &gt; 0">
+            #{id}, #{title}, #{headImageAddress}, #{content}, #{createdTime}, #{lastUpdateTime},
+            #{commentCount}, #{readCount}, #{authorName}, #{copyright}, #{tags}, #{sort}, #{openComment},
+            #{openCopyright}, #{type}
+        </if>
+        )
+    </insert>
+
+    <!--根据 ID 修改博客-->
+    <update id="updateArticleById" parameterType="Article">
+        update blog.t_article
+        <set>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="headImageAddress != null and headImageAddress != ''">
+                head_image_address = #{headImageAddress},
+            </if>
+            <if test="content != null and content != ''">
+                content = #{content},
+            </if>
+            <if test="createdTime != null">
+                created_time = #{createdTime},
+            </if>
+            <if test="lastUpdateTime != null">
+                last_update_time = #{lastUpdateTime},
+            </if>
+            <if test="commentCount != null and commentCount &gt;= 0">
+                comment_count = #{commentCount},
+            </if>
+            <if test="readCount != null and readCount &gt;= 0">
+                read_count = #{readCount},
+            </if>
+            <if test="authorName != null and authorName != ''">
+                author_name = #{authorName},
+            </if>
+            <if test="copyright != null and copyright != ''">
+                copyright = #{copyright},
+            </if>
+            <if test="tags != null and tags != ''">
+                tags = #{tags},
+            </if>
+            <if test="sort != null and sort != ''">
+                sort = #{sort},
+            </if>
+            <if test="openComment != null and openComment != ''">
+                open_comment = #{openComment},
+            </if>
+            <if test="openCopyright != null and openCopyright != ''">
+                open_copyright = #{openCopyright},
+            </if>
+            <if test="type != null and type != ''">
+                type = #{type}
+            </if>
+            <where>
+                <if test="id != null and id &gt; 0">
+                    id = #{id}
+                </if>
+            </where>
+        </set>
+    </update>
+</mapper>
