@@ -127,7 +127,11 @@
 </div>
 
 <!--右下角悬浮工具栏-->
-<div th:insert="~{/sm-model/botton-model::bottomTools}" class="tools-fixed"></div>
+<div class="ui vertical icon buttons animate__animated animate__fadeIn tools-fixed">
+    <!--控制跳到页面顶部和底部-->
+    <a href="#top-nav" class="ui blue button">顶部 👆</a>
+    <a href="#foot-nav" class="ui blue button">底部 👇</a>
+</div>
 
 <!--footer信息栏-->
 <div th:insert="~{/commons/footer::blogFooter}"></div>

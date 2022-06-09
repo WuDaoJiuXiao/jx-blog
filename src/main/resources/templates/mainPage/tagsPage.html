@@ -19,18 +19,83 @@
 <div class="m-container m-padding-large animate__animated animate__fadeIn">
     <div class="container">
         <!--标题信息-->
-        <div th:insert="~{/sm-model/tags-model/tagsTitle::tagsTitle}"></div>
+        <div class="ui top attached segment m-div-shadow m-div-radius">
+            <div class="ui middle aligned two column grid">
+                <div class="column">
+                    <h4 class="ui teal header">标签</h4>
+                </div>
+                <div class="right aligned column">
+                    共 <h3 class="ui teal header m-inline-block">34</h3> 个
+                </div>
+            </div>
+        </div>
+
         <!--标签列表-->
-        <div th:insert="~{/sm-model/tags-model/tagsInfo::tagsInfo}"></div>
+        <div class="ui attached segment m-div-radius m-div-shadow m-padding-bottom">
+            <div class="ui labeled button m-class-rb-margin">
+                <div class="ui basic right pointing label">31</div>
+                <a href="#" class="ui basic button">梦与星光的海上</a>
+            </div>
+            <div class="ui labeled button m-class-rb-margin">
+                <div class="ui basic right pointing label">9</div>
+                <a href="#" class="ui basic button">求职经历</a>
+            </div>
+            <div class="ui labeled button m-class-rb-margin">
+                <div class="ui basic right pointing label">55</div>
+                <a href="#" class="ui basic button">SpringMVC</a>
+            </div>
+            <div class="ui labeled button m-class-rb-margin">
+                <div class="ui basic orange right pointing label">14</div>
+                <a href="#" class="ui basic orange button">偶像生涯</a>
+            </div>
+            <div class="ui labeled button m-class-rb-margin">
+                <div class="ui basic right pointing label">2</div>
+                <a href="#" class="ui basic button">名人传记</a>
+            </div>
+            <div class="ui labeled button m-class-rb-margin">
+                <div class="ui basic right pointing label">54</div>
+                <a href="#" class="ui basic button">Python 笔记</a>
+            </div>
+            <div class="ui labeled button m-class-rb-margin">
+                <div class="ui basic right pointing label">20</div>
+                <a href="#" class="ui basic button">唯我独尊</a>
+            </div>
+        </div>
+
         <!--博客列表-->
-        <div th:insert="~{/sm-model/tags-model/tagsBlogList::tagsBlogList}"></div>
+        <div class="ui attached segment m-div-radius m-div-shadow m-padding-bottom">
+            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
+            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
+            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
+            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
+            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
+            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
+            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
+            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
+            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
+        </div>
+
         <!--翻页按钮-->
-        <div th:insert="~{/sm-model/tags-model/tagsTurn::tagsTurn}"></div>
+        <div id="pg" class="ui segment m-div-shadow m-div-radius m-padding-bottom">
+            <div class="ui middle aligned two column grid">
+                <div class="column">
+                    <a href="#" class="ui teal basic button mini m-div-shadow">上一页</a>
+                </div>
+                <div class="right aligned column">
+                    <a href="#" class="ui teal basic button mini m-div-shadow">下一页</a>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
 <!--右下角悬浮工具栏-->
-<div th:insert="~{/sm-model/botton-model::bottomTools}" class="tools-fixed"></div>
+<div class="ui vertical icon buttons animate__animated animate__fadeIn tools-fixed">
+    <!--控制跳到页面顶部和底部-->
+    <a href="#top-nav" class="ui blue button">顶部 👆</a>
+    <a href="#foot-nav" class="ui blue button">底部 👇</a>
+</div>
 
 <!--footer信息栏-->
 <div th:insert="~{/commons/footer::blogFooter}"></div>

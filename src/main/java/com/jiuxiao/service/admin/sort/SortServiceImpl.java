@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 分类业务层接口实现类
@@ -103,5 +104,15 @@ public class SortServiceImpl implements SortService {
     @Transactional(rollbackFor = Exception.class)
     public void increaseSortFromThis() {
         sortMapper.increaseSortFromThis();
+    }
+
+    /**
+     * @return: java.util.List<com.jiuxiao.pojo.Sort>
+     * @decription 将分类进行降序排列
+     * @date 2022/6/9 10:12
+     */
+    @Override
+    public List<Map<Object, Object>> DescendingSort() {
+        return sortMapper.DescendingSort();
     }
 }

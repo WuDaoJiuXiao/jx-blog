@@ -19,18 +19,82 @@
 <div class="m-container m-padding-large animate__animated animate__fadeIn">
     <div class="container">
         <!--标题信息-->
-        <div th:insert="~{/sm-model/sort-model/sortTitle::sortTitle}"></div>
+        <div class="ui top attached segment m-div-shadow m-div-radius">
+            <div class="ui middle aligned two column grid">
+                <div class="column">
+                    <h4 class="ui teal header">分类</h4>
+                </div>
+                <div class="right aligned column">
+                    共 <h3 class="ui teal header m-inline-block">55</h3> 个
+                </div>
+            </div>
+        </div>
+
         <!--分类列表-->
-        <div th:insert="~{/sm-model/sort-model/sortInfo::sortInfo}"></div>
+        <div class="ui attached segment m-div-radius m-div-shadow m-padding-bottom">
+            <div class="ui labeled button m-class-rb-margin">
+                <a href="#" class="ui basic button">Python</a>
+                <div class="ui basic left pointing label">18</div>
+            </div>
+            <div class="ui labeled button m-class-rb-margin">
+                <a href="#" class="ui basic button">C 语言</a>
+                <div class="ui basic left pointing label">1</div>
+            </div>
+            <div class="ui labeled button m-class-rb-margin">
+                <a href="#" class="ui basic button">C++</a>
+                <div class="ui basic left pointing label">5</div>
+            </div>
+            <div class="ui labeled button m-class-rb-margin">
+                <a href="#" class="ui green basic button">SpringBoot</a>
+                <div class="ui basic green left pointing label">23</div>
+            </div>
+            <div class="ui labeled button m-class-rb-margin">
+                <a href="#" class="ui basic button">SpringMVC</a>
+                <div class="ui basic left pointing label">8</div>
+            </div>
+            <div class="ui labeled button m-class-rb-margin">
+                <a href="#" class="ui basic button">杂谈</a>
+                <div class="ui basic left pointing label">8</div>
+            </div>
+            <div class="ui labeled button m-class-rb-margin">
+                <a href="#" class="ui basic button">旅游</a>
+                <div class="ui basic left pointing label">9</div>
+            </div>
+
+        </div>
+
         <!--博客列表-->
-        <div th:insert="~{/sm-model/sort-model/sortBlogList::sortBlogList}"></div>
+        <div class="ui attached segment m-div-radius m-div-shadow m-padding-bottom" >
+            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
+            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
+            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
+            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
+            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
+            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
+            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
+            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
+            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
+        </div>
+
         <!--翻页按钮-->
-        <div th:insert="~{/sm-model/sort-model/sortTurn::sortTurn}"></div>
+        <div class="ui middle aligned two column grid">
+            <div class="column">
+                <a href="#" class="ui teal basic button mini m-div-shadow">上一页</a>
+            </div>
+            <div class="right aligned column">
+                <a href="#" class="ui teal basic button mini m-div-shadow">下一页</a>
+            </div>
+        </div>
+
     </div>
 </div>
 
 <!--右下角悬浮工具栏-->
-<div th:insert="~{/sm-model/botton-model::bottomTools}" class="tools-fixed"></div>
+<div class="ui vertical icon buttons animate__animated animate__fadeIn tools-fixed">
+    <!--控制跳到页面顶部和底部-->
+    <a href="#top-nav" class="ui blue button">顶部 👆</a>
+    <a href="#foot-nav" class="ui blue button">底部 👇</a>
+</div>
 
 <!--footer信息栏-->
 <div th:insert="~{/commons/footer::blogFooter}"></div>

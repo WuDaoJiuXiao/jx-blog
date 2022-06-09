@@ -4,6 +4,7 @@ import com.jiuxiao.pojo.Tags;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 标签业务层
@@ -70,4 +71,11 @@ public interface TagsService {
      * @date 2022/6/5 10:34
      */
     void increaseTagsFromThis();
+
+    /**
+     * @return: java.util.List<com.jiuxiao.pojo.Tags>
+     * @decription 将标签进行降序排列
+     * @date 2022/6/9 10:13
+     */
+    List<Map<Object, Object>> DescendingTags();
 }

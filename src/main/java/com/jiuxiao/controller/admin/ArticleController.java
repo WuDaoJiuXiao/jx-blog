@@ -152,7 +152,7 @@ public class ArticleController {
     @MyLogAnnotation("更新")
     @PostMapping("/updateArticle")
     public String updateArticle(Article article) {
-        //这里如果不设置，创建时间会被改变，一个不知所云的 bug...
+        //这里如果不设置，创建时间会被改变，改变为和更新时间一样，一个不知所云的 bug...
         article.setCreatedTime(articleService.queryArticleById(article.getId()).getCreatedTime());
         article.setLastUpdateTime(TimeTools.getCurrentTime());
         articleService.updateArticleById(article);

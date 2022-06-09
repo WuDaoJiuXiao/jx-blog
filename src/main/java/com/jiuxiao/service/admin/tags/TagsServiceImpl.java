@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 标签业务层实现类
@@ -107,5 +108,15 @@ public class TagsServiceImpl implements TagsService {
     @Transactional(rollbackFor = Exception.class)
     public void increaseTagsFromThis() {
         tagsMapper.increaseTagsFromThis();
+    }
+
+    /**
+     * @return: java.util.List<com.jiuxiao.pojo.Tags>
+     * @decription 将标签进行降序排列
+     * @date 2022/6/9 10:16
+     */
+    @Override
+    public List<Map<Object, Object>> DescendingTags() {
+        return tagsMapper.DescendingTags();
     }
 }

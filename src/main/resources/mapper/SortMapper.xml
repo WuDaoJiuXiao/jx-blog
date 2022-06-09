@@ -90,4 +90,11 @@
         alter table blog.t_sort
             add id int(32) not null primary key auto_increment first
     </update>
+
+    <!--将分类进行降序排列-->
+    <select id="DescendingSort" resultType="map">
+        select name, ref_count
+        from blog.t_sort
+        order by ref_count desc
+    </select>
 </mapper>

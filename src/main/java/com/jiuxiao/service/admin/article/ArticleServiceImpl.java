@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 文章管理业务层接口实现类
@@ -22,12 +23,22 @@ public class ArticleServiceImpl implements ArticleService {
 
     /**
      * @return: java.util.List<com.jiuxiao.pojo.Article>
-     * @decription 查询所有的文章列表
+     * @decription 查询所有的文章列表(无序)
      * @date 2022/6/7 22:04
      */
     @Override
     public List<Article> queryAllArticleList() {
         return articleMapper.queryAllArticleList();
+    }
+
+    /**
+     * @return: java.util.List<com.jiuxiao.pojo.Article>
+     * @decription 查询所有的文章列表(按照发布时间降序)
+     * @date 2022/6/9 17:58
+     */
+    @Override
+    public List<Article> queryAllArticleListDESC() {
+        return articleMapper.queryAllArticleListDESC();
     }
 
     /**
@@ -140,5 +151,25 @@ public class ArticleServiceImpl implements ArticleService {
     @Transactional(rollbackFor = Exception.class)
     public void updateArticleById(Article article) {
         articleMapper.updateArticleById(article);
+    }
+
+    /**
+     * @return: java.util.List<java.util.Map < java.lang.Object, java.lang.Object>>
+     * @decription 根据阅读量，降序返回文章排行
+     * @date 2022/6/9 10:30
+     */
+    @Override
+    public List<Map<Object, Object>> DescendingArticleByReadCount() {
+        return articleMapper.DescendingArticleByReadCount();
+    }
+
+    /**
+     * @return: java.util.List<java.util.Map < java.lang.Object, java.lang.Object>>
+     * @decription 根据发布时间，降序返回文章排行
+     * @date 2022/6/9 10:30
+     */
+    @Override
+    public List<Map<Object, Object>> DescendingArticleByCreatedTime() {
+        return articleMapper.DescendingArticleByCreatedTime();
     }
 }

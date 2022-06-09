@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 文章Mapper层接口
@@ -19,10 +20,17 @@ public interface ArticleMapper {
 
     /**
      * @return: java.util.List<com.jiuxiao.pojo.Article>
-     * @decription 查询所有的文章列表
+     * @decription 查询所有的文章列表(无序)
      * @date 2022/6/7 21:25
      */
     List<Article> queryAllArticleList();
+
+    /**
+     * @return: java.util.List<com.jiuxiao.pojo.Article>
+     * @decription 查询所有的文章列表(按照发布时间降序)
+     * @date 2022/6/9 17:56
+     */
+    List<Article> queryAllArticleListDESC();
 
     /**
      * @param title
@@ -104,4 +112,18 @@ public interface ArticleMapper {
      * @date 2022/6/8 9:28
      */
     void updateArticleById(Article article);
+
+    /**
+     * @return: java.util.List<java.util.Map < java.lang.Object, java.lang.Object>>
+     * @decription 根据阅读量，降序返回文章排行
+     * @date 2022/6/9 10:26
+     */
+    List<Map<Object, Object>> DescendingArticleByReadCount();
+
+    /**
+     * @return: java.util.List<java.util.Map < java.lang.Object, java.lang.Object>>
+     * @decription 根据发布时间，降序返回文章排行
+     * @date 2022/6/9 10:28
+     */
+    List<Map<Object, Object>> DescendingArticleByCreatedTime();
 }

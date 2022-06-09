@@ -24,37 +24,207 @@
             <div class="eleven wide column">
                 <!--上方：标题信息-->
                 <div class="ui top attached segment m-div-radius m-padding-bottom">
-                    <div th:insert="~{/sm-model/main-model/mainPageTitle::mainTitle}"></div>
+                    <div class="ui three column grid">
+                        <div class="column">
+                            <h3 class="ui blue header">博客文章</h3>
+                        </div>
+                        <div class="center aligned column">
+                            <h4 class="ui header red head-inline-block"
+                                th:text="'第' + ${pageInfo.getCurrentPage() + '页 / 共' + pageInfo.getTotalPage() + '页'}"></h4>
+                        </div>
+                        <div class="right aligned column">
+                            共 <h4 class="ui teal header head-inline-block" th:text="${articleCount}"
+                                  style="display: inline-block"></h4> 篇文章
+                        </div>
+                    </div>
                 </div>
+
                 <!--中间：正文内容-->
-                <div class="ui attached segment m-div-shadow m-div-radius m-padding-bottom">
-                    <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
-                    <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
-                    <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
-                    <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
-                    <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
-                    <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
-                    <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
-                    <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
+                <div class="ui attached segment m-div-shadow m-div-radius m-padding-bottom"
+                     th:each="art:${pageInfo.getDataList()}">
+                    <div class="ui padded segment m-margin-tiny m-div-shadow">
+                        <div class="ui grid">
+                            <div class="eleven wide column">
+                                <!--博客标题-->
+                                <a th:href="@{/blog(id=${art.getId()})}"><h3 class="ui header" th:text="${art.getTitle()}"></h3></a>
+                                <br>
+                                <!--摘要只显示正文的前90个字-->
+                                <a th:href="@{/blog(id=${art.getId()})}">
+                                    <p class="m-black" th:text="${#strings.length(art.getContent()) > 90} ? '摘要：' + ${#strings.substring(art.getContent(), 0, 90) + '...'} : '摘要：' + ${art.getContent()}"></p>
+                                </a>
+                                <div class="ui grid">
+                                    <!--文章作者、发布时间、阅读、评论信息-->
+                                    <div class="twelve wide column">
+                                        <div class="ui horizontal link list">
+                                            <!--头像及姓名-->
+                                            <div class="item">
+                                                <img th:src="@{/img/favicon.png}" alt="头像" class="ui avatar image">
+                                                <div class="content"><h5 th:text="${art.getAuthorName()}"></h5></div>
+                                            </div>
+                                            <!--发布时间-->
+                                            <div class="item">
+                                                <!--这里的时间需要处理一下，去掉时分秒，只显示年月日-->
+                                                <i class="calendar outline icon"></i>
+                                                <span th:text="${#strings.substring(art.getCreatedTime().toString(), 0, 10)}"></span>
+                                            </div>
+                                            <!--阅读量-->
+                                            <div class="item">
+                                                <i class="eye icon"></i> <span th:text="${art.getReadCount()}"></span>
+                                            </div>
+                                            <!--评论量-->
+                                            <div class="item">
+                                                <i class="comment outline icon"></i>
+                                                <span th:text="${art.getCommentCount()}"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--小标签-->
+                                    <div class="right aligned four wide column">
+                                        <div class="ui horizontal link list">
+                                            <a href="#" class="bottom aligned ui label teal inverted m-padding-tiny"
+                                               th:text="${art.getTags()}"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--博客配图-->
+                            <div class="five wide column" style="padding-top: 22px">
+                                <a th:href="@{/blog(id=${art.getId()})}" target="_self">
+                                    <!--暂时使用本地图，后期正式发布博客就是用网络配图-->
+                                    <img th:src="@{/img/test01.png}" alt="博客配图" class="ui rounded image" style="width: 300px">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
                 <!--下方：翻页按钮-->
-                <div th:insert="~{/sm-model/main-model/mainPageTurn::turnPages}"></div>
+                <div class="ui segment m-div-shadow m-div-radius m-padding-bottom">
+                    <div class="ui middle aligned two column grid">
+                        <div class="column">
+                            <a th:href="@{/(currentPage=${pageInfo.getCurrentPage() - 1})}"
+                               class="ui teal basic button mini m-div-shadow">上一页</a>
+                        </div>
+                        <div class="right aligned column">
+                            <a th:href="@{/(currentPage=${pageInfo.getCurrentPage() + 1})}"
+                               class="ui teal basic button mini m-div-shadow">下一页</a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!--侧边栏部分-->
             <div class="five wide column">
                 <!--网站运行时间-->
-                <div th:insert="~{/sm-model/side-model/runtime::runTime}"></div>
+                <div class="ui segments m-side-margin-large m-side-shadow m-div-radius m-top-margin-run">
+                    <div class="ui secondary segment">
+                        <h5><i class="clock icon"></i>本博客已平稳运行</h5>
+                    </div>
+                    <div class="ui blue segment" style="text-align: center">
+                        <h5>0 年 5月 18天 21时 46分 08秒</h5>
+                    </div>
+                </div>
+
                 <!--阅读排行榜-->
-                <div th:insert="~{/sm-model/side-model/readTop::readTop}"></div>
+                <div class="ui segments m-side-shadow m-side-margin-large m-div-radius">
+                    <!--排行榜标题-->
+                    <div class="ui secondary segment m-bottom-color">
+                        <h5><i class="chart line icon"></i>阅读排行榜</h5>
+                    </div>
+                    <!--排行榜内容-->
+                    <div class="ui segment" th:each="read:${readTop}">
+                        <div class="ui grid">
+                            <div class="left aligned eleven wide column">
+                                <a th:href="@{/blog(id=${read.get('id')})}" class="m-black">
+                                    <!--由于布局原因，如果标题长度大于12，则只显示11个字 + 3个省略号-->
+                                    <i class="book icon"></i>
+                                    <span th:text="${#strings.length(read.get('title')) > 12} ? ${#strings.substring(read.get('title'), 0, 11) + '...'} : ${read.get('title')}"></span>
+                                </a>
+                            </div>
+                            <div class="right aligned four wide column" style="padding-right: 0">
+                                <i class="eye icon"></i> <span th:text="${read.get('read_count')}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!--最新博文-->
-                <div th:insert="~{/sm-model/side-model/newblog::newBlog}"></div>
+                <div class="ui segments m-side-shadow m-side-margin-large m-div-radius">
+                    <!--最新文章标题-->
+                    <div class="ui secondary segment bottom m-bottom-color">
+                        <h5><i class="bookmark icon"></i>最新文章</h5>
+                    </div>
+                    <!--最新文章列表-->
+                    <div class="ui segment" th:each="artic:${newTop}">
+                        <!--布局原因，文章标题只显示小于18字的，否则只显示16字加省略号-->
+                        <a th:href="@{/blog(id=${artic.get('id')})}" class="m-black"><i class="book icon"></i>
+                            <span th:text="${#strings.length(artic.get('title')) > 18} ? ${#strings.substring(artic.get('title'), 0, 16) + '...'} : ${artic.get('title')}"></span>
+                        </a>
+                    </div>
+                </div>
+
                 <!--分类展示-->
-                <div th:insert="~{/sm-model/side-model/sortShow::sortShow}"></div>
+                <div class="ui segments m-side-shadow m-side-margin-large m-div-radius">
+                    <!--分类标题栏-->
+                    <div class="ui secondary segment m-bottom-color">
+                        <div class="ui two column grid">
+                            <div class="column">
+                                <h5><i class="sort icon"></i>分类</h5>
+                            </div>
+                            <div class="right aligned column">
+                                <a href="#" target="_self">More <i class="angle double right icon"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--分类信息栏-->
+                    <div class="ui segment" th:each="sort:${sortMap}">
+                        <div class="ui grid">
+                            <div class="twelve wide column">
+                                <a href="#" target="_self" class="m-black"><i class="fire icon"></i>
+                                    <span th:text="${sort.get('name')}"></span>
+                                </a>
+                            </div>
+                            <div class="left aligned four wide column">
+                                <i class="star outline icon"></i><span th:text="${sort.get('ref_count')}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!--标签展示-->
-                <div th:insert="~{/sm-model/side-model/tagsShow::tagsShow}"></div>
+                <div class="ui segments m-side-shadow m-side-margin-large m-div-radius">
+                    <!--标签标题栏-->
+                    <div class="ui secondary segment m-bottom-color">
+                        <div class="ui two column grid">
+                            <div class="column">
+                                <h5><i class="tags icon"></i>标签</h5>
+                            </div>
+                            <div class="right aligned column">
+                                <a href="#" target="_self">More <i class="angle double right icon"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--标签信息栏-->
+                    <div class="ui segment" th:each="tag:${tagsMap}">
+                        <div class="ui grid">
+                            <div class="twelve wide column">
+                                <a href="#" target="_self" class="m-black"><i class="tint icon"></i>
+                                    <span th:text="${tag.get('name')}"></span>
+                                </a>
+                            </div>
+                            <div class="left aligned four wide column">
+                                <i class="moon outline icon"></i><span th:text="${tag.get('ref_count')}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!--二维码-->
-                <div th:insert="~{/sm-model/side-model/imageCode::imageCode}"></div>
+                <h5 class="ui horizontal divider header m-opacity m-side-image-large">扫码关注我</h5>
+                <div class="ui centered card" style="width: 9em">
+                    <img th:src="@{/img/wechat.png}" alt="微信二维码" class="ui rounded image">
+                </div>
 
             </div>
         </div>
@@ -63,7 +233,11 @@
 
 
 <!--右下角悬浮工具栏-->
-<div th:insert="~{/sm-model/botton-model::bottomTools}" class="tools-fixed"></div>
+<div class="ui vertical icon buttons animate__animated animate__fadeIn tools-fixed">
+    <!--控制跳到页面顶部和底部-->
+    <a href="#top-nav" class="ui blue button">顶部 👆</a>
+    <a href="#foot-nav" class="ui blue button">底部 👇</a>
+</div>
 
 <!--footer信息栏-->
 <div th:insert="~{/commons/footer::blogFooter}"></div>

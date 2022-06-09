@@ -3,10 +3,17 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jiuxiao.mapper.ArticleMapper">
-    <!--查询所有的文章列表-->
+    <!--查询所有的文章列表(无序)-->
     <select id="queryAllArticleList" resultType="Article">
         select *
         from blog.t_article
+    </select>
+
+    <!--查询所有文章列表(按照发布时间降序)-->
+    <select id="queryAllArticleListDESC" resultType="Article">
+        select *
+        from blog.t_article
+        order by created_time desc
     </select>
 
     <!--根据标题、分类、标签，未定条件查询文章-->
@@ -151,4 +158,18 @@
             </where>
         </set>
     </update>
+
+    <!--根据阅读量，降序排列文章-->
+    <select id="DescendingArticleByReadCount" resultType="map">
+        select id, title, read_count
+        from blog.t_article
+        order by read_count desc
+    </select>
+
+    <!--根据发布时间，降序排列文章-->
+    <select id="DescendingArticleByCreatedTime" resultType="map">
+        select id, title, created_time
+        from blog.t_article
+        order by created_time desc
+    </select>
 </mapper>

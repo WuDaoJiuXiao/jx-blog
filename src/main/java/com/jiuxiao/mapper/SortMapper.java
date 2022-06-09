@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 分类Mapper层接口
@@ -73,4 +74,11 @@ public interface SortMapper {
      * @date 2022/6/5 10:04
      */
     void increaseSortFromThis();
+
+    /**
+     * @return: java.util.List<com.jiuxiao.pojo.Sort>
+     * @decription 将分类进行降序排列
+     * @date 2022/6/9 10:07
+     */
+    List<Map<Object, Object>> DescendingSort();
 }

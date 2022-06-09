@@ -16,17 +16,204 @@
 <div th:insert="~{/commons/header::blogHeader('archive')}"></div>
 
 <!--中间内容-->
-<div class="m-container m-padding-large animate__animated animate__fadeIn" th:fragment="timeTitle">
+<div class="m-container m-padding-large animate__animated animate__fadeIn">
     <div class="ui container">
         <!--归档标题-->
-        <div th:insert="~{/sm-model/archive-model/timeTitle::timeTitle}"></div>
+        <div class="ui top attached padded segment m-div-shadow m-div-radius m-padding-bottom">
+            <div class="ui middle aligned two column grid">
+                <div class="column">
+                    <h3 class="ui teal header">归档</h3>
+                </div>
+                <div class="right aligned column">
+                    共 <h3 class="ui teal header m-inline-block">254</h3> 篇博客
+                </div>
+            </div>
+        </div>
+
         <!--归档时间线-->
-        <div th:insert="~{/sm-model/archive-model/timeLine::timeLine}"></div>
+        <div class="m-padding-large m-margin-top-large">
+            <h2 class="ui center aligned header">2022年</h2>
+            <div class="ui segment m-div-radius m-div-shadow">
+                <div class="ui grid m-file-bottom-border">
+                    <!--文章标题-->
+                    <div class="nine wide column">
+               <span>
+                    <a href="#" target="_self" class="item m-black m-text-middle">
+                    <i class="thumbtack icon"></i> 论成功之路上有无捷径？
+                </a>
+               </span>
+                    </div>
+                    <!--发布时间-->
+                    <div class="four wide column">
+                        <div class="ui blue basic mini label">
+                            <i class="clock icon"></i> 2022-10-12
+                        </div>
+                    </div>
+                    <!--转载或者原创-->
+                    <div class="three wide column right aligned">
+                        <div class="ui pink mini label">原创</div>
+                    </div>
+                </div>
+                <div class="ui grid m-file-bottom-border">
+                    <!--文章标题-->
+                    <div class="nine wide column">
+               <span>
+                    <a href="#" target="_self" class="item m-black m-text-middle">
+                    <i class="thumbtack icon"></i> 马云为什么成功？
+                </a>
+               </span>
+                    </div>
+                    <!--发布时间-->
+                    <div class="four wide column">
+                        <div class="ui blue basic mini label">
+                            <i class="clock icon"></i> 2022-05-22
+                        </div>
+                    </div>
+                    <!--转载或者原创-->
+                    <div class="three wide column right aligned">
+                        <div class="ui pink mini label">转载</div>
+                    </div>
+                </div>
+                <div class="ui grid m-file-bottom-border">
+                    <!--文章标题-->
+                    <div class="nine wide column">
+               <span>
+                    <a href="#" target="_self" class="item m-black m-text-middle">
+                    <i class="thumbtack icon"></i> 梦与星光的海上
+                </a>
+               </span>
+                    </div>
+                    <!--发布时间-->
+                    <div class="four wide column">
+                        <div class="ui blue basic mini label">
+                            <i class="clock icon"></i> 2022-04-11
+                        </div>
+                    </div>
+                    <!--转载或者原创-->
+                    <div class="three wide column right aligned">
+                        <div class="ui pink mini label">原创</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="ui center aligned header">2021年</h2>
+            <div class="ui segment m-div-radius m-div-shadow">
+                <div class="ui grid m-file-bottom-border">
+                    <!--文章标题-->
+                    <div class="nine wide column">
+               <span>
+                    <a href="#" target="_self" class="item m-black m-text-middle">
+                    <i class="thumbtack icon"></i> 论成功之路上有无捷径？
+                </a>
+               </span>
+                    </div>
+                    <!--发布时间-->
+                    <div class="four wide column">
+                        <div class="ui blue basic mini label">
+                            <i class="clock icon"></i> 2022-10-12
+                        </div>
+                    </div>
+                    <!--转载或者原创-->
+                    <div class="three wide column right aligned">
+                        <div class="ui pink mini label">原创</div>
+                    </div>
+                </div>
+                <div class="ui grid m-file-bottom-border">
+                    <!--文章标题-->
+                    <div class="nine wide column">
+               <span>
+                    <a href="#" target="_self" class="item m-black m-text-middle">
+                    <i class="thumbtack icon"></i> 钢铁是怎样炼成的
+                </a>
+               </span>
+                    </div>
+                    <!--发布时间-->
+                    <div class="four wide column">
+                        <div class="ui blue basic mini label">
+                            <i class="clock icon"></i> 2021-12-03
+                        </div>
+                    </div>
+                    <!--转载或者原创-->
+                    <div class="three wide column right aligned">
+                        <div class="ui pink mini label">转载</div>
+                    </div>
+                </div>
+                <div class="ui grid m-file-bottom-border">
+                    <!--文章标题-->
+                    <div class="nine wide column">
+               <span>
+                    <a href="#" target="_self" class="item m-black m-text-middle">
+                    <i class="thumbtack icon"></i> SpringBoot 自动装配原理探究
+                </a>
+               </span>
+                    </div>
+                    <!--发布时间-->
+                    <div class="four wide column">
+                        <div class="ui blue basic mini label">
+                            <i class="clock icon"></i> 2021-06-14
+                        </div>
+                    </div>
+                    <!--转载或者原创-->
+                    <div class="three wide column right aligned">
+                        <div class="ui pink mini label">原创</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="ui center aligned header">2020年</h2>
+            <div class="ui segment m-div-radius m-div-shadow">
+                <div class="ui grid m-file-bottom-border">
+                    <!--文章标题-->
+                    <div class="nine wide column">
+               <span>
+                    <a href="#" target="_self" class="item m-black m-text-middle">
+                    <i class="thumbtack icon"></i> 论成功之路上有无捷径？
+                </a>
+               </span>
+                    </div>
+                    <!--发布时间-->
+                    <div class="four wide column">
+                        <div class="ui blue basic mini label">
+                            <i class="clock icon"></i> 2022-10-12
+                        </div>
+                    </div>
+                    <!--转载或者原创-->
+                    <div class="three wide column right aligned">
+                        <div class="ui pink mini label">原创</div>
+                    </div>
+                </div>
+                <div class="ui grid m-file-bottom-border">
+                    <!--文章标题-->
+                    <div class="nine wide column">
+               <span>
+                    <a href="#" target="_self" class="item m-black m-text-middle">
+                    <i class="thumbtack icon"></i> 梦想的旗帜飘扬
+                </a>
+               </span>
+                    </div>
+                    <!--发布时间-->
+                    <div class="four wide column">
+                        <div class="ui blue basic mini label">
+                            <i class="clock icon"></i> 2021-07-23
+                        </div>
+                    </div>
+                    <!--转载或者原创-->
+                    <div class="three wide column right aligned">
+                        <div class="ui pink mini label">原创</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
 <!--右下角悬浮工具栏-->
-<div th:insert="~{/sm-model/botton-model::bottomTools}" class="tools-fixed"></div>
+<div class="ui vertical icon buttons animate__animated animate__fadeIn tools-fixed">
+    <!--控制跳到页面顶部和底部-->
+    <a href="#top-nav" class="ui blue button">顶部 👆</a>
+    <a href="#foot-nav" class="ui blue button">底部 👇</a>
+</div>
 
 <!--footer信息栏-->
 <div th:insert="~{/commons/footer::blogFooter}"></div>

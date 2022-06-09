@@ -4,6 +4,7 @@ import com.jiuxiao.pojo.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 分类业务层接口
@@ -70,4 +71,11 @@ public interface SortService {
      * @date 2022/6/5 10:16
      */
     void increaseSortFromThis();
+
+    /**
+     * @return: java.util.List<com.jiuxiao.pojo.Sort>
+     * @decription 将分类进行降序排列
+     * @date 2022/6/9 10:07
+     */
+    List<Map<Object, Object>> DescendingSort();
 }
