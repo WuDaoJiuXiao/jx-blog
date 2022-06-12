@@ -1,12 +1,14 @@
 package com.jiuxiao.controller.admin;
 
 import com.jiuxiao.annotation.MyLogAnnotation;
+import com.jiuxiao.pojo.Archive;
 import com.jiuxiao.pojo.Article;
 import com.jiuxiao.pojo.Sort;
 import com.jiuxiao.pojo.Tags;
-import com.jiuxiao.service.admin.article.ArticleService;
-import com.jiuxiao.service.admin.sort.SortService;
-import com.jiuxiao.service.admin.tags.TagsService;
+import com.jiuxiao.service.archive.ArchiveService;
+import com.jiuxiao.service.article.ArticleService;
+import com.jiuxiao.service.sort.SortService;
+import com.jiuxiao.service.tags.TagsService;
 import com.jiuxiao.tools.TimeTools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -34,6 +37,9 @@ public class PublishController {
 
     @Autowired
     private ArticleService articleService;
+
+    @Autowired
+    private ArchiveService archiveService;
 
     /**
      * @return: java.lang.String
@@ -56,13 +62,23 @@ public class PublishController {
     @MyLogAnnotation("新增")
     @PostMapping("/publish")
     public String publish(Article article) {
-        article.setId(articleService.queryArticleCount() + 1);
-        article.setCreatedTime(TimeTools.getCurrentTime());
-        article.setLastUpdateTime(TimeTools.getCurrentTime());
+        //新增文章
+        Timestamp currentTime = TimeTools.getCurrentTime();
+        Integer articleId = articleService.queryArticleCount() + 1;
+        article.setId(articleId);
+        article.setCreatedTime(currentTime);
+        article.setLastUpdateTime(currentTime);
         article.setCommentCount(0);
         article.setReadCount(0);
         article.setAuthorName("悟道九霄");
         article.setCopyright("空");   //版权功能去除，默认显示版权信息
+
+        //新增该新文章对应的归档
+        Archive archive = new Archive();
+        archive.setId(articleId);
+        archive.setCreatedTime(currentTime);
+
+        archiveService.insertArchive(archive);
         articleService.insertArticle(article);
         return "redirect:/admin/blog";
     }

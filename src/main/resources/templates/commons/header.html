@@ -14,19 +14,19 @@
                 <i class="home icon"></i>
                 首页
             </a>
-            <a  href="#" class="item" th:classappend="${#strings.equals(pageName, 'sort')} ? 'active'">
+            <a  th:href="@{/sort/-1/-1}" class="item" th:classappend="${#strings.equals(pageName, 'sort')} ? 'active'">
                 <i class="sort icon"></i>
                 分类
             </a>
-            <a  href="#" class="item" th:classappend="${#strings.equals(pageName, 'tags')} ? 'active'">
+            <a  th:href="@{/tags/-1/-1}" class="item" th:classappend="${#strings.equals(pageName, 'tags')} ? 'active'">
                 <i class="tags icon"></i>
                 标签
             </a>
-            <a  href="#" class="item" th:classappend="${#strings.equals(pageName, 'archive')} ? 'active'">
+            <a  th:href="@{/archive}" class="item" th:classappend="${#strings.equals(pageName, 'archive')} ? 'active'">
                 <i class="clone icon"></i>
                 归档
             </a>
-            <a href="#" class="item" th:classappend="${#strings.equals(pageName, 'aboutMe')} ? 'active'">
+            <a th:href="@{/about}" class="item" th:classappend="${#strings.equals(pageName, 'aboutMe')} ? 'active'">
                 <i class="user outline icon"></i>
                 关于我
             </a>
@@ -42,10 +42,12 @@
             <!--搜索框-->
             <div class="right item">
                 <div class="ui small category search">
-                    <div class="ui icon input inverted transparent">
-                        <input type="text" placeholder="Search...">
-                        <i class="search link icon"></i>
-                    </div>
+                    <form name="search" th:action="@{/search}" class="ui form" method="post" target="_self">
+                        <div class="ui icon input inverted transparent">
+                            <input type="text" name="queryText" placeholder="Search..." style="color: #e2e2e2">
+                            <i class="search link icon" onclick="document.forms['search'].submit()"></i>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

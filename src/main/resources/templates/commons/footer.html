@@ -9,23 +9,11 @@
         th:fragment="blogFooter" id="foot-nav">
     <div class="ui center aligned container">
         <div class="ui inverted divided grid">
-            <!--微信二维码-->
-            <div class="three wide column">
-                <div class="ui inverted link list">
-                <img th:src="@{/img/wechat.png}" alt="微信二维码" class="m-wechat-img ui rounded image" style="width: 110px">
-                </div>
-            </div>
-            <!--网站文章信息-->
-            <div class="four wide column">
-                <h4 class="ui inverted header m-opacity">文章信息</h4>
-                <div class="ui inverted link list">
-                    <p style="margin-bottom: 0" class="item">总文章数：100</p>
-                    <p style="margin-bottom: 0" class="item">总标签数：10</p>
-                    <p style="margin-bottom: 0" class="item">总分类数：13</p>
-                    <p style="margin-bottom: 0" class="item">总阅读量：9999</p>
-                </div>
-            </div>
 
+            <!--微信二维码-->
+            <div class="four wide column centered" style="padding-left: 100px">
+                <img th:src="@{/img/wechat.png}" alt="微信二维码" class="m-wechat-img ui rounded image" style="width: 120px">
+            </div>
             <!--我的联系方式-->
             <div class="four wide column">
                 <h4 class="ui inverted header m-opacity">联系我</h4>
@@ -42,12 +30,14 @@
             </div>
 
             <!--个人简介-->
-            <div class="five wide column">
+            <div class="eight wide column">
                 <h4 class="ui inverted header m-opacity">关于我</h4>
-                <p style="margin-bottom: 0" class="item m-opacity m-text-spaced">一个热爱技术、爱写代码的男孩，本科的天坑测绘并未将我击败，工地数月的磨炼让我重新找到了人生的方向，
+                <p style="margin-bottom: 0" class="item m-opacity m-text-spaced">
+                    一个热爱技术、爱写代码的男孩，本科的天坑测绘并未将我击败，工地数月的磨炼让我重新找到了人生的方向，
                     二战辞职跨考计算机，已成功上岸</p>
                 <p style="margin-bottom: 0" class="item m-opacity m-text-spaced">人生在于折腾！</p>
             </div>
+
         </div>
 
         <!--底部分割线-->

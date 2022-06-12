@@ -90,11 +90,14 @@ CREATE TABLE `t_sort`
 DROP TABLE IF EXISTS `t_comment`;
 CREATE TABLE `t_comment`
 (
-    `id`           int(32)      NOT NULL COMMENT '评论id',
-    `content`      varchar(400) NOT NULL COMMENT '评论内容',
-    `created_time` timestamp    NOT NULL COMMENT '发布评论时间',
-    `author_id`    int(32)      NOT NULL COMMENT '评论者id',
-    `article_id`   int(32)      NOT NULL COMMENT '文章id',
+    `id`                int(32)      NOT NULL COMMENT '评论id',
+    `nickname`          varchar(100) NOT NULL COMMENT '评论者昵称',
+    `email`             varchar(200) NOT NULL COMMENT '评论者邮箱',
+    `avatar`            varchar(400) NOT NULL COMMENT '评论者头像链接',
+    `content`           varchar(400) NOT NULL COMMENT '评论内容',
+    `created_time`      timestamp    NOT NULL COMMENT '发布评论时间',
+    `blog_id`           int(32) COMMENT '评论所属的博客id',
+    `parent_comment_id` int(32) COMMENT '父级评论的id',
     PRIMARY KEY (`id`)
 ) COMMENT = '评论表' ENGINE = InnoDB
                   AUTO_INCREMENT = 1
@@ -127,8 +130,6 @@ CREATE TABLE `t_archive`
 (
     `id`               int(32)   NOT NULL COMMENT '归档id',
     `created_time`     timestamp NOT NULL COMMENT '创建时间',
-    `last_update_time` timestamp NOT NULL COMMENT '上次修改时间',
-    `article_id`       int(32)   NOT NULL COMMENT '文章id',
     PRIMARY KEY (`id`)
 ) COMMENT = '归档表' ENGINE = InnoDB
                   AUTO_INCREMENT = 1

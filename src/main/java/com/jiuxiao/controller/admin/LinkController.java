@@ -3,7 +3,7 @@ package com.jiuxiao.controller.admin;
 import com.jiuxiao.annotation.MyLogAnnotation;
 import com.jiuxiao.constants.BackendConstants;
 import com.jiuxiao.pojo.Link;
-import com.jiuxiao.service.admin.link.LinkService;
+import com.jiuxiao.service.link.LinkService;
 import com.jiuxiao.tools.PageInfoTools;
 import com.jiuxiao.tools.TimeTools;
 import com.jiuxiao.tools.TurnPageTools;

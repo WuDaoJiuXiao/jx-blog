@@ -6,7 +6,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>博客正文</title>
-    <script type="text/javascript" th:src="@{/lib/prism/prism.js}"></script>
+    <script th:src="@{/js/jquery-3.5.1.js}"></script>
+    <script th:src="@{/js/jquery-scrollto.js}"></script>
+    <script th:src="@{/lib/prism/prism.js}"></script>
+    <script th:src="@{/lib/tocbot/tocbot.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/lib/tocbot/tocbot.css}">
     <link rel="stylesheet" th:href="@{/semanticUi/semantic.min.css}">
     <link rel="stylesheet" th:href="@{/css/typo.css}">
     <link rel="stylesheet" th:href="@{/css/animate.css}">
@@ -18,148 +22,150 @@
 <div th:insert="~{/commons/header::blogHeader('content')}"></div>
 
 <!--中间内容-->
-<div class="m-container m-padding-large animate__animated animate__fadeIn">
-    <div class="ui container">
+<div class="m-padding-large animate__animated animate__fadeIn" style="width: 1400px;padding-left: 120px">
+    <div class="ui grid">
+        <!--正文部分-->
+        <div class="twelve wide column">
+            <!--博文标题信息-->
+            <div class="ui segment top attached m-div-shadow">
+                <div class="ui grid">
+                    <div class="fourteen wide column">
+                        <div class="ui horizontal link list">
+                            <div class="item">
+                                <!--因为是个人博客，所以头像直接使用本地的-->
+                                <img th:src="@{/img/favicon.png}" alt="作者头像" class="ui avatar image">
+                                <div class="content"><h5><span th:text="${article.getAuthorName()}"></span></h5></div>
+                            </div>
+                            <div class="item">
+                                <!--时间依旧只显示年月日-->
+                                <i class="calendar icon"></i> [[${#strings.substring(article.getCreatedTime(), 0, 10)}]]
+                            </div>
+                            <div class="item">
+                                <i class="eye icon"></i> [[${article.getReadCount()}]]
+                            </div>
 
-        <!--博文标题信息-->
-        <div class="ui segment top attached m-div-shadow">
-            <div class="ui grid">
-                <div class="fourteen wide column">
-                    <div class="ui horizontal link list">
-                        <div class="item">
-                            <!--图片依旧使用本地的，因为图片链接是假的-->
-                            <img th:src="@{/img/favicon.png}" alt="作者头像" class="ui avatar image">
-                            <div class="content"><h5><span th:text="${article.getAuthorName()}"></span></h5></div>
-                        </div>
-                        <div class="item">
-                            <!--时间依旧只显示年月日-->
-                            <i class="calendar icon"></i> [[${#strings.substring(article.getCreatedTime(), 0, 10)}]]
-                        </div>
-                        <div class="item">
-                            <i class="eye icon"></i> [[${article.getReadCount()}]]
-                        </div>
-
-                        <div class="item">
-                            <i class="comment outline icon"></i> [[${article.getCommentCount()}]]
-                        </div>
-                    </div>
-                </div>
-                <div class="two wide column right aligned ">
-                    <div class="ui pink mini label" th:text="${article.getType()}"></div>
-                </div>
-            </div>
-        </div>
-
-        <!--博文配图、博文正文-->
-        <div class="ui attached segment m-div-shadow blue m-div-radius">
-            <!--标题-->
-            <h2 class="ui center aligned header m-padding-bottom-title">
-                <span th:text="${article.getTitle()}"></span>
-            </h2>
-            <!--正文-->
-            <div id="content" class="typo typo-p m-padding-rlb" th:text="${article.getContent()}"></div>
-            <!--标签、分类、赞赏-->
-            <div class="ui grid m-padding-rl">
-                <!--标签和分类-->
-                <div class="eleven wide column">
-                    <div class="ui mini blue right pointing label" th:text="${article.getTags()}"></div>
-                    <div class="ui mini green label" th:text="${article.getSort()}"></div>
-                </div>
-            </div>
-        </div>
-
-        <!--博文下方信息栏-->
-        <div class="ui attached orange segment secondary m-div-shadow m-div-radius">
-            <div class="ui middle aligned grid">
-                <div class="eleven wide column">
-                    <ul class="list">
-                        <li style="list-style-type: none !important;" class="m-li-margin-bottom">
-                            <i class="user secret icon"></i>作者：悟道九霄（联系作者）
-                        </li>
-                        <li style="list-style-type: none !important;" class="m-li-margin-bottom">
-                            <i class="calendar times icon"></i>发布时间：<span th:text="${#strings.substring(article.getCreatedTime(), 0, 10)}"></span>
-                        </li>
-                        <li style="list-style-type: none !important;">
-                            <i class="copyright icon"></i>版权申明：转载请注明出处
-                        </li>
-                    </ul>
-                </div>
-                <div class="four wide column right aligned">
-                    <img th:src="@{/img/wechat.png}" alt="微信" class="ui right floated rounded bordered image" style="width: 100px">
-                </div>
-            </div>
-        </div>
-
-        <!--博文评论区-->
-        <div class="ui bottom green attached secondary segment m-div-shadow m-div-radius m-padding-rlb">
-
-            <div class="ui threaded comments">
-                <h3 class="ui dividing header m-opacity">欢迎发布评论 ~</h3>
-                <div class="comment">
-                    <a class="avatar m-top-none"><img th:src="@{/img/favicon.png}"></a>
-                    <div class="content">
-                        <a class="author m-opacity">荒天帝</a>
-                        <div class="metadata"><span class="date">今天下午 5:42</span></div>
-                        <div class="actions"><a class="reply">回复</a></div>
-                        <div class="text">太赞了！</div>
-                    </div>
-                </div>
-                <div class="comment">
-                    <a class="avatar m-top-none"><img th:src="@{/img/favicon.png}"></a>
-                    <div class="content">
-                        <a class="author m-opacity">林枫</a>
-                        <div class="metadata"><span class="date">昨天上午12:30</span></div>
-                        <div class="actions"><a class="reply">回复</a></div>
-                        <div class="text"><p>这对我的研究是非常有用.謝謝!</p></div>
-                    </div>
-                    <div class="comments">
-                        <div class="comment">
-                            <a class="avatar m-top-none"><img th:src="@{/img/favicon.png}"></a>
-                            <div class="content">
-                                <a class="author m-opacity">安妙依</a>
-                                <div class="metadata"><span class="date">刚刚</span></div>
-                                <div class="actions"><a class="reply">回复</a></div>
-                                <div class="text">艾特你永远是那么正确~</div>
+                            <div class="item">
+                                <i class="comment outline icon"></i> [[${article.getCommentCount()}]]
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="comment">
-                    <a class="avatar m-top-none"><img th:src="@{/img/favicon.png}"></a>
-                    <div class="content">
-                        <a class="author m-opacity">王腾</a>
-                        <div class="metadata"><span class="date">5 天以前</span></div>
-                        <div class="actions"><a class="reply">回复</a></div>
-                        <div class="text">老兄，这太棒了。非常感谢！</div>
-                    </div>
-                </div>
-
-                <!--评论框-->
-                <div class="ui form">
-                    <div class="field">
-                        <textarea name="content" placeholder="请输入评论信息..." cols="30" rows="10"></textarea>
-                    </div>
-                    <!--昵称-->
-                    <div class="fields">
-                        <div class="field">
-                            <div class="ui left icon input">
-                                <i class="user icon"></i><input type="text" name="nickname" placeholder="昵称">
-                            </div>
-                        </div>
-                        <div class="field">
-                            <div class="ui left icon input">
-                                <i class="mail icon"></i><input type="text" name="email" placeholder="邮箱">
-                            </div>
-                        </div>
-                        <div class="field">
-                            <button class="ui blue button"><i class="edit icon"></i>提交</button>
-                        </div>
+                    <div class="two wide column right aligned ">
+                        <div class="ui pink label" th:text="${article.getType()}"></div>
                     </div>
                 </div>
             </div>
 
+            <!--博文配图、博文正文-->
+            <div class="ui attached segment m-div-shadow blue m-div-radius">
+                <div class="ui segment">
+                    <img th:src="${article.getHeadImageAddress()}" alt="博客配图" style="max-width: 100%;width: auto">
+                </div>
+                <!--标题-->
+                <h2 class="ui center aligned header m-padding-bottom-title">
+                    <span th:text="${article.getTitle()}"></span>
+                </h2>
+
+                <!--博客正文部分-->
+                <div class="js-toc-content" th:utext="${article.getContent()}"></div>
+                <br>
+
+                <!--标签、分类、赞赏-->
+                <div class="ui grid m-padding-rl">
+                    <!--标签和分类-->
+                    <div class="eleven wide column">
+                        <div class="ui blue right pointing label" th:text="${article.getTags()}"></div>
+                        <div class="ui green label" th:text="${article.getSort()}"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!--博文下方信息栏-->
+            <div class="ui attached orange segment secondary m-div-shadow m-div-radius">
+                <div class="ui middle aligned grid">
+                    <div class="eleven wide column">
+                        <ul class="list">
+                            <li style="list-style-type: none !important;" class="m-li-margin-bottom">
+                                <i class="user secret icon"></i>作者：悟道九霄 <a th:href="@{/aboutMe}"
+                                                                           target="_blank">（联系作者）</a>
+                            </li>
+                            <li style="list-style-type: none !important;" class="m-li-margin-bottom">
+                                <i class="calendar times icon"></i>发布时间：<span
+                                    th:text="${#strings.substring(article.getCreatedTime(), 0, 10)}"></span>
+                            </li>
+                            <li style="list-style-type: none !important;">
+                                <i class="copyright icon"></i>版权申明：转载请注明出处
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="four wide column right aligned">
+                        <!--该图片不修改，所以直接用本地图片-->
+                        <img th:src="@{/img/wechat.png}" alt="微信" class="ui right floated rounded bordered image"
+                             style="width: 100px">
+                    </div>
+                </div>
+            </div>
+
+            <!--博文评论区-->
+            <div class="ui bottom green attached secondary segment m-div-shadow m-div-radius m-padding-rlb">
+                <div class="ui threaded comments">
+                    <h3 class="ui dividing header m-opacity">欢迎发布评论 ~</h3>
+                    <!--评论列表-->
+                    <form class="ui form" th:action="@{/comment}" method="post">
+                        <div class="ui threaded comments">
+                            <div class="comment comment-tb-margin" th:each="comment:${commentList}">
+                                <a class="avatar m-top-none"><img th:src="${comment.getAvatar()}"></a>
+                                <div class="content">
+                                    <a class="author m-opacity"><span th:text="${comment.getNickname()}"></span></a>
+                                    <div class="metadata">
+                                        <span class="date" th:text="${#dates.format(comment.getCreatedTime(), 'yyyy-MM-dd')}"></span>
+                                    </div>
+                                    <div class="actions">
+                                        <a class="reply" th:data-commontid="${comment.getId()}"
+                                           th:data-commontnickname="${comment.getNickname()}"
+                                           onclick="replay(this)">回复</a>
+                                    </div>
+                                    <div class="text"
+                                         th:text="${parentMap.get(comment.getId()) == null} ? ${comment.getContent()} : '@' + ${parentMap.get(comment.getId()).getNickname()} + ' ：' + ${comment.getContent()}"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--评论提交-->
+                        <input type="hidden" name="blogId" th:value="${article.getId()}">
+                        <input type="hidden" name="parentCommentId" value="-1">
+                        <div class="field">
+                            <textarea id="content" name="content" placeholder="请输入评论信息..." cols="30" rows="10"
+                                      required></textarea>
+                        </div>
+                        <div class="fields">
+                            <div class="field">
+                                <div class="ui left icon input">
+                                    <i class="user icon"></i><input type="text" id="nickname" name="nickname"
+                                                                    placeholder="昵称" style="width: 260px" required>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui left icon input">
+                                    <i class="mail icon"></i><input type="text" id="email" name="email"
+                                                                    placeholder="邮箱" style="width: 260px" required>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <button class="ui blue submit button"><i class="location arrow icon"></i>提交</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
         </div>
 
+        <!--侧边栏目录部分-->
+        <div class="four wide column">
+            <div class="ui segment blog-seg">
+                <ol class="js-toc toc-size"></ol>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -172,4 +178,33 @@
 
 <!--footer信息栏-->
 <div th:insert="~{/commons/footer::blogFooter}"></div>
+
+<script>
+    //初始化tocbot
+    tocbot.init({
+        tocSelector: '.js-toc',
+        contentSelector: '.js-toc-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        positionFixedSelector: ".blog-seg",
+        //目录折叠层级
+        collapseDepth: 3,
+        //设置为无序列表
+        orderedList: false,
+        scrollEndCallback: function (e) {
+            window.scrollTo(window.scrollX, window.scrollY);
+        },
+    });
+
+    //回复评论
+    function replay(obj) {
+        var commentId = $(obj).data('commontid');
+        var commentNickname = $(obj).data('commontnickname');
+        $("[name='content']").attr("placeholder", "@" + commentNickname).focus();
+        //点击回复之后，该评论的父 id 就是它回复的那个 id
+        $("[name='parentCommentId']").val(commentId);
+        $(window).scrollTo($('#comm-form'), 500);
+    }
+</script>
+
 </body>
+</html>

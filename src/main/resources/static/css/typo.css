@@ -27,7 +27,7 @@
 
 /* 去除默认边框 */
 .typo fieldset, .typo img {
-    border: 0;
+    border: 1px solid #bbbbbb;
 }
 
 /* 块/段落引用 */

@@ -2,7 +2,7 @@ package com.jiuxiao.aspect;
 
 import com.jiuxiao.annotation.MyLogAnnotation;
 import com.jiuxiao.pojo.Journal;
-import com.jiuxiao.service.admin.journal.JournalService;
+import com.jiuxiao.service.journal.JournalService;
 import com.jiuxiao.tools.TimeTools;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;

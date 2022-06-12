@@ -28,4 +28,7 @@ public class WebConstants {
 
     /** 前端侧边栏：最新文章数量 */
     public static Integer NEW_ARTICLE_SIZE = 5;
+
+    /** 评论区用户头像地址 */
+    public static String AVATAR = "https://avatars.githubusercontent.com/u/92657415?s=48&v=4";
 }

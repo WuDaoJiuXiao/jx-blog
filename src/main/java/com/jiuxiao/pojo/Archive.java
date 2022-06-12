@@ -1,5 +1,7 @@
 package com.jiuxiao.pojo;
 
+import java.sql.Timestamp;
+
 /**
  * 归档实体类
  * @Author: 悟道九霄
@@ -12,22 +14,14 @@ public class Archive {
     private Integer id;
 
     /** 创建时间 */
-    private String createdTime;
-
-    /** 上次修改时间 */
-    private String lastUpdateTime;
-
-    /** 归档文章的 ID */
-    private Integer articleId;
+    private Timestamp createdTime;
 
     public Archive() {
     }
 
-    public Archive(Integer id, String createdTime, String lastUpdateTime, Integer articleId) {
+    public Archive(Integer id, Timestamp createdTime) {
         this.id = id;
         this.createdTime = createdTime;
-        this.lastUpdateTime = lastUpdateTime;
-        this.articleId = articleId;
     }
 
     public Integer getId() {
@@ -38,37 +32,19 @@ public class Archive {
         this.id = id;
     }
 
-    public String getCreatedTime() {
+    public Timestamp getCreatedTime() {
         return createdTime;
     }
 
-    public void setCreatedTime(String createdTime) {
+    public void setCreatedTime(Timestamp createdTime) {
         this.createdTime = createdTime;
-    }
-
-    public String getLastUpdateTime() {
-        return lastUpdateTime;
-    }
-
-    public void setLastUpdateTime(String lastUpdateTime) {
-        this.lastUpdateTime = lastUpdateTime;
-    }
-
-    public Integer getArticleId() {
-        return articleId;
-    }
-
-    public void setArticleId(Integer articleId) {
-        this.articleId = articleId;
     }
 
     @Override
     public String toString() {
         return "Archive{" +
                 "id=" + id +
-                ", createdTime='" + createdTime + '\'' +
-                ", lastUpdateTime='" + lastUpdateTime + '\'' +
-                ", articleId=" + articleId +
+                ", createdTime=" + createdTime +
                 '}';
     }
 }

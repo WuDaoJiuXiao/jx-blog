@@ -13,27 +13,44 @@ public class Comment {
     /** 评论 ID */
     private Integer id;
 
+    /** 评论者昵称 */
+    private String nickname;
+
+    /** 评论者邮箱 */
+    private String email;
+
+    /** 评论者头像地址 */
+    private String avatar;
+
     /** 评论内容 */
     private String content;
 
     /** 评论发布时间 */
     private Timestamp createdTime;
 
-    /** 评论者 ID */
-    private Integer authorId;
+    /** 评论所属的文章id */
+    private Integer blogId;
 
-    /** 文章 ID */
-    private String articleId;
+    /** 评论的父id */
+    private Integer parentCommentId;
+
+    /** 父评论 */
+    private Comment parentComment;
 
     public Comment() {
     }
 
-    public Comment(Integer id, String content, Timestamp createdTime, Integer authorId, String articleId) {
+    public Comment(Integer id, String nickname, String email, String avatar, String content,
+                   Timestamp createdTime, Integer blogId, Integer parentCommentId, Comment parentComment) {
         this.id = id;
+        this.nickname = nickname;
+        this.email = email;
+        this.avatar = avatar;
         this.content = content;
         this.createdTime = createdTime;
-        this.authorId = authorId;
-        this.articleId = articleId;
+        this.blogId = blogId;
+        this.parentCommentId = parentCommentId;
+        this.parentComment = parentComment;
     }
 
     public Integer getId() {
@@ -42,6 +59,30 @@ public class Comment {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getContent() {
@@ -60,30 +101,42 @@ public class Comment {
         this.createdTime = createdTime;
     }
 
-    public Integer getAuthorId() {
-        return authorId;
+    public Integer getBlogId() {
+        return blogId;
     }
 
-    public void setAuthorId(Integer authorId) {
-        this.authorId = authorId;
+    public void setBlogId(Integer blogId) {
+        this.blogId = blogId;
     }
 
-    public String getArticleId() {
-        return articleId;
+    public Integer getParentCommentId() {
+        return parentCommentId;
     }
 
-    public void setArticleId(String articleId) {
-        this.articleId = articleId;
+    public void setParentCommentId(Integer parentCommentId) {
+        this.parentCommentId = parentCommentId;
+    }
+
+    public Comment getParentComment() {
+        return parentComment;
+    }
+
+    public void setParentComment(Comment parentComment) {
+        this.parentComment = parentComment;
     }
 
     @Override
     public String toString() {
         return "Comment{" +
                 "id=" + id +
+                ", nickname='" + nickname + '\'' +
+                ", email='" + email + '\'' +
+                ", avatar='" + avatar + '\'' +
                 ", content='" + content + '\'' +
                 ", createdTime=" + createdTime +
-                ", authorId=" + authorId +
-                ", articleId='" + articleId + '\'' +
+                ", blogId=" + blogId +
+                ", parentCommentId=" + parentCommentId +
+                ", parentComment=" + parentComment +
                 '}';
     }
 }

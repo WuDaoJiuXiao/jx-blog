@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiuxiao.mapper.ArchiveMapper">
+
+    <!--查询所有归档-->
+    <select id="queryAllArchive" resultType="Archive">
+        select *
+        from blog.t_archive
+    </select>
+
+    <!--根据 ID 查询归档-->
+    <select id="queryArchiveById" resultType="Archive" parameterType="int">
+        select *
+        from blog.t_archive
+        where id = #{id}
+    </select>
+
+    <!--根据年份查询归档的id，并按照创建时间降序排列-->
+    <select id="queryArchiveByYear" resultType="int" parameterType="string">
+        select id
+        from blog.t_archive
+        where created_time like concat('%', #{year}, '%')
+        order by created_time desc
+    </select>
+
+    <!--新增归档-->
+    <insert id="insertArchive" parameterType="Archive">
+        insert into blog.t_archive(id, created_time)
+            value (
+                   #{id}, #{createdTime}
+            )
+    </insert>
+
+    <!--通过 ID 删除归档-->
+    <delete id="deleteArchiveById" parameterType="int">
+        delete
+        from blog.t_archive
+        where id = #{id}
+    </delete>
+
+    <!--设置主键由此自增-->
+    <update id="increaseArchiveFromThis">
+        alter table blog.t_archive
+            drop id;
+        alter table blog.t_archive
+            add id int(32) not null primary key auto_increment first;
+    </update>
+
+</mapper>

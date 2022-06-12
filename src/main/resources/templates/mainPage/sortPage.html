@@ -25,67 +25,90 @@
                     <h4 class="ui teal header">分类</h4>
                 </div>
                 <div class="right aligned column">
-                    共 <h3 class="ui teal header m-inline-block">55</h3> 个
+                    共 <h3 class="ui teal header m-inline-block" th:text="${sortMapList.size()}"></h3> 个分类
                 </div>
             </div>
         </div>
 
         <!--分类列表-->
         <div class="ui attached segment m-div-radius m-div-shadow m-padding-bottom">
-            <div class="ui labeled button m-class-rb-margin">
-                <a href="#" class="ui basic button">Python</a>
-                <div class="ui basic left pointing label">18</div>
+            <div class="ui labeled button m-class-rb-margin" th:each="sortMap:${sortMapList}">
+                <a th:href="@{'/sort/' + ${sortMap.get('sid')} + '/' + ${pageInfo.getCurrentPage()}}" class="ui basic button" th:classappend="${activeId == sortMap.get('sid')} ? 'green'"
+                   th:text="${sortMap.get('asort')}"></a>
+                <div class="ui basic left pointing label" th:classappend="${activeId == sortMap.get('sid')} ? 'green'" th:text="${sortMap.get('countasort')}"></div>
             </div>
-            <div class="ui labeled button m-class-rb-margin">
-                <a href="#" class="ui basic button">C 语言</a>
-                <div class="ui basic left pointing label">1</div>
-            </div>
-            <div class="ui labeled button m-class-rb-margin">
-                <a href="#" class="ui basic button">C++</a>
-                <div class="ui basic left pointing label">5</div>
-            </div>
-            <div class="ui labeled button m-class-rb-margin">
-                <a href="#" class="ui green basic button">SpringBoot</a>
-                <div class="ui basic green left pointing label">23</div>
-            </div>
-            <div class="ui labeled button m-class-rb-margin">
-                <a href="#" class="ui basic button">SpringMVC</a>
-                <div class="ui basic left pointing label">8</div>
-            </div>
-            <div class="ui labeled button m-class-rb-margin">
-                <a href="#" class="ui basic button">杂谈</a>
-                <div class="ui basic left pointing label">8</div>
-            </div>
-            <div class="ui labeled button m-class-rb-margin">
-                <a href="#" class="ui basic button">旅游</a>
-                <div class="ui basic left pointing label">9</div>
-            </div>
-
         </div>
 
         <!--博客列表-->
-        <div class="ui attached segment m-div-radius m-div-shadow m-padding-bottom" >
-            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
-            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
-            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
-            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesLeft}"></div>
-            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
-            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
-            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
-            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
-            <div th:insert="~{/sm-model/main-model/mainPagePaperInfo::mainPagesRight}"></div>
-        </div>
-
-        <!--翻页按钮-->
-        <div class="ui middle aligned two column grid">
-            <div class="column">
-                <a href="#" class="ui teal basic button mini m-div-shadow">上一页</a>
+        <div class="ui attached segment m-div-radius m-div-shadow m-padding-bottom" th:each="art:${articleList}">
+            <div class="ui padded segment m-margin-tiny m-div-shadow">
+                <div class="ui grid">
+                    <!--博客配图-->
+                    <div class="four wide column" style="padding-top: 22px">
+                        <a th:href="@{/blog(id=${art.getId()})}">
+                            <img th:src="${art.getHeadImageAddress()}" alt="博客配图" class="ui rounded image"
+                                 style="width: 300px">
+                        </a>
+                    </div>
+                    <!--博客标题、摘要-->
+                    <div class="twelve wide column">
+                        <a th:href="@{/blog(id=${art.getId()})}">
+                            <h3 class="ui header" th:text="${art.getTitle()}"></h3>
+                        </a>
+                        <br>
+                        <a th:href="@{/blog(id=${art.getId()})}" class="m-black">
+                            <p th:text="${#strings.length(art.getContent()) > 90} ? '摘要：' + ${#strings.substring(art.getContent(), 0, 90) + '...'} : '摘要：' + ${art.getContent()}"
+                               style="line-height: 21px"></p>
+                        </a>
+                        <br>
+                        <div class="ui grid">
+                            <!--文章作者、发布时间、阅读、评论信息-->
+                            <div class="eleven wide column">
+                                <div class="ui horizontal link list">
+                                    <!--头像及姓名-->
+                                    <div class="item">
+                                        <img th:src="@{/img/favicon.png}" alt="头像" class="ui avatar image">
+                                        <div class="content"><h5 th:text="${art.getAuthorName()}"></h5></div>
+                                    </div>
+                                    <!--发布时间-->
+                                    <div class="item">
+                                        <i class="calendar icon"></i> [[${#strings.substring(art.getCreatedTime().toString(), 0, 10)}]]
+                                    </div>
+                                    <!--阅读量-->
+                                    <div class="item">
+                                        <i class="eye icon"></i> [[${art.getReadCount()}]]
+                                    </div>
+                                    <!--评论量-->
+                                    <div class="item">
+                                        <i class="comment outline icon"></i> [[${art.getCommentCount()}]]
+                                    </div>
+                                </div>
+                            </div>
+                            <!--小标签-->
+                            <div class="right aligned five wide column">
+                                <div class="ui horizontal link list">
+                                    <a th:href="@{'/sort/' + ${activeId} + '/' + ${pageInfo.getCurrentPage()}}" class="bottom aligned ui label large teal inverted m-padding-tiny"
+                                       th:text="${art.getSort()}"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="right aligned column">
-                <a href="#" class="ui teal basic button mini m-div-shadow">下一页</a>
+        </div>
+        <!--下方：翻页按钮-->
+        <div class="ui segment m-div-shadow m-div-radius m-padding-bottom">
+            <div class="ui middle aligned two column grid">
+                <div class="column">
+                    <a th:href="@{'/sort/' + ${sortId} + '/' + ${pageInfo.getCurrentPage() - 1}}"
+                       class="ui teal basic button m-div-shadow">上一页</a>
+                </div>
+                <div class="right aligned column">
+                    <a th:href="@{'/sort/' + ${sortId} + '/' + ${pageInfo.getCurrentPage() + 1}}"
+                       class="ui teal basic button m-div-shadow">下一页</a>
+                </div>
             </div>
         </div>
-
     </div>
 </div>
 

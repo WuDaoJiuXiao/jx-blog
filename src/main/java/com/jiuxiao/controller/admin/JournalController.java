@@ -3,7 +3,7 @@ package com.jiuxiao.controller.admin;
 import com.jiuxiao.annotation.MyLogAnnotation;
 import com.jiuxiao.constants.BackendConstants;
 import com.jiuxiao.pojo.Journal;
-import com.jiuxiao.service.admin.journal.JournalService;
+import com.jiuxiao.service.journal.JournalService;
 import com.jiuxiao.tools.PageInfoTools;
 import com.jiuxiao.tools.TurnPageTools;
 import org.springframework.beans.factory.annotation.Autowired;

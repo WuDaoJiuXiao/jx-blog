@@ -126,4 +126,42 @@ public interface ArticleMapper {
      * @date 2022/6/9 10:28
      */
     List<Map<Object, Object>> DescendingArticleByCreatedTime();
+
+    /**
+     * @param queryText
+     * @return: java.util.List<java.util.Map < java.lang.Object, java.lang.Object>>
+     * @decription 搜索标题和摘要，是否包含要搜索的字符串内容
+     * @date 2022/6/9 20:51
+     */
+    List<Map<Object, Object>> searchText(@Param("queryText") String queryText);
+
+    /**
+     * @param sort
+     * @return: java.util.List<com.jiuxiao.pojo.Article>
+     * @decription 通过分类名称查询文章
+     * @date 2022/6/11 21:54
+     */
+    List<Article> queryArticleBySortName(@Param("sort") String sort);
+
+    /**
+     * @param tags
+     * @return: java.util.List<com.jiuxiao.pojo.Article>
+     * @decription 通过标签名称查询文章
+     * @date 2022/6/11 21:54
+     */
+    List<Article> queryArticleByTagsName(@Param("tags") String tags);
+
+    /**
+     * @return: java.util.List<java.util.Map < java.lang.Object, java.lang.Object>>
+     * @decription 查询所有的文章标签列表
+     * @date 2022/6/11 22:48
+     */
+    List<Map<Object, Object>> queryTagsList();
+
+    /**
+     * @return: java.util.List<java.util.Map < java.lang.Object, java.lang.Object>>
+     * @decription 查询所有的文章分类列表
+     * @date 2022/6/11 22:47
+     */
+    List<Map<Object, Object>> querySortList();
 }

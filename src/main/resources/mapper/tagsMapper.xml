@@ -93,8 +93,11 @@
 
     <!--将标签进行降序排列-->
     <select id="DescendingTags" resultType="map">
-        select name, ref_count
-        from blog.t_tags
-        order by ref_count desc
+        select t.id tid, t.name tname, count(a.tags) countatags
+        from blog.t_article a,
+             blog.t_tags t
+        where t.name = a.tags
+        group by t.name
+        order by countatags desc;
     </select>
 </mapper>

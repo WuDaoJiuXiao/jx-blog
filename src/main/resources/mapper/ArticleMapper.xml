@@ -172,4 +172,56 @@
         from blog.t_article
         order by created_time desc
     </select>
+
+    <!--搜索标题和摘要，是否包含要搜索的字符串内容-->
+    <select id="searchText" parameterType="string" resultType="map">
+        select id,
+        title,
+        content,
+        author_name,
+        created_time,
+        read_count,
+        comment_count,
+        tags,
+        head_image_address
+        from blog.t_article
+        <where>
+            <if test="queryText != null and queryText != ''">
+                title like concat('%', #{queryText}, '%') or
+                content like concat('%', #{queryText}, '%')
+            </if>
+        </where>
+    </select>
+
+    <!--通过分类名称查询文章-->
+    <select id="queryArticleBySortName" parameterType="string" resultType="Article">
+        select *
+        from blog.t_article
+        where sort = #{sort}
+    </select>
+
+    <!--通过标签名称查询文章-->
+    <select id="queryArticleByTagsName" parameterType="string" resultType="Article">
+        select *
+        from blog.t_article
+        where tags = #{tags}
+    </select>
+
+    <!--获得文章对应的所有标签列表-->
+    <select id="queryTagsList" resultType="map">
+        select t.id tid, a.tags atags, count(a.tags) countatags
+        from blog.t_article a,
+             blog.t_tags t
+        where a.tags = t.name
+        group by t.name;
+    </select>
+
+    <!--获得文章对应的所有分类列表-->
+    <select id="querySortList" resultType="map">
+        select s.id sid, a.sort asort, count(a.sort) countasort
+        from blog.t_article a,
+             blog.t_sort s
+        where a.sort = s.name
+        group by s.name
+    </select>
 </mapper>

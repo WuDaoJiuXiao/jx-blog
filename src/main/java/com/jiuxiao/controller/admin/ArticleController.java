@@ -5,9 +5,10 @@ import com.jiuxiao.constants.BackendConstants;
 import com.jiuxiao.pojo.Article;
 import com.jiuxiao.pojo.Sort;
 import com.jiuxiao.pojo.Tags;
-import com.jiuxiao.service.admin.article.ArticleService;
-import com.jiuxiao.service.admin.sort.SortService;
-import com.jiuxiao.service.admin.tags.TagsService;
+import com.jiuxiao.service.archive.ArchiveService;
+import com.jiuxiao.service.article.ArticleService;
+import com.jiuxiao.service.sort.SortService;
+import com.jiuxiao.service.tags.TagsService;
 import com.jiuxiao.tools.PageInfoTools;
 import com.jiuxiao.tools.TimeTools;
 import com.jiuxiao.tools.TurnPageTools;
@@ -40,6 +41,9 @@ public class ArticleController {
 
     @Autowired
     private SortService sortService;
+
+    @Autowired
+    private ArchiveService archiveService;
 
     /**
      * @return: java.lang.String
@@ -116,12 +120,16 @@ public class ArticleController {
     /**
      * @param id
      * @return: java.lang.String
-     * @decription 删除文章
+     * @decription 删除文章(同时要删除该文章对应的归档)
      * @date 2022/6/8 10:46
      */
     @MyLogAnnotation("删除")
     @RequestMapping("/deleteArticle/{id}")
     public String delete(@PathVariable("id") Integer id) {
+        //因为文章的 id 与归档 id 相一致，所以根据文章 id 直接删除归档记录即可
+        archiveService.deleteArchiveById(id);
+        archiveService.increaseArchiveFromThis();
+
         articleService.deleteArticleById(id);
         articleService.increaseArticleFromThis();
         return "redirect:/admin/blog";

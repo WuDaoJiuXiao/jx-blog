@@ -44,10 +44,9 @@
                         <i class="dropdown icon"></i>
                         <div class="default text required">博客类型</div>
                         <div class="menu">
-                            <div class="item"
-                                 th:each="type,typeStat:${typeList}"
-                                 th:value="${typeStat.index}"
-                                 th:text="${type}"></div>
+                            <div class="item" value="0">原创</div>
+                            <div class="item" value="1">转载</div>
+                            <div class="item" value="2">翻译</div>
                         </div>
                     </div>
                     <!--文章标题-->
@@ -161,11 +160,11 @@
     //基本的表单提交验证
     $('.ui.form').form({
         fields: {
-            types: {
-                identifier: 'types',
+            sort: {
+                identifier: 'sort',
                 rules: [{
                     type: 'empty',
-                    prompt: '请选择博客类型'
+                    prompt: '请选择博客分类'
                 }]
             },
             title: {
@@ -182,11 +181,18 @@
                     prompt: '请选择文章标签'
                 }]
             },
-            indexPicture: {
-                identifier: 'indexPicture',
+            headImageAddress: {
+                identifier: 'headImageAddress',
                 rules: [{
                     type: 'empty',
                     prompt: '请输入博客首图地址'
+                }]
+            },
+            content: {
+                identifier: 'content',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入博客内容'
                 }]
             }
         }

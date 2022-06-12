@@ -93,8 +93,11 @@
 
     <!--将分类进行降序排列-->
     <select id="DescendingSort" resultType="map">
-        select name, ref_count
-        from blog.t_sort
-        order by ref_count desc
+        select s.id sid, s.name sname, count(a.sort) countasort
+        from blog.t_article a,
+             blog.t_sort s
+        where s.name = a.sort
+        group by s.name
+        order by countasort desc;
     </select>
 </mapper>

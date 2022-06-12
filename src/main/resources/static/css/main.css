@@ -267,7 +267,16 @@ body {
     margin-top: 140px !important;
     margin-bottom: 140px !important;
 }
-
+.toc-size {
+    font-size: 16px !important;
+    line-height: 1.6em !important;
+    padding-left: 25px !important;
+    width: 280px !important;
+}
+.comment-tb-margin {
+    margin-top: 12px !important;
+    margin-bottom: 15px !important;
+}
 
 /*------------
   右下角小组件

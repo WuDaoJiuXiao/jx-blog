@@ -12,9 +12,6 @@
 </head>
 <body>
 
-<!--头部导航栏-->
-<div th:insert="~{/backend/headers::adminHeader('error')}"></div>
-
 <!--输出出错信息到网页注释中-->
 <div>
     <div th:utext="'&lt;!--'" th:remove="tag"></div>
@@ -27,7 +24,10 @@
     </ul>
     <div th:utext="'--&gt;'" th:remove="tag"></div>
 </div>
-
+<br>
+<br>
+<br>
+<br>
 
 <!--自定义其他错误 -->
 <div class="m-container m-padding-rlb error-tb-margin">
@@ -37,14 +37,14 @@
                 <h3 class="ui header center aligned">未知错误</h3>
                 <br>
                 <h4 class="ui header center aligned">遭遇未知错误，请联系管理员！</h4>
+                <br>
+                <div style="text-align: center;font-size: 16px">
+                    <a th:href="@{/}">点击我回到首页</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-
-<!--footer信息栏-->
-<div th:insert="~{/commons/footer::blogFooter}"></div>
 
 </body>
 </html>

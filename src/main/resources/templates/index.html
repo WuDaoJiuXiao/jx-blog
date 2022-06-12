@@ -50,17 +50,14 @@
                                 <br>
                                 <!--摘要只显示正文的前90个字-->
                                 <a th:href="@{/blog(id=${art.getId()})}">
-                                    <p class="m-black" th:text="${#strings.length(art.getContent()) > 90} ? '摘要：' + ${#strings.substring(art.getContent(), 0, 90) + '...'} : '摘要：' + ${art.getContent()}"></p>
+                                    <p class="m-black" th:text="${#strings.length(art.getContent()) > 90} ? '摘要：' + ${#strings.substring(art.getContent(), 0, 90) + '...'} : '摘要：' + ${art.getContent()}"
+                                    style="line-height: 21px"></p>
                                 </a>
+                                <br>
                                 <div class="ui grid">
                                     <!--文章作者、发布时间、阅读、评论信息-->
-                                    <div class="twelve wide column">
+                                    <div class="ten wide column">
                                         <div class="ui horizontal link list">
-                                            <!--头像及姓名-->
-                                            <div class="item">
-                                                <img th:src="@{/img/favicon.png}" alt="头像" class="ui avatar image">
-                                                <div class="content"><h5 th:text="${art.getAuthorName()}"></h5></div>
-                                            </div>
                                             <!--发布时间-->
                                             <div class="item">
                                                 <!--这里的时间需要处理一下，去掉时分秒，只显示年月日-->
@@ -78,10 +75,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--小标签-->
-                                    <div class="right aligned four wide column">
+                                    <!--文章分类-->
+                                    <div class="right aligned three wide column">
                                         <div class="ui horizontal link list">
-                                            <a href="#" class="bottom aligned ui label teal inverted m-padding-tiny"
+                                            <a th:href="@{/sort/-1/-1}" class="bottom aligned ui label blue inverted m-padding-tiny"
+                                               th:text="${art.getSort()}"></a>
+                                        </div>
+                                    </div>
+                                    <!--文章标签-->
+                                    <div class="right aligned three wide column">
+                                        <div class="ui horizontal link list">
+                                            <a th:href="@{/tags/-1/-1}" class="bottom aligned ui label teal inverted m-padding-tiny"
                                                th:text="${art.getTags()}"></a>
                                         </div>
                                     </div>
@@ -90,13 +94,11 @@
                             <!--博客配图-->
                             <div class="five wide column" style="padding-top: 22px">
                                 <a th:href="@{/blog(id=${art.getId()})}" target="_self">
-                                    <!--暂时使用本地图，后期正式发布博客就是用网络配图-->
-                                    <img th:src="@{/img/test01.png}" alt="博客配图" class="ui rounded image" style="width: 300px">
+                                    <img th:src="${art.getHeadImageAddress()}" alt="博客配图" class="ui rounded image" style="width: 300px">
                                 </a>
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 <!--下方：翻页按钮-->
@@ -104,11 +106,11 @@
                     <div class="ui middle aligned two column grid">
                         <div class="column">
                             <a th:href="@{/(currentPage=${pageInfo.getCurrentPage() - 1})}"
-                               class="ui teal basic button mini m-div-shadow">上一页</a>
+                               class="ui teal basic button m-div-shadow">上一页</a>
                         </div>
                         <div class="right aligned column">
                             <a th:href="@{/(currentPage=${pageInfo.getCurrentPage() + 1})}"
-                               class="ui teal basic button mini m-div-shadow">下一页</a>
+                               class="ui teal basic button m-div-shadow">下一页</a>
                         </div>
                     </div>
                 </div>
@@ -142,7 +144,7 @@
                                     <span th:text="${#strings.length(read.get('title')) > 12} ? ${#strings.substring(read.get('title'), 0, 11) + '...'} : ${read.get('title')}"></span>
                                 </a>
                             </div>
-                            <div class="right aligned four wide column" style="padding-right: 0">
+                            <div class="left aligned four wide column" style="padding-right: 0">
                                 <i class="eye icon"></i> <span th:text="${read.get('read_count')}"></span>
                             </div>
                         </div>
@@ -173,7 +175,7 @@
                                 <h5><i class="sort icon"></i>分类</h5>
                             </div>
                             <div class="right aligned column">
-                                <a href="#" target="_self">More <i class="angle double right icon"></i></a>
+                                <a th:href="@{/sort/-1/-1}">More <i class="angle double right icon"></i></a>
                             </div>
                         </div>
                     </div>
@@ -181,12 +183,12 @@
                     <div class="ui segment" th:each="sort:${sortMap}">
                         <div class="ui grid">
                             <div class="twelve wide column">
-                                <a href="#" target="_self" class="m-black"><i class="fire icon"></i>
-                                    <span th:text="${sort.get('name')}"></span>
+                                <a th:href="@{'/sort/' + ${sort.get('sid')} + '/1'}" target="_self" class="m-black"><i class="fire icon"></i>
+                                    <span th:text="${sort.get('sname')}"></span>
                                 </a>
                             </div>
                             <div class="left aligned four wide column">
-                                <i class="star outline icon"></i><span th:text="${sort.get('ref_count')}"></span>
+                                <i class="star outline icon"></i><span th:text="${sort.get('countasort')}"></span>
                             </div>
                         </div>
                     </div>
@@ -201,20 +203,20 @@
                                 <h5><i class="tags icon"></i>标签</h5>
                             </div>
                             <div class="right aligned column">
-                                <a href="#" target="_self">More <i class="angle double right icon"></i></a>
+                                <a th:href="@{/tags/-1/-1}">More <i class="angle double right icon"></i></a>
                             </div>
                         </div>
                     </div>
                     <!--标签信息栏-->
-                    <div class="ui segment" th:each="tag:${tagsMap}">
+                    <div class="ui segment" th:each="tags:${tagsMap}">
                         <div class="ui grid">
                             <div class="twelve wide column">
-                                <a href="#" target="_self" class="m-black"><i class="tint icon"></i>
-                                    <span th:text="${tag.get('name')}"></span>
+                                <a th:href="@{'/tags/' + ${tags.get('tid')} + '/1'}" target="_self" class="m-black"><i class="tint icon"></i>
+                                    <span th:text="${tags.get('tname')}"></span>
                                 </a>
                             </div>
                             <div class="left aligned four wide column">
-                                <i class="moon outline icon"></i><span th:text="${tag.get('ref_count')}"></span>
+                                <i class="moon outline icon"></i><span th:text="${tags.get('countatags')}"></span>
                             </div>
                         </div>
                     </div>

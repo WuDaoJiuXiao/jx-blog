@@ -11,10 +11,10 @@
     <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
-
-<!--头部导航栏-->
-<div th:insert="~{/backend/headers::adminHeader('500')}"></div>
-
+<br>
+<br>
+<br>
+<br>
 <!--自定义 500 -->
 <div class="m-container m-padding-rlb error-tb-margin">
     <div class="ui secondary segment">
@@ -23,13 +23,14 @@
                 <h3 class="ui header center aligned">500 Internal Server Error</h3>
                 <br>
                 <h4 class="ui header center aligned">内部服务器错误，请联系管理员！</h4>
+                <br>
+                <div style="text-align: center;font-size: 16px">
+                    <a th:href="@{/}">点击我回到首页</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-<!--footer信息栏-->
-<div th:insert="~{/commons/footer::blogFooter}"></div>
 
 </body>
 </html>

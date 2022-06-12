@@ -12,9 +12,10 @@
 </head>
 <body>
 
-<!--头部导航栏-->
-<div th:insert="~{/backend/headers::adminHeader('502')}"></div>
-
+<br>
+<br>
+<br>
+<br>
 <!--自定义 502 -->
 <div class="m-container m-padding-rlb error-tb-margin">
     <div class="ui secondary segment">
@@ -23,14 +24,14 @@
                 <h3 class="ui header center aligned">502 Bad Gateway</h3>
                 <br>
                 <h4 class="ui header center aligned">对不起，您的网关错误！</h4>
+                <br>
+                <div style="text-align: center;font-size: 16px">
+                    <a th:href="@{/}">点击我回到首页</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-<!--footer信息栏-->
-<div th:insert="~{/commons/footer::blogFooter}"></div>
-
 
 </body>
 </html>

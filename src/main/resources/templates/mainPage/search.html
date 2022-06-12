@@ -25,26 +25,24 @@
                     <h4 class="ui teal header">搜索结果</h4>
                 </div>
                 <div class="right aligned column">
-                    共 <h3 class="ui teal header m-inline-block">10</h3> 条
+                    共 <h3 class="ui teal header m-inline-block" th:text="${mapList.size()}"></h3> 条
                 </div>
             </div>
         </div>
 
         <!--博客列表-->
-        <div class="ui attached segment m-div-radius m-div-shadow m-padding-bottom" >
+        <div class="ui attached segment m-div-radius m-div-shadow m-padding-bottom" th:each="artMap:${mapList}">
             <div class="ui padded segment m-margin-tiny m-div-shadow">
                 <div class="ui grid">
-                    <!--博客配图-->
-                    <div class="four wide column" style="padding-top: 22px">
-                        <a href="#" target="_self">
-                            <img th:src="@{/img/test02.png}" alt="博客配图" class="ui rounded image" style="width: 300px">
-                        </a>
-                    </div>
                     <!--博客标题、摘要-->
                     <div class="twelve wide column">
-                        <h3 class="ui header">什么是Thymeleaf？</h3>
-                        <p>Thymeleaf 是新一代 Java 模板引擎，与 Velocity、FreeMarker 等传统 Java 模板引擎不同，Thymeleaf 支持 HTML 原型，
-                            其文件后缀为“.html”，因此它可以直接被浏览器打开，此时浏览器会忽略未定义的 Thymeleaf 标签属性...</p>
+                        <a th:href="@{/blog(id=${artMap.get('id')})}"><h3 class="ui header" th:text="${artMap.get('title')}"></h3></a>
+                        <br>
+                        <!--摘要-->
+                        <a th:href="@{/blog(id=${artMap.get('id')})}">
+                            <p class="m-black" th:text="${#strings.length(artMap.get('content')) > 90} ? '摘要：' + ${#strings.substring(artMap.get('content'), 0, 90) + '...'} : '摘要：' + ${artMap.get('content')}"
+                               style="line-height: 21px"></p>
+                        </a>
                         <div class="ui grid">
                             <!--文章作者、发布时间、阅读、评论信息-->
                             <div class="eleven wide column">
@@ -52,35 +50,39 @@
                                     <!--头像及姓名-->
                                     <div class="item">
                                         <img th:src="@{/img/favicon.png}" alt="头像" class="ui avatar image">
-                                        <div class="content"><h5>悟道九霄</h5></div>
+                                        <div class="content"><h5 th:text="${artMap.get('author_name')}"></h5></div>
                                     </div>
                                     <!--发布时间-->
                                     <div class="item">
-                                        <i class="calendar icon"></i> 2021-11-01
+                                        <i class="calendar icon"></i> [[${#strings.substring(artMap.get('created_time').toString(), 0, 10)}]]
                                     </div>
                                     <!--阅读量-->
                                     <div class="item">
-                                        <i class="eye icon"></i> 4254
+                                        <i class="eye icon"></i> [[${artMap.get('read_count')}]]
                                     </div>
                                     <!--评论量-->
                                     <div class="item">
-                                        <i class="comment outline icon"></i> 42
+                                        <i class="comment outline icon"></i> [[${artMap.get('comment_count')}]]
                                     </div>
                                 </div>
                             </div>
                             <!--小标签-->
                             <div class="right aligned five wide column">
                                 <div class="ui horizontal link list">
-                                    <a href="#" class="bottom aligned ui label teal inverted m-padding-tiny">谈天说地</a>
+                                    <a href="#" class="bottom aligned ui label teal inverted m-padding-tiny" th:text="${artMap.get('tags')}"></a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!--博客配图-->
+                    <div class="four wide column" style="padding-top: 22px">
+                        <a href="#" target="_self">
+                            <img th:src="${artMap.get('head_image_address')}" alt="博客配图" class="ui rounded image" style="width: 300px">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
 
