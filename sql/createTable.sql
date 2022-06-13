@@ -116,6 +116,7 @@ CREATE TABLE `t_link`
     `image_address`    varchar(200) NOT NULL COMMENT '友链头像地址',
     `created_time`     timestamp    NOT NULL COMMENT '创建时间',
     `last_update_time` timestamp    NOT NULL COMMENT '上次修改时间',
+    `is_check`         varchar(10)  NOT NULL COMMENT '是否审核',
     PRIMARY KEY (`id`)
 ) COMMENT = '友链表' ENGINE = InnoDB
                   AUTO_INCREMENT = 1
@@ -128,8 +129,8 @@ CREATE TABLE `t_link`
 DROP TABLE IF EXISTS `t_archive`;
 CREATE TABLE `t_archive`
 (
-    `id`               int(32)   NOT NULL COMMENT '归档id',
-    `created_time`     timestamp NOT NULL COMMENT '创建时间',
+    `id`           int(32)   NOT NULL COMMENT '归档id',
+    `created_time` timestamp NOT NULL COMMENT '创建时间',
     PRIMARY KEY (`id`)
 ) COMMENT = '归档表' ENGINE = InnoDB
                   AUTO_INCREMENT = 1
@@ -154,6 +155,15 @@ CREATE TABLE `t_journal`
 ) COMMENT = '日志表' ENGINE = InnoDB
                   AUTO_INCREMENT = 1
                   DEFAULT CHARSET = utf8;
+
+
+-- ----------------------------------------
+-- Administrator default username : admin
+-- Administrator default password : 123456
+-- ----------------------------------------
+INSERT INTO `t_user`(`id`, `username`, `password`, `email`, `admin`)
+VALUES ('1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '1667191252@qq.com', '1');
+
 
 -- ----------------------------------------
 -- Restore foreign key constraints

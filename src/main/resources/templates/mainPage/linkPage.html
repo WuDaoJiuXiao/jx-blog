@@ -19,110 +19,72 @@
 <div class="m-container m-padding-large animate__animated animate__fadeIn">
     <div class="ui container">
         <!--友链展示和添加页面-->
-        <div class="ui segment m-div-radius teal m-div-radius m-padding-bottom m-div-shadow">
+        <div class="ui segment m-div-radius m-side-shadow teal m-padding-bottom m-div-shadow">
             <h3 class="ui horizontal blue divider header">我的友链</h3>
+
             <!--展示友链-->
-            <div class="ui segment secondary m-div-radius m-div-shadow">
-                <a href="#" class="ui button basic blue m-lrt-margin">
-                    <img th:src="@{/img/favicon.png}" alt="" class="ui avatar image" src="">奥术大师多
-                </a>
-                <a href="#" class="ui button basic blue m-lrt-margin">
-                    <img th:src="@{/img/favicon.png}" alt="" class="ui avatar image">奥术大师多
-                </a>
-                <a href="#" class="ui button basic blue m-lrt-margin">
-                    <img th:src="@{/img/favicon.png}" alt="" class="ui avatar image">奥术大师多
-                </a>
-                <a href="#" class="ui button basic blue m-lrt-margin">
-                    <img th:src="@{/img/favicon.png}" alt="" class="ui avatar image">奥术大师多
-                </a>
-                <a href="#" class="ui button basic blue m-lrt-margin">
-                    <img th:src="@{/img/favicon.png}" alt="" class="ui avatar image">奥术大师多
-                </a>
-                <a href="#" class="ui button basic blue m-lrt-margin">
-                    <img th:src="@{/img/favicon.png}" alt="" class="ui avatar image">奥术大师多
-                </a>
-                <a href="#" class="ui button basic blue m-lrt-margin">
-                    <img th:src="@{/img/favicon.png}" alt="" class="ui avatar image">奥术大师多
-                </a>
-                <a href="#" class="ui button basic blue m-lrt-margin">
-                    <img th:src="@{/img/favicon.png}" alt="" class="ui avatar image">奥术大师多
-                </a>
+            <div class="ui segment link-seg-size m-div-radius m-div-shadow" th:each="link:${successLink}">
+                <img th:src="${link.getImageAddress()}" alt="网站头像" class="link-img-size">
+                <div style="text-align: center;padding-top: 5px">
+                    <a th:href="${link.getAddress()}" th:text="${link.getName()}" class="link-text-size"></a>
+                </div>
             </div>
 
             <!--增加友链-->
             <div class="ui segment top attached m-div-radius m-div-shadow m-bg-color">
                 <div class="ui grid">
                     <!--增加友链的表单-->
-                    <div class="nine wide column">
-                        <div class="ui form">
-                            <!--网站名称-->
-                            <div class="field m-filed-length">
-                                <div class="ui left icon input">
-                                    <i class="user icon"></i>
-                                    <input type="text" name="webName" placeholder="网站名称">
+                    <br>
+                    <form th:action="@{/auditLink}" class="ui form" method="post"
+                          style="padding-top: 14px;margin-bottom: 14px">
+                        <div class="seven wide column">
+                            <div class="ui form">
+                                <!--网站名称-->
+                                <div class="field m-filed-length">
+                                    <div class="ui left icon input">
+                                        <i class="user icon"></i>
+                                        <input type="text" name="name" placeholder="网站名称" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <!--网站链接-->
-                            <div class="field m-filed-length">
-                                <div class="ui left icon input">
-                                    <i class="linkify icon"></i>
-                                    <input type="text" name="webName" placeholder="网站链接">
+                                <!--网站链接-->
+                                <div class="field m-filed-length">
+                                    <div class="ui left icon input">
+                                        <i class="linkify icon"></i>
+                                        <input type="text" name="address" placeholder="网站链接" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <!--网站头像链接-->
-                            <div class="field m-filed-length">
-                                <div class="ui left icon input">
-                                    <i class="chart area icon"></i>
-                                    <input type="text" name="webName" placeholder="网站头像链接">
+                                <!--网站头像链接-->
+                                <div class="field m-filed-length">
+                                    <div class="ui left icon input">
+                                        <i class="chart area icon"></i>
+                                        <input type="text" name="imageAddress" placeholder="网站头像链接" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <!--提交按钮-->
-                            <div class="field">
-                                <button class="ui blue button"><i class="edit icon"></i>提交</button>
+                                <!--提交按钮-->
+                                <div class="field" style="padding-left: 70px">
+                                    <button class="ui blue submit button" style="width: 250px"><i class="edit icon"></i>提交</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
+
                     <!--增加友链须知-->
-                    <div class="six wide column m-margin-top-large">
+                    <div class="eight wide column m-margin-top-large">
                         <h4 class="ui horizontal divider header centered m-opacity">增加友链须知</h4>
                         <ul class="ui list">
-                            <li class="item m-opacity-middle">要添加友链的网站必须内容健康、积极向上</li>
-                            <li class="item m-opacity-middle">网站不能包含任何色情、暴力、反动等不良内容</li>
-                            <li class="item m-opacity-middle">提交友链申请之前，请先将本站添加至您的友链</li>
+                            <li class="item m-opc-link" style="list-style: none">要添加友链的网站必须内容健康、积极向上</li>
+                            <li class="item m-opc-link">网站不能包含任何色情、暴力、反动等不良内容</li>
+                            <li class="item m-opc-link">提交友链申请之前，请先将本站添加至您的友链</li>
+                        </ul>
+                        <ul class="ui list">
+                            <li class="m-opc-link">本站名称：悟道九霄</li>
+                            <li class="m-opc-link">本站地址：http://www.jiuxiao.life</li>
+                            <li class="m-opc-link">头像：https://my-pic-1309513254.cos.ap-shanghai.myqcloud.com/1.jpg</li>
                         </ul>
                     </div>
                 </div>
-
             </div>
         </div>
-
-
-        <!--优质网站页面-->
-        <div class="ui segment teal m-div-radius m-div-shadow m-link-tb">
-            <h3 class="ui horizontal green divider header">优质网站</h3>
-            <div class="ui segment secondary m-div-radius m-div-shadow">
-                <a href="#" class="ui button basic green m-lrt-margin">
-                    <img th:src="@{/img/favicon.png}" alt="" class="ui avatar image">学相伴
-                </a>
-                <a href="#" class="ui button basic green m-lrt-margin">
-                    <img th:src="@{/img/favicon.png}" alt="" class="ui avatar image">小破站
-                </a>
-                <a href="#" class="ui button basic green m-lrt-margin">
-                    <img th:src="@{/img/favicon.png}" alt="" class="ui avatar image">博客园
-                </a>
-                <a href="#" class="ui button basic green m-lrt-margin">
-                    <img th:src="@{/img/favicon.png}" alt="" class="ui avatar image">LeetCode
-                </a>
-                <a href="#" class="ui button basic green m-lrt-margin">
-                    <img th:src="@{/img/favicon.png}" alt="" class="ui avatar image">GitHub
-                </a>
-                <a href="#" class="ui button basic green m-lrt-margin">
-                    <img th:src="@{/img/favicon.png}" alt="" class="ui avatar image">Gitee
-                </a>
-            </div>
-        </div>
-
-
     </div>
 </div>
 

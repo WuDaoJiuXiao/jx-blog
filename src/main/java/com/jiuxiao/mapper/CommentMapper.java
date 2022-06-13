@@ -47,4 +47,19 @@ public interface CommentMapper {
      * @date 2022/6/11 11:53
      */
     void insertComment(Comment comment);
+
+    /**
+     * @return: void
+     * @decription 设置主键由此递增
+     * @date 2022/6/13 13:12
+     */
+    void increaseCommentFromThis();
+
+    /**
+     * @param blogId
+     * @return: void
+     * @decription 根据文章 ID 删除该文章对应的评论
+     * @date 2022/6/13 13:13
+     */
+    void deleteCommentByBlogId(@Param("blogId") Integer blogId);
 }

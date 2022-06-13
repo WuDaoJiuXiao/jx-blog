@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -41,12 +42,24 @@ public class LinkController {
     public String link(@RequestParam(defaultValue = "1") Integer currentPage, Model model) {
         List<Link> linkList = linkService.queryAllLinkList();
 
-        Integer linkCount = linkList.size();
+        ArrayList<Link> successLink = new ArrayList<>();
+        ArrayList<Link> failLink = new ArrayList<>();
+        //通过审核的和未通过审核的分开展示
+        for (Link link : linkList) {
+            if (link.getIsCheck().equals("是")) {
+                successLink.add(link);
+            } else {
+                failLink.add(link);
+            }
+        }
+
+        Integer linkCount = successLink.size();
         Integer pageSize = BackendConstants.LINK_PAGE_SIZE;
         TurnPageTools<Link> pageTools = new TurnPageTools<>();
-        PageInfoTools<Link> pageInfo = pageTools.getPageInfo(linkList, currentPage, pageSize);
+        PageInfoTools<Link> pageInfo = pageTools.getPageInfo(successLink, currentPage, pageSize);
 
         model.addAttribute("pageInfo", pageInfo);
+        model.addAttribute("failLink", failLink);
         model.addAttribute("linkCount", linkCount);
         return "backend/control/linkControl";
     }
@@ -77,6 +90,7 @@ public class LinkController {
             Timestamp currentTime = TimeTools.getCurrentTime();
             link.setCreatedTime(currentTime);
             link.setLastUpdateTime(currentTime);
+            link.setIsCheck("是");
             linkService.insertLink(link);
         }
         return "redirect:/admin/link";
@@ -138,8 +152,37 @@ public class LinkController {
         if (name.equals("") || StringUtils.isEmpty(name)) {
             return "redirect:/admin/link";
         }
+
+        //只查询通过申请的友链
         List<Link> linkList = linkService.queryLinkByName(name);
-        model.addAttribute("linkList", linkList);
+        ArrayList<Link> successList = new ArrayList<>();
+        for (Link link : linkList) {
+            if (link.getIsCheck().equals("是")) {
+                successList.add(link);
+            }
+        }
+
+        model.addAttribute("successList", successList);
         return "backend/show/showLinkSearch";
+    }
+
+    /**
+     * @param id
+     * @return: java.lang.String
+     * @decription 同意友链申请
+     * @date 2022/6/13 10:36
+     */
+    @MyLogAnnotation("更新")
+    @RequestMapping("/passLink/{id}")
+    public String checkLink(@PathVariable("id") Integer id) {
+        //通过友链申请，只需要将 isCheck 属性由 “否” 改变为 “是” 即可
+        Link link = linkService.queryLinkById(id);
+        Timestamp currentTime = TimeTools.getCurrentTime();
+        link.setCreatedTime(currentTime);
+        link.setLastUpdateTime(currentTime);
+        link.setIsCheck("是");
+
+        linkService.updateLink(link);
+        return "redirect:/admin/link";
     }
 }

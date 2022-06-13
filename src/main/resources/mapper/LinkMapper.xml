@@ -32,10 +32,10 @@
 
     <!--增加友链-->
     <insert id="insertLink" parameterType="Link">
-        insert into blog.t_link(id, name, address, image_address, created_time, last_update_time)
+        insert into blog.t_link(id, name, address, image_address, created_time, last_update_time, is_check)
         value (
         <if test="id != null and id &gt; 0">
-            #{id}, #{name}, #{address}, #{imageAddress}, #{createdTime}, #{lastUpdateTime}
+            #{id}, #{name}, #{address}, #{imageAddress}, #{createdTime}, #{lastUpdateTime}, #{isCheck}
         </if>
         )
     </insert>
@@ -57,7 +57,10 @@
                 created_time = #{createdTime},
             </if>
             <if test="lastUpdateTime != null">
-                last_update_time = #{lastUpdateTime}
+                last_update_time = #{lastUpdateTime},
+            </if>
+            <if test="isCheck != null">
+                is_check = #{isCheck}
             </if>
         </set>
         <where>

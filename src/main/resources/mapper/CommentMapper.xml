@@ -32,4 +32,18 @@
         </if>
         )
     </insert>
+
+    <!--设置主键由此递增-->
+    <update id="increaseCommentFromThis">
+        alter table blog.t_comment
+            drop id;
+        alter table blog.t_comment
+            add id int(32) not null primary key auto_increment first
+    </update>
+    <!--根据博客 ID 删除该文章对应的评论-->
+    <delete id="deleteCommentByBlogId" parameterType="int">
+        delete
+        from blog.t_comment
+        where blog_id = #{blogId}
+    </delete>
 </mapper>

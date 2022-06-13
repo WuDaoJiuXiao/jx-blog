@@ -182,6 +182,7 @@
         created_time,
         read_count,
         comment_count,
+        sort,
         tags,
         head_image_address
         from blog.t_article

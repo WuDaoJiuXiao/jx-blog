@@ -28,17 +28,21 @@ public class Link {
     /** 上次修改时间 */
     private Timestamp lastUpdateTime;
 
+    /** 是否通过审核 */
+    private String isCheck;
+
     public Link() {
     }
 
     public Link(Integer id, String name, String address, String imageAddress,
-                Timestamp createdTime, Timestamp lastUpdateTime) {
+                Timestamp createdTime, Timestamp lastUpdateTime, String isCheck) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.imageAddress = imageAddress;
         this.createdTime = createdTime;
         this.lastUpdateTime = lastUpdateTime;
+        this.isCheck = isCheck;
     }
 
     public Integer getId() {
@@ -89,6 +93,14 @@ public class Link {
         this.lastUpdateTime = lastUpdateTime;
     }
 
+    public String getIsCheck() {
+        return isCheck;
+    }
+
+    public void setIsCheck(String isCheck) {
+        this.isCheck = isCheck;
+    }
+
     @Override
     public String toString() {
         return "Link{" +
@@ -98,6 +110,7 @@ public class Link {
                 ", imageAddress='" + imageAddress + '\'' +
                 ", createdTime=" + createdTime +
                 ", lastUpdateTime=" + lastUpdateTime +
+                ", isCheck='" + isCheck + '\'' +
                 '}';
     }
 }

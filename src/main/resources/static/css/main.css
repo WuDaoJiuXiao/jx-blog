@@ -49,6 +49,10 @@ body {
     opacity: 0.7 !important;
 }
 
+.m-opc-link {
+    opacity: 0.6 !important;
+}
+
 .m-opacity-middle {
     opacity: 0.4 !important;
 }
@@ -256,7 +260,7 @@ body {
 }
 
 .m-bg-color {
-    background: #397dff26 !important;
+    background: rgba(231, 231, 231, 0.15) !important;
 }
 
 .m-filed-length {
@@ -267,15 +271,40 @@ body {
     margin-top: 140px !important;
     margin-bottom: 140px !important;
 }
+
 .toc-size {
     font-size: 16px !important;
     line-height: 1.6em !important;
     padding-left: 25px !important;
     width: 280px !important;
 }
+
 .comment-tb-margin {
     margin-top: 12px !important;
     margin-bottom: 15px !important;
+}
+
+/*------------
+  link-page
+------------*/
+.link-seg-size {
+    width: 162px !important;
+    height: 190px !important;
+    display: inline-block !important;
+    margin-left: 18px !important;
+    margin-right: 18px !important;
+}
+
+.link-img-size {
+    width: 140px !important;
+    height: 140px !important;
+    margin-left: -6px !important;
+    border-radius: 8px !important;
+}
+
+.link-text-size {
+    color: #7298e5 !important;
+    font-size: 18px !important;
 }
 
 /*------------

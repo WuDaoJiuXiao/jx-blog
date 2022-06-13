@@ -43,9 +43,10 @@
                             <p class="m-black" th:text="${#strings.length(artMap.get('content')) > 90} ? '摘要：' + ${#strings.substring(artMap.get('content'), 0, 90) + '...'} : '摘要：' + ${artMap.get('content')}"
                                style="line-height: 21px"></p>
                         </a>
+                        <br>
                         <div class="ui grid">
                             <!--文章作者、发布时间、阅读、评论信息-->
-                            <div class="eleven wide column">
+                            <div class="ten wide column">
                                 <div class="ui horizontal link list">
                                     <!--头像及姓名-->
                                     <div class="item">
@@ -66,17 +67,23 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--小标签-->
-                            <div class="right aligned five wide column">
+                            <!--分类-->
+                            <div class="right aligned three wide column">
                                 <div class="ui horizontal link list">
-                                    <a href="#" class="bottom aligned ui label teal inverted m-padding-tiny" th:text="${artMap.get('tags')}"></a>
+                                    <a th:href="@{/sort/-1/-1}" class="bottom aligned ui label large teal inverted m-padding-tiny" th:text="${artMap.get('sort')}"></a>
+                                </div>
+                            </div>
+                            <!--标签-->
+                            <div class="right aligned three wide column">
+                                <div class="ui horizontal link list">
+                                    <a th:href="@{/tags/-1/-1}" class="bottom aligned ui label large teal inverted m-padding-tiny" th:text="${artMap.get('tags')}"></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!--博客配图-->
                     <div class="four wide column" style="padding-top: 22px">
-                        <a href="#" target="_self">
+                        <a th:href="@{/blog(id=${artMap.get('id')})}" target="_self">
                             <img th:src="${artMap.get('head_image_address')}" alt="博客配图" class="ui rounded image" style="width: 300px">
                         </a>
                     </div>

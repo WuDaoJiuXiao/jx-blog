@@ -30,7 +30,7 @@
                 <i class="user outline icon"></i>
                 关于我
             </a>
-            <a  href="#" class="item" th:classappend="${#strings.equals(pageName, 'link')} ? 'active'">
+            <a th:href="@{/link}" class="item" th:classappend="${#strings.equals(pageName, 'link')} ? 'active'">
                 <i class="linkify icon"></i>
                 友链
             </a>

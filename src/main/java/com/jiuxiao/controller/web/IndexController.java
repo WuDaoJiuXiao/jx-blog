@@ -108,6 +108,10 @@ public class IndexController {
         List<Comment> commentList = commentService.queryCommentByArticleId(id);
         Map<Integer, Comment> parentMap = new HashMap<>(commentList.size());
 
+        //文章 id 正确的情况下，每访问一次该文章，该文章的阅读量就加一
+        article.setReadCount(article.getReadCount() + 1);
+        articleService.updateArticleById(article);
+
         //为每个评论查询出它的父评论，若为 -1 则父评论为 Null 对象
         for (Comment comment : commentList) {
             Integer commentId = comment.getId();
@@ -122,6 +126,7 @@ public class IndexController {
 
         //这里要将 md 转换为 html，然后在返回给前端
         Article oldArticle = articleService.queryArticleById(id);
+
         //这里需要复制一份文章返回给前端，不然数据库中的 content 会被改变为 html 格式
         Article newArticle = new Article();
         BeanUtils.copyProperties(oldArticle, newArticle);
@@ -148,6 +153,7 @@ public class IndexController {
         if (mapList.size() == 0) {
             return "mainPage/noSearchRes";
         }
+
         model.addAttribute("mapList", mapList);
         return "mainPage/search";
     }

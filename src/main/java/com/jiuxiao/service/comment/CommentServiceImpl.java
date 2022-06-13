@@ -63,4 +63,27 @@ public class CommentServiceImpl implements CommentService {
     public void insertComment(Comment comment) {
         commentMapper.insertComment(comment);
     }
+
+    /**
+     * @return: void
+     * @decription 设置主键由此递增
+     * @date 2022/6/13 13:17
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void increaseCommentFromThis() {
+        commentMapper.increaseCommentFromThis();
+    }
+
+    /**
+     * @param blogId
+     * @return: void
+     * @decription 根据博客 ID 删除评论
+     * @date 2022/6/13 13:18
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void deleteCommentByBlogId(Integer blogId) {
+        commentMapper.deleteCommentByBlogId(blogId);
+    }
 }
