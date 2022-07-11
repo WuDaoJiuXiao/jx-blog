@@ -164,6 +164,28 @@ CREATE TABLE `t_journal`
 INSERT INTO `t_user`(`id`, `username`, `password`, `email`, `admin`)
 VALUES ('1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '1667191252@qq.com', '1');
 
+-- ----------------------------------------
+-- Initialization data
+-- ----------------------------------------
+INSERT INTO `t_article`(`id`, `title`, `head_image_address`, `content`, `created_time`, `last_update_time`, `comment_count`, `read_count`, `author_name`, `copyright`, `tags`, `sort`,`open_comment`, `open_copyright`, `type`)
+    VALUE (1, '测试', 'https://my-pic-1309513254.cos.ap-shanghai.myqcloud.com/Github%E4%B8%BB%E9%A1%B5.jpg', '测试测试','2022-01-01 00:00:00', '2022-01-01 00:00:00', '12', '10', '九霄', '版权信息', 'Java','Java', '1', '1', '原创');
+
+INSERT INTO `t_archive`(`id`, `created_time`) VALUE (1, '2022-01-01 00:00:00');
+
+INSERT INTO `t_comment`(`id`,`nickname`,`email`,`avatar`,`content`,`created_time`,`blog_id`,`parent_comment_id`) VALUES
+(1,'九霄','1667191252@qq.com','https://my-pic-1309513254.cos.ap-shanghai.myqcloud.com/Github%E4%B8%BB%E9%A1%B5.jpg','测试评论','2022-01-01 00:00:00',1,-1),
+(2,'叶凡','1667191252@qq.com','https://my-pic-1309513254.cos.ap-shanghai.myqcloud.com/Github%E4%B8%BB%E9%A1%B5.jpg','你好','2022-01-01 00:00:00',1,1);
+
+INSERT INTO `t_link`(`id`,`name`,`address`,`image_address`,`created_time`,`last_update_time`,`is_check`) VALUE
+(1, '百度','https://www.baidu.com','https://my-pic-1309513254.cos.ap-shanghai.myqcloud.com/Github%E4%B8%BB%E9%A1%B5.jpg','2022-01-01 00:00:00','2022-01-01 00:00:00','否'),
+(2, '哔哩哔哩','https://www.bilibili.com','https://my-pic-1309513254.cos.ap-shanghai.myqcloud.com/Github%E4%B8%BB%E9%A1%B5.jpg','2022-01-01 00:00:00','2022-01-01 00:00:00','是');
+
+INSERT INTO `t_sort`(`id`,`name`,`ref_count`,`created_time`,last_update_time) VALUE
+(1, 'Java',1,'2022-01-01 00:00:00', '2022-01-01 00:00:00');
+
+INSERT INTO `t_tags`(`id`,`name`,`ref_count`,`created_time`,last_update_time) VALUE
+(1, 'Java',1,'2022-01-01 00:00:00', '2022-01-01 00:00:00');
+
 
 -- ----------------------------------------
 -- Restore foreign key constraints

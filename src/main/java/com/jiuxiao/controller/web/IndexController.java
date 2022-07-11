@@ -56,10 +56,12 @@ public class IndexController {
     public String index(@RequestParam(defaultValue = "1") Integer currentPage, Model model) {
         //博客列表的相关数据
         List<Article> articleList = articleService.queryAllArticleListDESC();
+
         Integer articleCount = articleList.size();
         Integer pageSize = WebConstants.BLOG_PAGE_SIZE;
         TurnPageTools<Article> pageTools = new TurnPageTools<>();
         PageInfoTools<Article> pageInfo = pageTools.getPageInfo(articleList, currentPage, pageSize);
+
         model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("articleCount", articleCount);
 
